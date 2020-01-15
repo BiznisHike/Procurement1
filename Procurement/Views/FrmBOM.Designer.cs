@@ -128,7 +128,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(73, 24);
-            this.btnSave.TabIndex = 17;
+            this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.toolTip1.SetToolTip(this.btnSave, "Press Save button to save the BOM");
             this.btnSave.UseVisualStyleBackColor = false;
@@ -141,7 +141,7 @@
             this.txtProjectEndUser.Multiline = true;
             this.txtProjectEndUser.Name = "txtProjectEndUser";
             this.txtProjectEndUser.Size = new System.Drawing.Size(98, 25);
-            this.txtProjectEndUser.TabIndex = 16;
+            this.txtProjectEndUser.TabIndex = 5;
             this.toolTip1.SetToolTip(this.txtProjectEndUser, "Enter End User");
             // 
             // txtProjectCustomerName
@@ -151,7 +151,7 @@
             this.txtProjectCustomerName.Multiline = true;
             this.txtProjectCustomerName.Name = "txtProjectCustomerName";
             this.txtProjectCustomerName.Size = new System.Drawing.Size(98, 25);
-            this.txtProjectCustomerName.TabIndex = 15;
+            this.txtProjectCustomerName.TabIndex = 4;
             this.toolTip1.SetToolTip(this.txtProjectCustomerName, "Enter Customer Name");
             // 
             // txtProjectName
@@ -161,7 +161,7 @@
             this.txtProjectName.Multiline = true;
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.Size = new System.Drawing.Size(98, 25);
-            this.txtProjectName.TabIndex = 14;
+            this.txtProjectName.TabIndex = 3;
             this.toolTip1.SetToolTip(this.txtProjectName, "Enter Project Name");
             // 
             // txtProjectCode
@@ -172,7 +172,7 @@
             this.txtProjectCode.Name = "txtProjectCode";
             this.txtProjectCode.ReadOnly = true;
             this.txtProjectCode.Size = new System.Drawing.Size(98, 25);
-            this.txtProjectCode.TabIndex = 13;
+            this.txtProjectCode.TabIndex = 2;
             // 
             // label4
             // 
@@ -227,7 +227,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(883, 491);
-            this.tabControl1.TabIndex = 18;
+            this.tabControl1.TabIndex = 6;
             // 
             // tabSaleBOM
             // 
@@ -305,7 +305,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(73, 24);
-            this.btnCancel.TabIndex = 19;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Close";
             this.toolTip1.SetToolTip(this.btnCancel, "Press Close button to exit the FormBOM ");
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -372,7 +372,7 @@
             this.splitContainer1.Size = new System.Drawing.Size(1028, 609);
             this.splitContainer1.SplitterDistance = 139;
             this.splitContainer1.SplitterWidth = 3;
-            this.splitContainer1.TabIndex = 20;
+            this.splitContainer1.TabIndex = 0;
             // 
             // btnResize
             // 
@@ -385,7 +385,7 @@
             this.btnResize.Margin = new System.Windows.Forms.Padding(2);
             this.btnResize.Name = "btnResize";
             this.btnResize.Size = new System.Drawing.Size(30, 32);
-            this.btnResize.TabIndex = 21;
+            this.btnResize.TabIndex = 0;
             this.toolTip1.SetToolTip(this.btnResize, "Resize");
             this.btnResize.UseVisualStyleBackColor = false;
             this.btnResize.Click += new System.EventHandler(this.btnResize_Click);
@@ -556,7 +556,7 @@
             this.btnNewProject.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewProject.Name = "btnNewProject";
             this.btnNewProject.Size = new System.Drawing.Size(30, 32);
-            this.btnNewProject.TabIndex = 20;
+            this.btnNewProject.TabIndex = 1;
             this.toolTip1.SetToolTip(this.btnNewProject, "Add a New Project");
             this.btnNewProject.UseVisualStyleBackColor = false;
             this.btnNewProject.Click += new System.EventHandler(this.btnNewProject_Click);
@@ -578,7 +578,7 @@
             this.dataGridViewProjects.RowTemplate.Height = 24;
             this.dataGridViewProjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewProjects.Size = new System.Drawing.Size(127, 526);
-            this.dataGridViewProjects.TabIndex = 0;
+            this.dataGridViewProjects.TabIndex = 2;
             this.dataGridViewProjects.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewProjects_CellMouseDown);
             this.dataGridViewProjects.SelectionChanged += new System.EventHandler(this.dataGridViewProjects_SelectionChanged);
             this.dataGridViewProjects.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewProjects_MouseClick);
@@ -609,6 +609,7 @@
             this.Name = "FrmBOM";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BOM";
+            this.Activated += new System.EventHandler(this.FrmBOM_Activated);
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);

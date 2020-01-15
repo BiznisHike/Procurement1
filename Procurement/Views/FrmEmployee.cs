@@ -541,5 +541,10 @@ namespace Procurement
 
             }
         }
+
+        private void FrmEmployee_Activated(object sender, EventArgs e)
+        {
+            txtEmployeeName.Focus();
+        }
     }
 }

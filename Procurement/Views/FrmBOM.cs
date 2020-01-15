@@ -809,5 +809,9 @@ namespace Procurement
             }
         }
 
+        private void FrmBOM_Activated(object sender, EventArgs e)
+        {
+            txtBOMFilePath.Focus();
+        }
     }
 }

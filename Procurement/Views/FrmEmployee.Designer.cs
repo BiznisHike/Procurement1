@@ -79,7 +79,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(73, 26);
-            this.btnSave.TabIndex = 17;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.FormEmployee.SetToolTip(this.btnSave, "press Save button to save the record");
             this.btnSave.UseVisualStyleBackColor = false;
@@ -92,7 +92,7 @@
             this.txtEmployeeName.Multiline = true;
             this.txtEmployeeName.Name = "txtEmployeeName";
             this.txtEmployeeName.Size = new System.Drawing.Size(150, 25);
-            this.txtEmployeeName.TabIndex = 14;
+            this.txtEmployeeName.TabIndex = 0;
             this.FormEmployee.SetToolTip(this.txtEmployeeName, "Enter Employee Name");
             // 
             // txtEmployeeCode
@@ -146,7 +146,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(73, 24);
-            this.btnCancel.TabIndex = 19;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Close";
             this.FormEmployee.SetToolTip(this.btnCancel, "Press Close button to exit the Form");
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -215,7 +215,7 @@
             this.splitContainer1.Size = new System.Drawing.Size(1028, 609);
             this.splitContainer1.SplitterDistance = 140;
             this.splitContainer1.SplitterWidth = 3;
-            this.splitContainer1.TabIndex = 20;
+            this.splitContainer1.TabIndex = 0;
             // 
             // btnResize
             // 
@@ -228,7 +228,7 @@
             this.btnResize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnResize.Name = "btnResize";
             this.btnResize.Size = new System.Drawing.Size(30, 32);
-            this.btnResize.TabIndex = 21;
+            this.btnResize.TabIndex = 0;
             this.FormEmployee.SetToolTip(this.btnResize, "Resize");
             this.btnResize.UseVisualStyleBackColor = false;
             this.btnResize.Click += new System.EventHandler(this.btnResize_Click);
@@ -401,7 +401,7 @@
             this.btnNewEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNewEmployee.Name = "btnNewEmployee";
             this.btnNewEmployee.Size = new System.Drawing.Size(30, 32);
-            this.btnNewEmployee.TabIndex = 20;
+            this.btnNewEmployee.TabIndex = 1;
             this.FormEmployee.SetToolTip(this.btnNewEmployee, "Add a new Employee");
             this.btnNewEmployee.UseVisualStyleBackColor = false;
             this.btnNewEmployee.Click += new System.EventHandler(this.btnNewEmployee_Click);
@@ -423,7 +423,7 @@
             this.dataGridViewEmployees.RowTemplate.Height = 24;
             this.dataGridViewEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEmployees.Size = new System.Drawing.Size(129, 526);
-            this.dataGridViewEmployees.TabIndex = 0;
+            this.dataGridViewEmployees.TabIndex = 2;
             this.dataGridViewEmployees.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewEmployees_CellMouseDown);
             this.dataGridViewEmployees.SelectionChanged += new System.EventHandler(this.dataGridViewEmployees_SelectionChanged);
             this.dataGridViewEmployees.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewEmployees_MouseClick);
@@ -461,7 +461,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(150, 25);
-            this.txtPassword.TabIndex = 30;
+            this.txtPassword.TabIndex = 1;
             this.FormEmployee.SetToolTip(this.txtPassword, "Enter Password");
             // 
             // label5
@@ -497,7 +497,7 @@
             this.cmbManagers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbManagers.Name = "cmbManagers";
             this.cmbManagers.Size = new System.Drawing.Size(150, 21);
-            this.cmbManagers.TabIndex = 26;
+            this.cmbManagers.TabIndex = 3;
             this.FormEmployee.SetToolTip(this.cmbManagers, "Select Manager");
             this.cmbManagers.Visible = false;
             // 
@@ -509,7 +509,7 @@
             this.cmbEmployeeType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbEmployeeType.Name = "cmbEmployeeType";
             this.cmbEmployeeType.Size = new System.Drawing.Size(150, 21);
-            this.cmbEmployeeType.TabIndex = 25;
+            this.cmbEmployeeType.TabIndex = 2;
             this.FormEmployee.SetToolTip(this.cmbEmployeeType, "Select Employee Type");
             this.cmbEmployeeType.SelectedIndexChanged += new System.EventHandler(this.cmbEmployeeType_SelectedIndexChanged);
             // 
@@ -542,7 +542,7 @@
             this.cmbProjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbProjects.Name = "cmbProjects";
             this.cmbProjects.Size = new System.Drawing.Size(150, 21);
-            this.cmbProjects.TabIndex = 20;
+            this.cmbProjects.TabIndex = 4;
             this.FormEmployee.SetToolTip(this.cmbProjects, "Select Project ");
             this.cmbProjects.Visible = false;
             // 
@@ -572,6 +572,7 @@
             this.Name = "FrmEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employees";
+            this.Activated += new System.EventHandler(this.FrmEmployee_Activated);
             this.Load += new System.EventHandler(this.FrmEmployees_Load);
             this.MenuStripSaleBOM.ResumeLayout(false);
             this.MenuStripDesignBOM.ResumeLayout(false);
