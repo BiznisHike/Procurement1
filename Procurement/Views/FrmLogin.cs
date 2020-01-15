@@ -85,5 +85,13 @@ namespace Procurement
                 Login();
             }
         }
+
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

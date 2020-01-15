@@ -119,7 +119,7 @@
             this.pnlProjects.Controls.Add(this.lblProject);
             this.pnlProjects.Controls.Add(this.lnkProjects);
             this.pnlProjects.Location = new System.Drawing.Point(33, 22);
-            this.pnlProjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlProjects.Margin = new System.Windows.Forms.Padding(2);
             this.pnlProjects.Name = "pnlProjects";
             this.pnlProjects.Size = new System.Drawing.Size(300, 81);
             this.pnlProjects.TabIndex = 0;
@@ -146,7 +146,7 @@
             this.pnlEmployees.Controls.Add(this.lblEmployee);
             this.pnlEmployees.Controls.Add(this.lnkEmployees);
             this.pnlEmployees.Location = new System.Drawing.Point(33, 108);
-            this.pnlEmployees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.pnlEmployees.Name = "pnlEmployees";
             this.pnlEmployees.Size = new System.Drawing.Size(300, 81);
             this.pnlEmployees.TabIndex = 1;
@@ -190,7 +190,7 @@
             this.btnLogOff.ImageKey = "Turn off.png";
             this.btnLogOff.ImageList = this.imageList2;
             this.btnLogOff.Location = new System.Drawing.Point(797, 19);
-            this.btnLogOff.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogOff.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(30, 32);
             this.btnLogOff.TabIndex = 2;
@@ -213,11 +213,13 @@
             this.Controls.Add(this.lnkUserName);
             this.Controls.Add(this.pnlProjects);
             this.Controls.Add(this.pnlEmployees);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmMain";
             this.Text = "Procurement";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmMain_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.pnlProjects.ResumeLayout(false);
             this.pnlProjects.PerformLayout();

@@ -546,5 +546,13 @@ namespace Procurement
         {
             txtEmployeeName.Focus();
         }
+
+        private void FrmEmployee_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

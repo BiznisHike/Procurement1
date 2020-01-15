@@ -813,5 +813,18 @@ namespace Procurement
         {
             txtBOMFilePath.Focus();
         }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void FrmBOM_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

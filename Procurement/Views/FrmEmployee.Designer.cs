@@ -76,7 +76,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Transparent;
             this.btnSave.Location = new System.Drawing.Point(570, 482);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(73, 26);
             this.btnSave.TabIndex = 5;
@@ -88,7 +88,7 @@
             // txtEmployeeName
             // 
             this.txtEmployeeName.Location = new System.Drawing.Point(130, 102);
-            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmployeeName.Multiline = true;
             this.txtEmployeeName.Name = "txtEmployeeName";
             this.txtEmployeeName.Size = new System.Drawing.Size(150, 25);
@@ -98,7 +98,7 @@
             // txtEmployeeCode
             // 
             this.txtEmployeeCode.Location = new System.Drawing.Point(130, 51);
-            this.txtEmployeeCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmployeeCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmployeeCode.Multiline = true;
             this.txtEmployeeCode.Name = "txtEmployeeCode";
             this.txtEmployeeCode.ReadOnly = true;
@@ -143,7 +143,7 @@
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.ImageKey = "Yes.bmp";
             this.btnCancel.Location = new System.Drawing.Point(493, 483);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(73, 24);
             this.btnCancel.TabIndex = 6;
@@ -184,7 +184,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -225,7 +225,7 @@
             this.btnResize.ImageKey = "Left-right.bmp";
             this.btnResize.ImageList = this.imageList1;
             this.btnResize.Location = new System.Drawing.Point(10, 5);
-            this.btnResize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnResize.Margin = new System.Windows.Forms.Padding(2);
             this.btnResize.Name = "btnResize";
             this.btnResize.Size = new System.Drawing.Size(30, 32);
             this.btnResize.TabIndex = 0;
@@ -398,7 +398,7 @@
             this.btnNewEmployee.ImageKey = "Create.bmp";
             this.btnNewEmployee.ImageList = this.imageList1;
             this.btnNewEmployee.Location = new System.Drawing.Point(45, 5);
-            this.btnNewEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewEmployee.Name = "btnNewEmployee";
             this.btnNewEmployee.Size = new System.Drawing.Size(30, 32);
             this.btnNewEmployee.TabIndex = 1;
@@ -415,7 +415,7 @@
             this.dataGridViewEmployees.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployees.Location = new System.Drawing.Point(9, 42);
-            this.dataGridViewEmployees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowHeadersVisible = false;
@@ -436,7 +436,7 @@
             this.btnShowPassword.ImageKey = "show.png";
             this.btnShowPassword.ImageList = this.imageList1;
             this.btnShowPassword.Location = new System.Drawing.Point(280, 141);
-            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(2);
             this.btnShowPassword.Name = "btnShowPassword";
             this.btnShowPassword.Size = new System.Drawing.Size(30, 32);
             this.btnShowPassword.TabIndex = 22;
@@ -456,7 +456,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(130, 145);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
@@ -480,7 +480,7 @@
             this.dataGridViewSelectProjects.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewSelectProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSelectProjects.Location = new System.Drawing.Point(130, 235);
-            this.dataGridViewSelectProjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewSelectProjects.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSelectProjects.Name = "dataGridViewSelectProjects";
             this.dataGridViewSelectProjects.RowHeadersVisible = false;
             this.dataGridViewSelectProjects.RowHeadersWidth = 51;
@@ -494,7 +494,7 @@
             this.cmbManagers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbManagers.FormattingEnabled = true;
             this.cmbManagers.Location = new System.Drawing.Point(350, 189);
-            this.cmbManagers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbManagers.Margin = new System.Windows.Forms.Padding(2);
             this.cmbManagers.Name = "cmbManagers";
             this.cmbManagers.Size = new System.Drawing.Size(150, 21);
             this.cmbManagers.TabIndex = 3;
@@ -506,7 +506,7 @@
             this.cmbEmployeeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeeType.FormattingEnabled = true;
             this.cmbEmployeeType.Location = new System.Drawing.Point(130, 189);
-            this.cmbEmployeeType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEmployeeType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEmployeeType.Name = "cmbEmployeeType";
             this.cmbEmployeeType.Size = new System.Drawing.Size(150, 21);
             this.cmbEmployeeType.TabIndex = 2;
@@ -539,7 +539,7 @@
             this.cmbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjects.FormattingEnabled = true;
             this.cmbProjects.Location = new System.Drawing.Point(560, 187);
-            this.cmbProjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbProjects.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjects.Name = "cmbProjects";
             this.cmbProjects.Size = new System.Drawing.Size(150, 21);
             this.cmbProjects.TabIndex = 4;
@@ -568,12 +568,14 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1028, 609);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employees";
             this.Activated += new System.EventHandler(this.FrmEmployee_Activated);
             this.Load += new System.EventHandler(this.FrmEmployees_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmEmployee_KeyDown);
             this.MenuStripSaleBOM.ResumeLayout(false);
             this.MenuStripDesignBOM.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
