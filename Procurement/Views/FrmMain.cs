@@ -62,18 +62,43 @@ namespace Procurement.Views
             pnlEmployees.BackColor = Color.WhiteSmoke;
         }
 
-        private void pnlEmployees_MouseClick(object sender, MouseEventArgs e) 
+        private void pnlEmployees_MouseClick(object sender, MouseEventArgs e)
         {
             FrmEmployee_Show();
         }
         private void pnlProjects_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmBOM_Show();
+            if (!FrmBOM.Instance.Visible)
+            {
+                FrmBOM.Instance.Show();
+            }
+            else
+            {
+                if (FrmBOM.Instance.WindowState == FormWindowState.Minimized)
+                {
+                    FrmBOM.Instance.WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    FrmBOM.Instance.BringToFront();
+                }
+                
+            }
+            // FrmBOM_Show();
+
         }
         private void FrmBOM_Show()
         {
-            FrmBOM frmBOM = new FrmBOM();
-            frmBOM.Show();
+
+
+            //FrmBOM frmBOM = FrmBOM.Instance;
+            //frmBOM.Show();
+            FrmBOM.Instance.Show();
+
+
+
+
+
 
         }
         private void FrmEmployee_Show()

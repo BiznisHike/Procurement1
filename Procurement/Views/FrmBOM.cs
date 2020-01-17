@@ -24,11 +24,29 @@ namespace Procurement
         decimal _projectCode;
         bool _newMode;
         Project _currentLoadedProject;
-        public FrmBOM()
+
+        //SingleTon 
+        private static FrmBOM instance=null;
+       private FrmBOM()
         {
             InitializeComponent();
 
         }
+        public static FrmBOM Instance
+        {
+            get
+            {
+                if (instance==null || instance.IsDisposed)
+                    {
+
+                         instance = new FrmBOM();
+                }
+
+
+                return instance;
+            }
+        }
+        //End SingleTon
 
         private void FrmBOM_Load(object sender, EventArgs e)
         {
