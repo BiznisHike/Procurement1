@@ -35,9 +35,9 @@ namespace Procurement.Views
         }
         private void lnkUserName_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FrmEmployee frmEmp = new FrmEmployee();
-            frmEmp._EmployeeCode = LoginInfo.LoginEmployee.EmployeeCode;
-            frmEmp.Show();
+           
+            FrmEmployee.InsEmp._EmployeeCode = LoginInfo.LoginEmployee.EmployeeCode;
+            FrmEmployee.InsEmp.Show();
         }
         #region "Click On Panel"
 
@@ -64,7 +64,22 @@ namespace Procurement.Views
 
         private void pnlEmployees_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmEmployee_Show();
+            if(!FrmEmployee.InsEmp.Visible)
+            {
+                FrmEmployee.InsEmp.Show();
+            }
+            else
+            {
+                if (FrmEmployee.InsEmp.WindowState == FormWindowState.Minimized)
+                {
+                    FrmEmployee.InsEmp.WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    FrmEmployee.InsEmp.BringToFront();
+                }
+
+            }
         }
         private void pnlProjects_MouseClick(object sender, MouseEventArgs e)
         {
@@ -103,8 +118,8 @@ namespace Procurement.Views
         }
         private void FrmEmployee_Show()
         {
-            FrmEmployee frmEmp = new FrmEmployee();
-            frmEmp.Show();
+            
+            FrmEmployee.InsEmp.Show();
         }
 
         private void lnkProjects_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
