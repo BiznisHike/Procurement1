@@ -64,24 +64,14 @@ namespace Procurement.Views
 
         private void pnlEmployees_MouseClick(object sender, MouseEventArgs e)
         {
-            if(!FrmEmployee.InsEmp.Visible)
-            {
-                FrmEmployee.InsEmp.Show();
-            }
-            else
-            {
-                if (FrmEmployee.InsEmp.WindowState == FormWindowState.Minimized)
-                {
-                    FrmEmployee.InsEmp.WindowState = FormWindowState.Normal;
-                }
-                else
-                {
-                    FrmEmployee.InsEmp.BringToFront();
-                }
-
-            }
+            FrmEmployee_Show();
         }
         private void pnlProjects_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmBOM_Show();
+
+        }
+        private void FrmBOM_Show()
         {
             if (!FrmBOM.Instance.Visible)
             {
@@ -97,29 +87,35 @@ namespace Procurement.Views
                 {
                     FrmBOM.Instance.BringToFront();
                 }
-                
+
             }
             // FrmBOM_Show();
 
-        }
-        private void FrmBOM_Show()
-        {
-
-
             //FrmBOM frmBOM = FrmBOM.Instance;
             //frmBOM.Show();
-            FrmBOM.Instance.Show();
-
-
-
-
-
+           // FrmBOM.Instance.Show();
 
         }
         private void FrmEmployee_Show()
         {
-            
-            FrmEmployee.InsEmp.Show();
+            if (!FrmEmployee.InsEmp.Visible)
+            {
+                FrmEmployee.InsEmp.Show();
+            }
+            else
+            {
+                if (FrmEmployee.InsEmp.WindowState == FormWindowState.Minimized)
+                {
+                    FrmEmployee.InsEmp.WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    FrmEmployee.InsEmp.BringToFront();
+                }
+
+            }
+
+            // FrmEmployee.InsEmp.Show();
         }
 
         private void lnkProjects_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
