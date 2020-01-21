@@ -113,7 +113,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(863, 461);
+            this.dataGridView1.Size = new System.Drawing.Size(864, 461);
             this.dataGridView1.TabIndex = 2;
             this.toolTip1.SetToolTip(this.dataGridView1, "Press Load button to load the BOM");
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
@@ -124,7 +124,7 @@
             this.btnSave.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(799, 579);
+            this.btnSave.Location = new System.Drawing.Point(800, 579);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(73, 24);
@@ -136,37 +136,37 @@
             // 
             // txtProjectEndUser
             // 
-            this.txtProjectEndUser.Location = new System.Drawing.Point(317, 23);
+            this.txtProjectEndUser.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.txtProjectEndUser.Location = new System.Drawing.Point(356, 23);
             this.txtProjectEndUser.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProjectEndUser.Multiline = true;
             this.txtProjectEndUser.Name = "txtProjectEndUser";
-            this.txtProjectEndUser.Size = new System.Drawing.Size(98, 25);
+            this.txtProjectEndUser.Size = new System.Drawing.Size(112, 24);
             this.txtProjectEndUser.TabIndex = 7;
             this.toolTip1.SetToolTip(this.txtProjectEndUser, "Enter End User");
             // 
             // txtProjectCustomerName
             // 
-            this.txtProjectCustomerName.Location = new System.Drawing.Point(214, 23);
+            this.txtProjectCustomerName.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.txtProjectCustomerName.Location = new System.Drawing.Point(235, 23);
             this.txtProjectCustomerName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProjectCustomerName.Multiline = true;
             this.txtProjectCustomerName.Name = "txtProjectCustomerName";
-            this.txtProjectCustomerName.Size = new System.Drawing.Size(98, 25);
+            this.txtProjectCustomerName.Size = new System.Drawing.Size(112, 24);
             this.txtProjectCustomerName.TabIndex = 6;
             this.toolTip1.SetToolTip(this.txtProjectCustomerName, "Enter Customer Name");
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(111, 23);
+            this.txtProjectName.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProjectName.Location = new System.Drawing.Point(115, 23);
             this.txtProjectName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProjectName.Multiline = true;
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(98, 25);
+            this.txtProjectName.Size = new System.Drawing.Size(112, 24);
             this.txtProjectName.TabIndex = 5;
             this.toolTip1.SetToolTip(this.txtProjectName, "Enter Project Name");
             // 
             // txtProjectCode
             // 
-            this.txtProjectCode.Location = new System.Drawing.Point(8, 23);
+            this.txtProjectCode.Location = new System.Drawing.Point(9, 23);
             this.txtProjectCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectCode.Multiline = true;
             this.txtProjectCode.Name = "txtProjectCode";
@@ -177,7 +177,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(315, 6);
+            this.label4.Location = new System.Drawing.Point(355, 6);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 13);
@@ -187,7 +187,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(212, 6);
+            this.label3.Location = new System.Drawing.Point(233, 6);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 13);
@@ -197,7 +197,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(109, 6);
+            this.label2.Location = new System.Drawing.Point(112, 6);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
@@ -226,7 +226,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(875, 491);
+            this.tabControl1.Size = new System.Drawing.Size(876, 491);
             this.tabControl1.TabIndex = 8;
             // 
             // tabSaleBOM
@@ -236,7 +236,7 @@
             this.tabSaleBOM.Margin = new System.Windows.Forms.Padding(2);
             this.tabSaleBOM.Name = "tabSaleBOM";
             this.tabSaleBOM.Padding = new System.Windows.Forms.Padding(2);
-            this.tabSaleBOM.Size = new System.Drawing.Size(867, 465);
+            this.tabSaleBOM.Size = new System.Drawing.Size(868, 465);
             this.tabSaleBOM.TabIndex = 0;
             this.tabSaleBOM.Text = "Sale BOM";
             this.tabSaleBOM.UseVisualStyleBackColor = true;
@@ -248,7 +248,7 @@
             this.tabDesignBOM.Margin = new System.Windows.Forms.Padding(2);
             this.tabDesignBOM.Name = "tabDesignBOM";
             this.tabDesignBOM.Padding = new System.Windows.Forms.Padding(2);
-            this.tabDesignBOM.Size = new System.Drawing.Size(867, 465);
+            this.tabDesignBOM.Size = new System.Drawing.Size(868, 465);
             this.tabDesignBOM.TabIndex = 1;
             this.tabDesignBOM.Text = "Design BOM";
             this.tabDesignBOM.UseVisualStyleBackColor = true;
@@ -263,7 +263,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(863, 461);
+            this.dataGridView2.Size = new System.Drawing.Size(864, 461);
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
             this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
@@ -275,7 +275,7 @@
             this.tabActualBOM.Margin = new System.Windows.Forms.Padding(2);
             this.tabActualBOM.Name = "tabActualBOM";
             this.tabActualBOM.Padding = new System.Windows.Forms.Padding(2);
-            this.tabActualBOM.Size = new System.Drawing.Size(867, 465);
+            this.tabActualBOM.Size = new System.Drawing.Size(868, 465);
             this.tabActualBOM.TabIndex = 2;
             this.tabActualBOM.Text = "Actual BOM";
             this.tabActualBOM.UseVisualStyleBackColor = true;
@@ -290,7 +290,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(863, 461);
+            this.dataGridView3.Size = new System.Drawing.Size(864, 461);
             this.dataGridView3.TabIndex = 3;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             // 
@@ -301,7 +301,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.ImageKey = "Yes.bmp";
-            this.btnCancel.Location = new System.Drawing.Point(722, 579);
+            this.btnCancel.Location = new System.Drawing.Point(723, 579);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(73, 24);

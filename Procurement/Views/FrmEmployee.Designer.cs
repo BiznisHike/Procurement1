@@ -87,11 +87,11 @@
             // 
             // txtEmployeeName
             // 
+            this.txtEmployeeName.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.txtEmployeeName.Location = new System.Drawing.Point(130, 102);
             this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtEmployeeName.Multiline = true;
             this.txtEmployeeName.Name = "txtEmployeeName";
-            this.txtEmployeeName.Size = new System.Drawing.Size(150, 25);
+            this.txtEmployeeName.Size = new System.Drawing.Size(150, 24);
             this.txtEmployeeName.TabIndex = 0;
             this.FormEmployee.SetToolTip(this.txtEmployeeName, "Enter Employee Name");
             // 
@@ -455,12 +455,12 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.txtPassword.Location = new System.Drawing.Point(130, 145);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
-            this.txtPassword.Size = new System.Drawing.Size(150, 25);
+            this.txtPassword.Size = new System.Drawing.Size(150, 24);
             this.txtPassword.TabIndex = 1;
             this.FormEmployee.SetToolTip(this.txtPassword, "Enter Password");
             // 
