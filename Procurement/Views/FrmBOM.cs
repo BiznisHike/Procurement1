@@ -136,10 +136,8 @@ namespace Procurement
                     Con.Close();
                     //DataRow newDataRow;
                     //////////////////////////////////////////////////////////////
-                    _dtSalesBOM = new DataTable();
-                    //foreach (DataColumn dc in dtTemp.Columns)
-                    //{
-                    _dtSalesBOM = dtTemp.Clone();
+                    DataTable dtBOM  = new DataTable();
+                    dtBOM = dtTemp.Clone();
                     //}
 
                     foreach (DataRow dr in dtTemp.Rows)
@@ -163,20 +161,38 @@ namespace Procurement
 
                         if (isAdd == true)
                         {
-                            //can not add like this _dtSalesBOM.Rows.Add(dr); :(  have to add new row and then add to list
-                            //newDataRow = _dtSalesBOM.NewRow();
+                            //can not add like this dtBOM.Rows.Add(dr); :(  have to add new row and then add to list
+                            //newDataRow = dtBOM.NewRow();
                             //for (int i = 0; i <  dtTemp.Columns.Count; i++)
                             //{
                             //    newDataRow[i] = dr[i];
 
                             //}
-                            //_dtSalesBOM.Rows.Add(newDataRow);
+                            //dtBOM.Rows.Add(newDataRow);
 
-                            _dtSalesBOM.Rows.Add(dr.ItemArray);
+                            dtBOM.Rows.Add(dr.ItemArray);
                         }
 
                     }
-                    dataGridView1.DataSource = _dtSalesBOM;
+                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+                    {
+                        _dtSalesBOM = dtBOM;
+                        dataGridView1.DataSource = _dtSalesBOM;
+                    }
+                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+                    {
+                        _dtDesignBOM = dtBOM;
+                        dataGridView2.DataSource = _dtDesignBOM;
+                    }
+                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
+                    {
+                        _dtActualBOM = dtBOM;
+                        dataGridView3.DataSource = _dtActualBOM;
+                    }
+
+
+
+                    
                 }
             }
             catch (Exception ex)
@@ -223,11 +239,12 @@ namespace Procurement
                     DataTable dtTemp = new DataTable();
                     sda.Fill(dtTemp);
                     Con.Close();
-                    
+
                     //////////////////////////////////////////////////////////////
+                    
                     //_dtSalesBOM = new DataTable();
                     //_dtSalesBOM = dtTemp.Clone();
-                    
+
 
                     foreach (DataRow dr in dtTemp.Rows)
                     {
@@ -259,11 +276,29 @@ namespace Procurement
                             //}
                             //_dtSalesBOM.Rows.Add(newDataRow);
 
-                            _dtSalesBOM.Rows.Add(dr.ItemArray);
+                            //dtBOM.Rows.Add(dr.ItemArray);
+
+                            if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+                            {
+                                _dtSalesBOM.Rows.Add(dr.ItemArray);
+                                //dataGridView1.DataSource = _dtSalesBOM;
+                            }
+                            if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+                            {
+                                _dtDesignBOM.Rows.Add(dr.ItemArray);
+                                //dataGridView2.DataSource = _dtDesignBOM;
+                            }
+                            if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
+                            {
+                                _dtDesignBOM.Rows.Add(dr.ItemArray);
+                                //dataGridView3.DataSource = _dtActualBOM;
+                            }
+
                         }
 
                     }
-                    dataGridView1.DataSource = _dtSalesBOM;
+                    //dataGridView1.DataSource = _dtSalesBOM;
+                   
                 }
             }
             catch (Exception ex)
@@ -920,6 +955,5 @@ namespace Procurement
             MenuStripLoad.Show(Cursor.Position);
         }
 
-        
     }
 }
