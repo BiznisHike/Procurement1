@@ -52,7 +52,7 @@ namespace Procurement
         {
             try
             {
-                
+
                 if (LoginInfo.LoginEmployee.EmployeeTypeCode == Constants.EMPLOYEE)
                 {
                     txtProjectName.Enabled = false;
@@ -115,9 +115,7 @@ namespace Procurement
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
-        private void LoadBOM_Click(object sender, EventArgs e)
+        private void loadBOMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -157,11 +155,115 @@ namespace Procurement
                     Con.Close();
                     //DataRow newDataRow;
                     //////////////////////////////////////////////////////////////
-                    _dtSalesBOM = new DataTable();
-                    //foreach (DataColumn dc in dtTemp.Columns)
-                    //{
-                    _dtSalesBOM = dtTemp.Clone();
+                    DataTable dtBOM  = new DataTable();
+                    dtBOM = dtTemp.Clone();
                     //}
+
+                    foreach (DataRow dr in dtTemp.Rows)
+                    {
+                        //string colName=gvr.Cells[0].OwningColumn.HeaderText;
+
+                        bool isAdd = false;
+                        for (int i = 0; i < dtTemp.Columns.Count; i++)
+                        {
+                            //if (dr[i] == null || dr[i] == DBNull.Value || String.IsNullOrWhiteSpace(dr[i].ToString()))
+                            if (dr[i] == DBNull.Value)
+                            {
+                                isAdd = false;
+                            }
+                            else
+                            {
+                                isAdd = true;
+                                break;
+                            }
+                        }
+
+                        if (isAdd == true)
+                        {
+                            //can not add like this dtBOM.Rows.Add(dr); :(  have to add new row and then add to list
+                            //newDataRow = dtBOM.NewRow();
+                            //for (int i = 0; i <  dtTemp.Columns.Count; i++)
+                            //{
+                            //    newDataRow[i] = dr[i];
+
+                            //}
+                            //dtBOM.Rows.Add(newDataRow);
+
+                            dtBOM.Rows.Add(dr.ItemArray);
+                        }
+
+                    }
+                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+                    {
+                        _dtSalesBOM = dtBOM;
+                        dataGridView1.DataSource = _dtSalesBOM;
+                    }
+                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+                    {
+                        _dtDesignBOM = dtBOM;
+                        dataGridView2.DataSource = _dtDesignBOM;
+                    }
+                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
+                    {
+                        _dtActualBOM = dtBOM;
+                        dataGridView3.DataSource = _dtActualBOM;
+                    }
+
+
+
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void loadChageOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dlg_im = new OpenFileDialog();
+                dlg_im.Filter = "Excel File|*.xls;*.xlsx;*.xlsm";
+                //dlg_im.Filter = "Excel File|*.xlsx";
+
+                if (dlg_im.ShowDialog() == DialogResult.OK)
+                {
+                    //dataGridView1.Rows.Clear();
+                    txtBOMFilePath.Text = dlg_im.FileName;
+
+
+                    string constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + txtBOMFilePath.Text + ";Extended Properties='Excel 12.0 XML;HDR=YES;';";
+
+                    OleDbConnection Con = new OleDbConnection(constr);
+
+                    Con.Open();
+
+                    // Get the name of the first worksheet:
+                    DataTable dbSchema = Con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                    if (dbSchema == null || dbSchema.Rows.Count < 1)
+                    {
+                        throw new Exception("Error: Could not determine the name of the first worksheet.");
+                    }
+                    string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
+
+
+
+                    OleDbCommand cmd = new OleDbCommand("SELECT * FROM [" + firstSheetName + "]", Con);
+
+
+
+                    OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
+                    DataTable dtTemp = new DataTable();
+                    sda.Fill(dtTemp);
+                    Con.Close();
+
+                    //////////////////////////////////////////////////////////////
+                    
+                    //_dtSalesBOM = new DataTable();
+                    //_dtSalesBOM = dtTemp.Clone();
+
 
                     foreach (DataRow dr in dtTemp.Rows)
                     {
@@ -193,20 +295,35 @@ namespace Procurement
                             //}
                             //_dtSalesBOM.Rows.Add(newDataRow);
 
-                            _dtSalesBOM.Rows.Add(dr.ItemArray);
+                            //dtBOM.Rows.Add(dr.ItemArray);
+
+                            if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+                            {
+                                _dtSalesBOM.Rows.Add(dr.ItemArray);
+                                //dataGridView1.DataSource = _dtSalesBOM;
+                            }
+                            if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+                            {
+                                _dtDesignBOM.Rows.Add(dr.ItemArray);
+                                //dataGridView2.DataSource = _dtDesignBOM;
+                            }
+                            if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
+                            {
+                                _dtDesignBOM.Rows.Add(dr.ItemArray);
+                                //dataGridView3.DataSource = _dtActualBOM;
+                            }
+
                         }
 
                     }
-                    dataGridView1.DataSource = _dtSalesBOM;
+                    //dataGridView1.DataSource = _dtSalesBOM;
+                   
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
-
-
         }
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
@@ -853,5 +970,18 @@ namespace Procurement
                 this.Close();
             }
         }
+        private void LoadBOM_Click(object sender, EventArgs e)
+        {
+            MenuStripLoad.Show(Cursor.Position);
+        }
+        private void btnLoadBOM_Enter(object sender, EventArgs e)
+        {
+            MenuStripLoad.Show(Cursor.Position);
+        }
+        private void btnLoadBOM_MouseEnter(object sender, EventArgs e)
+        {
+            MenuStripLoad.Show(Cursor.Position);
+        }
+
     }
 }
