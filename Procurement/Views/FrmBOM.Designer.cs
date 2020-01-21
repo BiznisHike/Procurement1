@@ -119,7 +119,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1154, 571);
+            this.dataGridView1.Size = new System.Drawing.Size(1149, 564);
             this.dataGridView1.TabIndex = 2;
             this.toolTip1.SetToolTip(this.dataGridView1, "Press Load button to load the BOM");
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
@@ -146,7 +146,7 @@
             this.txtProjectEndUser.Location = new System.Drawing.Point(356, 23);
             this.txtProjectEndUser.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectEndUser.Name = "txtProjectEndUser";
-            this.txtProjectEndUser.Size = new System.Drawing.Size(112, 24);
+            this.txtProjectEndUser.Size = new System.Drawing.Size(112, 28);
             this.txtProjectEndUser.TabIndex = 7;
             this.toolTip1.SetToolTip(this.txtProjectEndUser, "Enter End User");
             // 
@@ -156,7 +156,7 @@
             this.txtProjectCustomerName.Location = new System.Drawing.Point(235, 23);
             this.txtProjectCustomerName.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectCustomerName.Name = "txtProjectCustomerName";
-            this.txtProjectCustomerName.Size = new System.Drawing.Size(112, 24);
+            this.txtProjectCustomerName.Size = new System.Drawing.Size(112, 28);
             this.txtProjectCustomerName.TabIndex = 6;
             this.toolTip1.SetToolTip(this.txtProjectCustomerName, "Enter Customer Name");
             // 
@@ -166,7 +166,7 @@
             this.txtProjectName.Location = new System.Drawing.Point(115, 23);
             this.txtProjectName.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(112, 24);
+            this.txtProjectName.Size = new System.Drawing.Size(112, 28);
             this.txtProjectName.TabIndex = 5;
             this.toolTip1.SetToolTip(this.txtProjectName, "Enter Project Name");
             // 
@@ -231,7 +231,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(876, 491);
+            this.tabControl1.Size = new System.Drawing.Size(1163, 597);
             this.tabControl1.TabIndex = 8;
             // 
             // tabSaleBOM
@@ -241,7 +241,7 @@
             this.tabSaleBOM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabSaleBOM.Name = "tabSaleBOM";
             this.tabSaleBOM.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabSaleBOM.Size = new System.Drawing.Size(1160, 575);
+            this.tabSaleBOM.Size = new System.Drawing.Size(1155, 568);
             this.tabSaleBOM.TabIndex = 0;
             this.tabSaleBOM.Text = "Sale BOM";
             this.tabSaleBOM.UseVisualStyleBackColor = true;
@@ -253,7 +253,7 @@
             this.tabDesignBOM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabDesignBOM.Name = "tabDesignBOM";
             this.tabDesignBOM.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabDesignBOM.Size = new System.Drawing.Size(1160, 575);
+            this.tabDesignBOM.Size = new System.Drawing.Size(868, 462);
             this.tabDesignBOM.TabIndex = 1;
             this.tabDesignBOM.Text = "Design BOM";
             this.tabDesignBOM.UseVisualStyleBackColor = true;
@@ -268,7 +268,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1154, 571);
+            this.dataGridView2.Size = new System.Drawing.Size(862, 458);
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
             this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
@@ -280,7 +280,7 @@
             this.tabActualBOM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabActualBOM.Name = "tabActualBOM";
             this.tabActualBOM.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabActualBOM.Size = new System.Drawing.Size(1160, 575);
+            this.tabActualBOM.Size = new System.Drawing.Size(868, 462);
             this.tabActualBOM.TabIndex = 2;
             this.tabActualBOM.Text = "Actual BOM";
             this.tabActualBOM.UseVisualStyleBackColor = true;
@@ -295,7 +295,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(1154, 571);
+            this.dataGridView3.Size = new System.Drawing.Size(862, 458);
             this.dataGridView3.TabIndex = 3;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             // 
@@ -631,14 +631,14 @@
             // loadBOMToolStripMenuItem
             // 
             this.loadBOMToolStripMenuItem.Name = "loadBOMToolStripMenuItem";
-            this.loadBOMToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.loadBOMToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.loadBOMToolStripMenuItem.Text = "BOM";
             this.loadBOMToolStripMenuItem.Click += new System.EventHandler(this.loadBOMToolStripMenuItem_Click);
             // 
             // loadChageOrderToolStripMenuItem
             // 
             this.loadChageOrderToolStripMenuItem.Name = "loadChageOrderToolStripMenuItem";
-            this.loadChageOrderToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.loadChageOrderToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.loadChageOrderToolStripMenuItem.Text = "Chage Order";
             this.loadChageOrderToolStripMenuItem.Click += new System.EventHandler(this.loadChageOrderToolStripMenuItem_Click);
             // 

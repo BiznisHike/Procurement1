@@ -309,7 +309,7 @@ namespace Procurement
                             }
                             if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
                             {
-                                _dtDesignBOM.Rows.Add(dr.ItemArray);
+                                _dtActualBOM.Rows.Add(dr.ItemArray);
                                 //dataGridView3.DataSource = _dtActualBOM;
                             }
 
