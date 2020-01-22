@@ -32,10 +32,33 @@ namespace Procurement
         decimal _maxEmpCode;
         bool _newMode;
         Employee _currentLoadedEmployee;
-        public FrmEmployee()
+
+
+
+        private static FrmEmployee insEmp = null;
+        private FrmEmployee()
         {
             InitializeComponent();
         }
+
+        public static FrmEmployee InsEmp
+        {
+            get
+            {
+                if (insEmp == null || insEmp.IsDisposed)
+                {
+
+                    insEmp = new FrmEmployee();
+                }
+
+
+                return insEmp;
+            }
+        }
+
+
+
+
         #region "Load On Start"
         public FrmEmployee(decimal pEmployeeCode)
         {

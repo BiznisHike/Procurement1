@@ -119,7 +119,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1154, 571);
+            this.dataGridView1.Size = new System.Drawing.Size(1149, 564);
             this.dataGridView1.TabIndex = 2;
             this.toolTip1.SetToolTip(this.dataGridView1, "Press Load button to load the BOM");
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
@@ -142,48 +142,49 @@
             // 
             // txtProjectEndUser
             // 
-            this.txtProjectEndUser.Location = new System.Drawing.Point(423, 28);
-            this.txtProjectEndUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtProjectEndUser.Multiline = true;
+            this.txtProjectEndUser.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.txtProjectEndUser.Location = new System.Drawing.Point(356, 23);
+            this.txtProjectEndUser.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectEndUser.Name = "txtProjectEndUser";
-            this.txtProjectEndUser.Size = new System.Drawing.Size(129, 30);
-            this.txtProjectEndUser.TabIndex = 5;
+            this.txtProjectEndUser.Size = new System.Drawing.Size(112, 28);
+            this.txtProjectEndUser.TabIndex = 7;
             this.toolTip1.SetToolTip(this.txtProjectEndUser, "Enter End User");
             // 
             // txtProjectCustomerName
             // 
-            this.txtProjectCustomerName.Location = new System.Drawing.Point(285, 28);
-            this.txtProjectCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtProjectCustomerName.Multiline = true;
+            this.txtProjectCustomerName.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.txtProjectCustomerName.Location = new System.Drawing.Point(235, 23);
+            this.txtProjectCustomerName.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectCustomerName.Name = "txtProjectCustomerName";
-            this.txtProjectCustomerName.Size = new System.Drawing.Size(129, 30);
-            this.txtProjectCustomerName.TabIndex = 4;
+            this.txtProjectCustomerName.Size = new System.Drawing.Size(112, 28);
+            this.txtProjectCustomerName.TabIndex = 6;
             this.toolTip1.SetToolTip(this.txtProjectCustomerName, "Enter Customer Name");
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(148, 28);
-            this.txtProjectName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtProjectName.Multiline = true;
+            this.txtProjectName.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProjectName.Location = new System.Drawing.Point(115, 23);
+            this.txtProjectName.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(129, 30);
-            this.txtProjectName.TabIndex = 3;
+            this.txtProjectName.Size = new System.Drawing.Size(112, 28);
+            this.txtProjectName.TabIndex = 5;
             this.toolTip1.SetToolTip(this.txtProjectName, "Enter Project Name");
             // 
             // txtProjectCode
             // 
-            this.txtProjectCode.Location = new System.Drawing.Point(11, 28);
-            this.txtProjectCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtProjectCode.Location = new System.Drawing.Point(9, 23);
+            this.txtProjectCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectCode.Multiline = true;
             this.txtProjectCode.Name = "txtProjectCode";
             this.txtProjectCode.ReadOnly = true;
-            this.txtProjectCode.Size = new System.Drawing.Size(129, 30);
-            this.txtProjectCode.TabIndex = 2;
+            this.txtProjectCode.Size = new System.Drawing.Size(98, 25);
+            this.txtProjectCode.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(420, 7);
+            this.label4.Location = new System.Drawing.Point(355, 6);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 17);
             this.label4.TabIndex = 12;
@@ -192,7 +193,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(283, 7);
+            this.label3.Location = new System.Drawing.Point(233, 6);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 17);
             this.label3.TabIndex = 11;
@@ -201,7 +203,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(145, 7);
+            this.label2.Location = new System.Drawing.Point(112, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 17);
             this.label2.TabIndex = 10;
@@ -228,8 +231,8 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1168, 604);
-            this.tabControl1.TabIndex = 6;
+            this.tabControl1.Size = new System.Drawing.Size(1163, 597);
+            this.tabControl1.TabIndex = 8;
             // 
             // tabSaleBOM
             // 
@@ -238,7 +241,7 @@
             this.tabSaleBOM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabSaleBOM.Name = "tabSaleBOM";
             this.tabSaleBOM.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabSaleBOM.Size = new System.Drawing.Size(1160, 575);
+            this.tabSaleBOM.Size = new System.Drawing.Size(1155, 568);
             this.tabSaleBOM.TabIndex = 0;
             this.tabSaleBOM.Text = "Sale BOM";
             this.tabSaleBOM.UseVisualStyleBackColor = true;
