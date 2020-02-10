@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MRController.cs" />
+    <Compile Include="MRVersionController.cs" />
     <Compile Include="ProjectEmployeeDetailController.cs" />
     <Compile Include="BOMController.cs" />
     <Compile Include="EmployeeTypeController.cs" />

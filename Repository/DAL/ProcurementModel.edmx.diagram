@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="eff50d4a09134c23b64efbfaea6c8688" Name="Diagram1" ZoomLevel="85">
+      <Diagram DiagramId="eff50d4a09134c23b64efbfaea6c8688" Name="Diagram1" ZoomLevel="80">
         <EntityTypeShape EntityType="ProcurementModel.BOM" Width="1.5" PointX="3.125" PointY="3.125" />
         <EntityTypeShape EntityType="ProcurementModel.BOMType" Width="1.5" PointX="5.375" PointY="3.125" />
         <EntityTypeShape EntityType="ProcurementModel.Employee" Width="1.5" PointX="7.875" PointY="0.625" />
@@ -16,6 +16,10 @@
         <EntityTypeShape EntityType="ProcurementModel.ProjectEmployeeDetail" Width="1.5" PointX="3.875" PointY="0.5" />
         <AssociationConnector Association="ProcurementModel.FK_ProjectEmployeeDetail_Employee" />
         <AssociationConnector Association="ProcurementModel.FK_ProjectEmployeeDetail_Project" />
+        <EntityTypeShape EntityType="ProcurementModel.MR" Width="1.5" PointX="5.375" PointY="4.875" />
+        <EntityTypeShape EntityType="ProcurementModel.MRVersion" Width="1.5" PointX="7.875" PointY="5.125" />
+        <AssociationConnector Association="ProcurementModel.FK_MR_MRVersion" />
+        <AssociationConnector Association="ProcurementModel.FK_MR_Project" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

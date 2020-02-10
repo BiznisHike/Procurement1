@@ -12,22 +12,11 @@ namespace Repository.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class BOM
+    public partial class MR
     {
-        public Nullable<decimal> ProjectCode { get; set; }
         public decimal RowAuto { get; set; }
-        public Nullable<short> BOMTypeCode { get; set; }
-        public string SORef { get; set; }
+        public Nullable<decimal> Version { get; set; }
         public string Sr { get; set; }
-        public string ProductCategory { get; set; }
-        public string Product { get; set; }
-        public string CostHead { get; set; }
-        public string CostSubHead { get; set; }
-        public string System { get; set; }
-        public string Area { get; set; }
-        public string Panel { get; set; }
-        public string Category { get; set; }
-        public string Manufacturer { get; set; }
         public string PartNo { get; set; }
         public string Description { get; set; }
         public string Qty { get; set; }
@@ -35,8 +24,9 @@ namespace Repository.DAL
         public string ExtCost { get; set; }
         public string UnitPrice { get; set; }
         public string ExtPrice { get; set; }
+        public Nullable<decimal> ProjectCode { get; set; }
     
-        public virtual BOMType BOMType { get; set; }
+        public virtual MRVersion MRVersion { get; set; }
         public virtual Project Project { get; set; }
     }
 }

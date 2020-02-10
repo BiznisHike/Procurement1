@@ -285,6 +285,11 @@ namespace Procurement
             //_LstProjects
             this.Enabled = true;
 
+            //////////////update shared object///////////////////
+
+            //_pc = new ProjectController();
+            //CurrentOpenProject.CurrentProject = _pc.GetModelByID(_projectCode);
+            ////////////
 
         }
 

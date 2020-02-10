@@ -62,6 +62,12 @@
     <Compile Include="DAL\EmployeeType.cs">
       <DependentUpon>ProcurementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\MR.cs">
+      <DependentUpon>ProcurementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MRVersion.cs">
+      <DependentUpon>ProcurementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\ProcurementRepository.cs" />
     <Compile Include="DAL\ProcurementModel.Context.cs">
       <AutoGen>True</AutoGen>

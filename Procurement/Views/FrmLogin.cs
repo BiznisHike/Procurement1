@@ -31,7 +31,7 @@ namespace Procurement
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.OpenForms["FrmMain"].Close();
+            Application.OpenForms["FrmMDI"].Close();
             //this.Close();
         }
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -39,7 +39,7 @@ namespace Procurement
             //base.OnFormClosed(e);
             //Application.Exit();
 
-            //Application.OpenForms["FrmMain"].Close();
+            //Application.OpenForms["FrmMDI"].Close();
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -56,12 +56,12 @@ namespace Procurement
             {
                 if (employee.Password == txtPwd.Text)
                 {
-                    //FrmMain frm = new FrmMain();
+                    //FrmMDI frm = new FrmMDI();
                     //frm.Show();
                     //this.Hide();
                     this.Close();
-                    Application.OpenForms["FrmMain"].Visible = true;
-                    //Application.Run(new FrmMain());
+                    Application.OpenForms["FrmMDI"].Visible = true;
+                    //Application.Run(new FrmMDI());
                     LoginInfo.LoginEmployee = employee;
                 }
                 else

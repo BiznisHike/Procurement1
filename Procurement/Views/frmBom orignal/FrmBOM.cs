@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -16,7 +16,9 @@ namespace Procurement
     {
         ProjectController _pc;
         BOMController _bc;
+        List<Project> _LstProjects;
         ProjectEmployeeDetailController _pedc;
+        DataTable _dtProjects;
         DataTable _dtSalesBOM;
         DataTable _dtDesignBOM;
         DataTable _dtActualBOM;
@@ -54,56 +56,60 @@ namespace Procurement
 
                 if (LoginInfo.LoginEmployee.EmployeeTypeCode == Constants.EMPLOYEE)
                 {
+                    txtProjectName.Enabled = false;
+                    txtProjectCustomerName.Enabled = false;
+                    txtProjectEndUser.Enabled = false;
 
+                    btnNewProject.Enabled = false;
                     btnLoadBOM.Enabled = false;
                 }
 
-                ClearAll();
+                _pc = new ProjectController();
+                _LstProjects = _pc.GetModels();
+                //insert into the list
 
-                _currentLoadedProject = CurrentOpenProject.CurrentProject;
+                //list.Where(x => x.BOMTypeCode == 1).Select(x => new
+                //{
+                //    x.SORef,
+                //    x.Sr,
+                //    x.ProductCategory,
+                //    x.Product,
+                //    x.CostHead,
+                //    x.CostSubHead,
+                //    x.System,
+                //    x.Area,
+                //    x.Panel,
+                //    x.Category,
+                //    x.Manufacturer,
+                //    x.PartNo,
+                //    x.Description,
+                //    x.Qty,
+                //    x.UnitCost,
+                //    x.ExtCost,
+                //    x.UnitPrice,
+                //    x.ExtPrice
+                //});
 
-                if (_currentLoadedProject == null)
+
+                _dtProjects = ToDataTable<Project>(_LstProjects);
+                _dtProjects.Columns.Remove("BOMs");
+                _dtProjects.Columns.Remove("ProjectEmployeeDetails");
+
+                DataView dv = _dtProjects.DefaultView;
+                dv.Sort = "ProjectCode desc";
+                _dtProjects = dv.ToTable();
+
+                dataGridViewProjects.DataSource = _dtProjects;
+
+                if (_LstProjects.Count == 0)
                 {
+
                     _newMode = true;
-                    return;
+                    //_pc.ReseedProjectPk();
+                    //txtProjectCode.Text = (1).ToString();
+                    ClearAll();
                 }
-                else
-                {
-                    _newMode = false;
-
-                    List<BOM> list1 = _currentLoadedProject.BOMs.Where(y => y.BOMTypeCode == 1).ToList();
-                    _dtSalesBOM = ToDataTable<BOM>(list1);
-                    _dtSalesBOM.Columns.Remove("ProjectCode");
-                    _dtSalesBOM.Columns.Remove("RowAuto");
-                    _dtSalesBOM.Columns.Remove("BomTypeCode");
-                    _dtSalesBOM.Columns.Remove("BOMType");
-                    _dtSalesBOM.Columns.Remove("Project");
-                    dataGridView1.AutoGenerateColumns = false;
-                    dataGridView1.DataSource = _dtSalesBOM;
-
-                    List<BOM> list2 = _currentLoadedProject.BOMs.Where(y => y.BOMTypeCode == 2).ToList();
-                    _dtDesignBOM = ToDataTable<BOM>(list2);
-                    _dtDesignBOM.Columns.Remove("ProjectCode");
-                    _dtDesignBOM.Columns.Remove("RowAuto");
-                    _dtDesignBOM.Columns.Remove("BomTypeCode");
-                    _dtDesignBOM.Columns.Remove("BOMType");
-                    _dtDesignBOM.Columns.Remove("Project");
-                    dataGridView2.AutoGenerateColumns = false;
-                    dataGridView2.DataSource = _dtDesignBOM;
-
-                    List<BOM> list3 = _currentLoadedProject.BOMs.Where(y => y.BOMTypeCode == 3).ToList();
-                    _dtActualBOM = ToDataTable<BOM>(list3);
-                    _dtActualBOM.Columns.Remove("ProjectCode");
-                    _dtActualBOM.Columns.Remove("RowAuto");
-                    _dtActualBOM.Columns.Remove("BomTypeCode");
-                    _dtActualBOM.Columns.Remove("BOMType");
-                    _dtActualBOM.Columns.Remove("Project");
-                    dataGridView3.AutoGenerateColumns = false;
-                    dataGridView3.DataSource = _dtActualBOM;
-                }
-                
             }
-
             catch (Exception ex)
             {
 
@@ -369,17 +375,7 @@ namespace Procurement
             tabControl1.SelectedTab = tabActualBOM;
 
         }
-        private Project FillProjectModel()
-        {
-            Project lObjProj = new Project();
-            //if (_newMode == false) lObjProj.ProjectCode = decimal.Parse(txtProjectCode.Text);
-            lObjProj.ProjectCode = _currentLoadedProject.ProjectCode;
-            lObjProj.ProjectName = _currentLoadedProject.ProjectName;
-            lObjProj.EndUser = _currentLoadedProject.EndUser;
-            lObjProj.Customer = _currentLoadedProject.Customer;
-            return lObjProj;
 
-        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
@@ -393,6 +389,25 @@ namespace Procurement
                 projModel.CreatedDate = DateTime.Now;
                 _pc = new ProjectController(projModel);
                 _pc.Save();
+                //------------------
+
+
+                DataRow NewRow = _dtProjects.NewRow();
+                NewRow[0] = projModel.ProjectCode;//decimal.Parse(txtProjectCode.Text);
+                NewRow[1] = projModel.ProjectName;//txtProjectName.Text;
+                NewRow[2] = projModel.Customer;//txtProjectCustomerName.Text;
+                NewRow[3] = projModel.EndUser;//txtProjectEndUser.Text;
+
+                _dtProjects.Rows.Add(NewRow);
+
+                DataView dv = _dtProjects.DefaultView;
+                dv.Sort = "ProjectCode desc";
+                _dtProjects = dv.ToTable();
+
+                dataGridViewProjects.DataSource = _dtProjects;
+                _LstProjects.Add(projModel);
+
+                //------------------
 
                 ped = new ProjectEmployeeDetail();
                 ped.EmployeeCode = LoginInfo.LoginEmployee.EmployeeCode;//_EmployeeCode;
@@ -415,7 +430,10 @@ namespace Procurement
                 projModel.UpdateDate = DateTime.Now;
                 _pc = new ProjectController(projModel);
                 _pc.UpdateModel(projModel);
-                
+                Project proj = _LstProjects.Where(x => x.ProjectCode == projModel.ProjectCode).FirstOrDefault();
+                _LstProjects.Remove(proj);
+                _LstProjects.Add(projModel);
+
             }
 
             List<BOM> LstObjBom;
@@ -447,14 +465,18 @@ namespace Procurement
             //_LstProjects
             this.Enabled = true;
 
-            //////////////update shared object///////////////////
-            
-            _pc = new ProjectController();
-            CurrentOpenProject.CurrentProject = _pc.GetModelByID(projModel.ProjectCode);
-            ////////////
-            this.Close();   
-        }
 
+        }
+        private void SaveToRepository()
+        {
+
+
+
+
+
+
+
+        }
         private List<BOM> FillBOMModel1(ref Project pProjectModel)
         {
             List<BOM> LstObjBom = new List<BOM>();
@@ -486,7 +508,7 @@ namespace Procurement
             return LstObjBom;
 
         }
-        //int cntr = -1;
+        int cntr = -1;
         private void FillBOMModelSub(ref Project pProjectModel, ref List<BOM> pLstObjBom, DataGridViewRow pGvr, short pBOMTypeCode)
         {
             //string colName=pGvr.Cells[0].OwningColumn.HeaderText;
@@ -516,7 +538,7 @@ namespace Procurement
                 //{
                 //    MessageBox.Show(dataGridView1.Columns[i].Name);
                 //}
-                //cntr += 1;
+                cntr += 1;
                 //MessageBox.Show(dataGridView1.Columns[cntr].Name);
                 //string columnName = dataGridView1.Columns[cntr].Name;
                 var cellObj = pGvr.Cells["SORef" + pBOMTypeCode];
@@ -580,7 +602,115 @@ namespace Procurement
 
             //return null;
         }
+        private Project FillProjectModel()
+        {
+            Project lObjProj = new Project();
+            //if (_newMode == false) lObjProj.ProjectCode = decimal.Parse(txtProjectCode.Text);
+            lObjProj.ProjectCode = decimal.Parse(txtProjectCode.Text);
+            lObjProj.ProjectName = txtProjectName.Text;
+            lObjProj.EndUser = txtProjectEndUser.Text;
+            lObjProj.Customer = txtProjectCustomerName.Text;
+            return lObjProj;
 
+        }
+
+        private void dataGridViewProjects_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewProjects.SelectedCells.Count > 0 && dataGridViewProjects.SelectedCells[0].Value != DBNull.Value)
+            {
+                int selectedrowindex = dataGridViewProjects.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridViewProjects.Rows[selectedrowindex];
+                _projectCode = Convert.ToDecimal(selectedRow.Cells["ProjectCode"].Value);
+                //MessageBox.Show(a);
+                if (!string.IsNullOrEmpty(txtProjectCode.Text) && _projectCode == decimal.Parse(txtProjectCode.Text)) return;
+
+                _pc = new ProjectController();
+                _currentLoadedProject = _pc.GetModelByID(_projectCode);
+                if (_currentLoadedProject == null) return;
+                txtProjectCode.Text = _currentLoadedProject.ProjectCode.ToString();
+                txtProjectName.Text = _currentLoadedProject.ProjectName;
+                txtProjectCustomerName.Text = _currentLoadedProject.Customer;
+                txtProjectEndUser.Text = _currentLoadedProject.Customer;
+
+                //var source1 = new BindingSource();
+                //List<BOM> list = new List<BOM> { new MyStruct("fff", "b"), new MyStruct("c", "d") };
+                if (_newMode == true)
+                {
+                    var a = "123";
+                }
+                if (_newMode == false)
+                {
+                    //List<BOM> allList = _bc.GetModels().Where(x => x.ProjectCode == _projectCode).ToList();
+                    //List<BOM> list1 = allList.Where(x => x.BOMTypeCode == 1).ToList();
+
+                    ////TO Handle just added. so that not loading agin and again.
+                    //if (_LstProjects.Where(x => x.ProjectCode == _projectCode).FirstOrDefault() == null) 
+                    //{
+                    //    //ClearAll();
+                    //    return;
+                    //}
+
+                    List<BOM> list1 = _LstProjects.Where(x => x.ProjectCode == _projectCode).FirstOrDefault().BOMs.Where(y => y.BOMTypeCode == 1).ToList();
+                    _dtSalesBOM = ToDataTable<BOM>(list1);
+                    //_dtSalesBOM.Columns.Remove("ProjectCode");
+                    //_dtSalesBOM.Columns.Remove("RowAuto");
+                    //_dtSalesBOM.Columns.Remove("BomTypeCode");
+                    //_dtSalesBOM.Columns.Remove("BOMType");
+                    //_dtSalesBOM.Columns.Remove("Project");
+                    dataGridView1.AutoGenerateColumns = false;
+                    dataGridView1.DataSource = _dtSalesBOM;
+                    //dataGridView1.DataBind();
+
+                    //source1.DataSource = list.Where(x => x.BOMTypeCode == 1).Select(x => new
+                    //{
+                    //    x.SORef,
+                    //    x.Sr,
+                    //    x.ProductCategory,
+                    //    x.Product,
+                    //    x.CostHead,
+                    //    x.CostSubHead,
+                    //    x.System,
+                    //    x.Area,
+                    //    x.Panel,
+                    //    x.Category,
+                    //    x.Manufacturer,
+                    //    x.PartNo,
+                    //    x.Description,
+                    //    x.Qty,
+                    //    x.UnitCost,
+                    //    x.ExtCost,
+                    //    x.UnitPrice,
+                    //    x.ExtPrice
+                    //});
+                    //dataGridView1.DataSource = source1;
+                    //this.dataGridView1.AllowUserToAddRows = true;
+
+
+                    //List<BOM> list2 = allList.Where(x => x.BOMTypeCode == 2).ToList();
+                    List<BOM> list2 = _LstProjects.Where(x => x.ProjectCode == _projectCode).FirstOrDefault().BOMs.Where(y => y.BOMTypeCode == 2).ToList();
+                    _dtDesignBOM = ToDataTable<BOM>(list2);
+                    //_dtDesignBOM.Columns.Remove("ProjectCode");
+                    //_dtDesignBOM.Columns.Remove("RowAuto");
+                    //_dtDesignBOM.Columns.Remove("BomTypeCode");
+                    //_dtDesignBOM.Columns.Remove("BOMType");
+                    //_dtDesignBOM.Columns.Remove("Project");
+                    dataGridView2.AutoGenerateColumns = false;
+                    dataGridView2.DataSource = _dtDesignBOM;
+
+                    //List<BOM> list3 = allList.Where(x => x.BOMTypeCode == 3).ToList();
+                    List<BOM> list3 = _LstProjects.Where(x => x.ProjectCode == _projectCode).FirstOrDefault().BOMs.Where(y => y.BOMTypeCode == 3).ToList();
+                    _dtActualBOM = ToDataTable<BOM>(list3);
+                    //_dtActualBOM.Columns.Remove("ProjectCode");
+                    //_dtActualBOM.Columns.Remove("RowAuto");
+                    //_dtActualBOM.Columns.Remove("BomTypeCode");
+                    //_dtActualBOM.Columns.Remove("BOMType");
+                    //_dtActualBOM.Columns.Remove("Project");
+                    dataGridView3.AutoGenerateColumns = false;
+                    dataGridView3.DataSource = _dtActualBOM;
+                }
+            }
+
+        }
         public DataTable ToDataTable<T>(List<T> items)
         {
             DataTable dataTable = new DataTable(typeof(T).Name);
@@ -608,7 +738,12 @@ namespace Procurement
             return dataTable;
         }
 
-
+        private void btnNewProject_Click(object sender, EventArgs e)
+        {
+            txtProjectCode.Text = string.Empty;
+            ClearAll();
+            _newMode = true;
+        }
 
         private void ClearAll()
         {
@@ -616,6 +751,17 @@ namespace Procurement
             if (_dtDesignBOM != null) _dtDesignBOM.Rows.Clear();
             if (_dtActualBOM != null) _dtActualBOM.Rows.Clear();
 
+            //preReq
+
+            //int maxId = db.Customers.DefaultIfEmpty().Max(p => p == null ? 0 : p.Id);
+            decimal maxCode = _pc.GetMaxProjectCode();
+            txtProjectCode.Text = maxCode.ToString();
+
+            txtProjectName.Text = "New Project " + maxCode;
+            txtProjectCustomerName.Text = "New Customer " + maxCode;
+            txtProjectEndUser.Text = "New EndUser " + maxCode;
+            txtBOMFilePath.Text = string.Empty;
+            //_pc.GetModels
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -623,9 +769,52 @@ namespace Procurement
             this.Close();
         }
 
+        private void btnResize_Click(object sender, EventArgs e)
+        {
+            if (splitContainer1.SplitterDistance < 51)
+            {
+                splitContainer1.SplitterDistance = 400;
+            }
+            else
+            {
+                splitContainer1.SplitterDistance = 49;
+            }
 
 
+        }
 
+        //private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+        //{
+        //    //mnuCopyAllToDesignBOM.ShowDropDown();
+        //    //contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
+        //    if (e.Button == System.Windows.Forms.MouseButtons.Right)
+        //    {
+        //        MenuStripDesignBOM.Show(Cursor.Position);
+        //    }
+        //}
+        //private void mnuCopyAllToActualBOM_Click(object sender, EventArgs e)
+        //{
+        //    DataTable dtActualBOM = new DataTable();
+        //    dtActualBOM = _dtDesignBOM.Copy();
+
+        //    //dataGridView2.DataSource =dataGridView1.DataSource;
+        //    dataGridView3.DataSource = dtActualBOM;
+        //    tabControl1.SelectedTab = tabActualBOM;
+
+        //}
+        private void dataGridViewProjects_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                // Add this
+                dataGridViewProjects.CurrentCell = dataGridViewProjects.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                // Can leave these here - doesn't hurt
+                dataGridViewProjects.Rows[e.RowIndex].Selected = true;
+                dataGridViewProjects.Focus();
+
+
+            }
+        }
         private void dataGridViewProjects_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -635,7 +824,50 @@ namespace Procurement
             }
         }
 
+        private void itemDeleteProject_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewProjects.Rows.Count > 0 && dataGridViewProjects.SelectedRows.Count > 0)
+            {
 
+                // int selectedrowindex = dataGridViewProjects.SelectedCells[0].RowIndex;
+                // DataGridViewRow selectedRow = dataGridViewProjects.Rows[selectedrowindex];
+                // _projectCode = Convert.ToDecimal(selectedRow.Cells["ProjectCode"].Value);
+
+                //// _dtProjects.Rows.Remove(selectedRow);
+                // dataGridViewProjects.DataSource = _dtProjects;
+
+                foreach (DataGridViewRow sr in this.dataGridViewProjects.SelectedRows)
+                {
+
+                    //Project project = (Project)item.DataBoundItem;
+                    decimal pc = Convert.ToDecimal(sr.Cells[0].Value);
+                    Project proj = _LstProjects.Where(x => x.ProjectCode == pc).FirstOrDefault();
+                    if (proj != null) _LstProjects.Remove(proj);
+                    _dtProjects.Rows.RemoveAt(sr.Index);
+                    //_LstProjects.RemoveAt()
+                    _pc.DeleteModel(proj.ProjectCode);
+
+                    DataView dv = _dtProjects.DefaultView;
+                    dv.Sort = "ProjectCode desc";
+                    _dtProjects = dv.ToTable();
+                    dataGridViewProjects.DataSource = _dtProjects;
+
+                    if (_dtProjects.Rows.Count == 0)
+                    {
+                        ClearAll();
+                        _pc.ReseedPk();
+                        _newMode = true;
+                    }
+
+
+                    //dataGridViewProjects.Refresh();
+                }
+            }
+            else
+            {
+                ClearAll();
+            }
+        }
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -662,33 +894,15 @@ namespace Procurement
         }
         private decimal ReturnAppropriateValue(object ObjValue)
         {
-            //lObjBom.PartNo = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
-
-            //decimal decimalValue = Convert.ToDecimal(string.IsNullOrEmpty(ObjValue.ToString()) ? "0" : ObjValue);
-
-            if (ObjValue == null || ObjValue == DBNull.Value)
+            decimal returnDecimalValue;
+            if (decimal.TryParse(ObjValue.ToString(), out returnDecimalValue))
             {
-                return 0;
+                return returnDecimalValue;
             }
             else
             {
-                return Convert.ToDecimal(ObjValue);
+                return 0;
             }
-
-            //decimal decimalValue = Convert.ToDecimal((ObjValue == null) ? "0" : ObjValue);
-
-            //return decimalValue;
-
-            //if (decimal.TryParse(ObjValue.ToString(), out returnDecimalValue))
-
-            //if (Convert.ToDecimal(string.IsNullOrEmpty(ObjValue.ToString()) ? "0" : ObjValue))
-            //{
-            //    return returnDecimalValue;
-            //}
-            //else
-            //{
-            //    return 0;
-            //}
         }
 
         private void FrmBOM_Activated(object sender, EventArgs e)
@@ -721,6 +935,142 @@ namespace Procurement
             MenuStripLoad.Show(Cursor.Position);
         }
 
-        
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnCopySame_Click(object sender, EventArgs e)
+        {
+
+            DataTable dtMR = new DataTable();
+            dtMR.Columns.Add("Sr");
+            dtMR.Columns.Add("PartNo");
+            dtMR.Columns.Add("Description");
+            dtMR.Columns.Add("Qty");
+            dtMR.Columns.Add("UnitCost");
+            dtMR.Columns.Add("ExtCost");
+            dtMR.Columns.Add("UnitPrice");
+            dtMR.Columns.Add("ExtPrice");
+
+            foreach (DataGridViewRow gvr in dataGridView2.Rows)
+            {
+                if (gvr.Cells["Select2"].Value != null && (bool)gvr.Cells["Select2"].Value == true)
+                {
+
+                    DataRow newRow = dtMR.NewRow();
+                    newRow["Sr"] = gvr.Cells["Sr2"].Value;
+                    newRow["PartNo"] = gvr.Cells["PartNo2"].Value;
+                    newRow["Description"] = gvr.Cells["Description2"].Value;
+                    newRow["Qty"] = gvr.Cells["Qty2"].Value;
+                    newRow["UnitCost"] = gvr.Cells["UnitCost2"].Value;
+                    newRow["ExtCost"] = gvr.Cells["ExtCost2"].Value;
+                    newRow["UnitPrice"] = gvr.Cells["UnitPrice2"].Value;
+                    newRow["ExtPrice"] = gvr.Cells["ExtPrice2"].Value;
+                    dtMR.Rows.Add(newRow);
+
+                }
+
+
+            }
+            dataGridView4.DataSource = dtMR;
+        }
+
+        private void btnCopyUserSpecified_Click(object sender, EventArgs e)
+        {
+            DataTable dtMR = new DataTable();
+            dtMR.Columns.Add("Sr");
+            dtMR.Columns.Add("PartNo");
+            dtMR.Columns.Add("Description");
+            dtMR.Columns.Add("Qty");
+            dtMR.Columns.Add("UnitCost");
+            dtMR.Columns.Add("ExtCost");
+            dtMR.Columns.Add("UnitPrice");
+            dtMR.Columns.Add("ExtPrice");
+
+            FrmGetQty frmGetQty = new FrmGetQty();
+
+            foreach (DataGridViewRow gvr in dataGridView2.Rows)
+            {
+                if (gvr.Cells["Select2"].Value != null && (bool)gvr.Cells["Select2"].Value == true)
+                {
+                    DataRow newRow = dtMR.NewRow();
+                    newRow["Sr"] = gvr.Cells["Sr2"].Value;
+                    newRow["PartNo"] = gvr.Cells["PartNo2"].Value;
+                    frmGetQty.gPartNo = gvr.Cells["PartNo2"].Value.ToString();
+                    newRow["Description"] = gvr.Cells["Description2"].Value;
+
+                    var result = frmGetQty.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        //newRow["Qty"] = gvr.Cells["Qty2"].Value;
+                        newRow["Qty"] = frmGetQty.gQty;
+
+                    }
+
+                    decimal unitCost = decimal.Parse(gvr.Cells["UnitCost2"].Value.ToString());
+                    //decimal qty = decimal.Parse ( frmGetQty.gQty);
+                    decimal qty = Convert.ToDecimal(string.IsNullOrEmpty(frmGetQty.gQty) ? "0" : frmGetQty.gQty);
+
+                    newRow["UnitCost"] = gvr.Cells["UnitCost2"].Value;
+                    newRow["ExtCost"] = unitCost * qty; //gvr.Cells["ExtCost2"].Value;
+                    newRow["UnitPrice"] = gvr.Cells["UnitPrice2"].Value;
+                    newRow["ExtPrice"] = gvr.Cells["ExtPrice2"].Value;
+                    dtMR.Rows.Add(newRow);
+
+                }
+
+
+            }
+            dataGridView4.DataSource = dtMR;
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+            {
+                //btnCopySame.Visible= false;
+                //btnCopyUserSpecified.Visible = false;
+                panel4.Visible = false;
+                //dataGridView1.Size = new System.Drawing.Size(568, 1149);
+
+                //tabControl1.Height = 491;//597;
+            }
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+            {
+                //btnCopySame.Visible = true ;
+                //btnCopyUserSpecified.Visible = true;
+                panel4.Visible = true;
+                //tabControl1.Height = 239;//294;
+            }
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
+            {
+                //btnCopySame.Visible = false;
+                //btnCopyUserSpecified.Visible = false;
+                panel4.Visible = false;
+                //dataGridView3.Size = new System.Drawing.Size(568, 1149);
+                //tabControl1.Height = 491;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
     }
 }

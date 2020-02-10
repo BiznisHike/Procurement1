@@ -19,6 +19,7 @@ namespace Repository.DAL
         {
             this.BOMs = new HashSet<BOM>();
             this.ProjectEmployeeDetails = new HashSet<ProjectEmployeeDetail>();
+            this.MRs = new HashSet<MR>();
         }
     
         public decimal ProjectCode { get; set; }
@@ -34,5 +35,7 @@ namespace Repository.DAL
         public virtual ICollection<BOM> BOMs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProjectEmployeeDetail> ProjectEmployeeDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MR> MRs { get; set; }
     }
 }
