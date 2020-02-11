@@ -93,5 +93,13 @@ namespace Procurement
                 this.Close();
             }
         }
+
+        private void txtLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Login();
+            }
+        }
     }
 }

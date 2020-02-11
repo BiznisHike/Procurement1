@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -9,6 +9,8 @@ using Procurement.Controllers;
 using System.Reflection;
 using StaticClasses;
 using Procurement.Views;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace Procurement
 {
@@ -101,7 +103,7 @@ namespace Procurement
                     dataGridView3.AutoGenerateColumns = false;
                     dataGridView3.DataSource = _dtActualBOM;
                 }
-                
+
             }
 
             catch (Exception ex)
@@ -359,6 +361,13 @@ namespace Procurement
                 MenuStripDesignBOM.Show(Cursor.Position);
             }
         }
+        private void dataGridView3_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                MenuStripActualBOM.Show(Cursor.Position);
+            }
+        }
         private void itmCopyAllToActualBOM_Click(object sender, EventArgs e)
         {
             _dtActualBOM = new DataTable();
@@ -367,7 +376,6 @@ namespace Procurement
             //dataGridView2.DataSource =dataGridView1.DataSource;
             dataGridView3.DataSource = _dtActualBOM;
             tabControl1.SelectedTab = tabActualBOM;
-
         }
         private Project FillProjectModel()
         {
@@ -415,7 +423,7 @@ namespace Procurement
                 projModel.UpdateDate = DateTime.Now;
                 _pc = new ProjectController(projModel);
                 _pc.UpdateModel(projModel);
-                
+
             }
 
             List<BOM> LstObjBom;
@@ -448,11 +456,11 @@ namespace Procurement
             this.Enabled = true;
 
             //////////////update shared object///////////////////
-            
+
             _pc = new ProjectController();
             CurrentOpenProject.CurrentProject = _pc.GetModelByID(projModel.ProjectCode);
             ////////////
-            this.Close();   
+            this.Close();
         }
 
         private List<BOM> FillBOMModel1(ref Project pProjectModel)
@@ -719,6 +727,169 @@ namespace Procurement
         private void btnLoadBOM_MouseEnter(object sender, EventArgs e)
         {
             MenuStripLoad.Show(Cursor.Position);
+        }
+
+        private void copyFromExcelToSaleBOMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            PasteFromExcel(ref _dtSalesBOM);
+        }
+        private void copyFromExcelToDesignBOMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasteFromExcel(ref _dtDesignBOM);
+        }
+        private void copyFromExcelToActualBOM_Click(object sender, EventArgs e)
+        {
+            PasteFromExcel(ref _dtActualBOM);
+        }
+
+        private void PasteFromExcel(ref DataTable dtRef)
+        {
+
+            string excelData = Clipboard.GetText();
+            List<string> Rows = excelData.Split(new[] { "\r\n" }, StringSplitOptions.None).ToList<string>();
+
+            //mytab.Split(new[] { "\r\n" }, StringSplitOptions.None);
+            //string[] lines = excelData.Replace("\n", "").Split('\r');
+            //string[] lines = Regex.Split(s.TrimEnd("\r\n".ToCharArray()), "\r\n");
+            string[] fields;
+
+            List<string> colomnNames = new List<String> { "SORef",
+                                                            "Sr",
+                                                            "ProductCategory",
+                                                            "Product",
+                                                            "CostHead",
+                                                            "CostSubHead",
+                                                            "System",
+                                                            "Area",
+                                                            "Panel",
+                                                            "Category",
+                                                            "Manufacturer",
+                                                            "PartNo",
+                                                            "Description",
+                                                            "Qty",
+                                                            "UnitCost",
+                                                            "ExtCost",
+                                                            "UnitPrice",
+                                                            "ExtPrice",
+                                                                };
+            int rowCounter = 0;
+            bool IsCopyData = true;
+            foreach (string row in Rows.ToList<string>())
+            {
+                rowCounter += 1;
+                fields = row.Split('\t');
+
+                if (fields.Count() == 1 && fields[0] == string.Empty)
+                {
+                    Rows.Remove(row);
+                    continue;
+
+                }
+
+                if (fields.Count() < 18)
+                {
+                    MessageBox.Show("Data not copied. Please remove 'enter' after '" + fields.Last() +  "' in column " + colomnNames[fields.Count()-1]  + " from Row number " + rowCounter);
+                    IsCopyData = false;
+                    break;
+                }
+            }
+            if (IsCopyData == false) return;
+            foreach (string row in Rows)
+            {
+                fields = row.Split('\t');
+                DataRow newRow = dtRef.NewRow();
+                newRow["SORef"] = fields[0];
+                newRow["Sr"] = fields[1];
+                newRow["ProductCategory"] = fields[2];
+                newRow["Product"] = fields[3];
+                newRow["CostHead"] = fields[4];
+                newRow["CostSubHead"] = fields[5];
+                newRow["System"] = fields[6];
+                newRow["Area"] = fields[7];
+                newRow["Panel"] = fields[8];
+                newRow["Category"] = fields[9];
+                newRow["Manufacturer"] = fields[10];
+                newRow["PartNo"] = fields[11];
+                newRow["Description"] = fields[12];
+                newRow["Qty"] = fields[13];
+                newRow["UnitCost"] = fields[14];
+                newRow["ExtCost"] = fields[15];
+                newRow["UnitPrice"] = fields[16];
+                newRow["ExtPrice"] = fields[17];
+                dtRef.Rows.Add(newRow);
+
+            }
+            dataGridView1.DataSource = dtRef;
+            //foreach (string stringRow in stringRows)
+            //{
+            //    dtRef.Rows.Add(new DataRow(stringRow));
+            //}
+
+
+            //DataRow newRow = dtRef.NewRow();
+            //newRow["Sr"] = gvr.Cells["Sr2"].Value;
+            //newRow["PartNo"] = gvr.Cells["PartNo2"].Value;
+            //newRow["Description"] = gvr.Cells["Description2"].Value;
+            //newRow["Qty"] = gvr.Cells["Qty2"].Value;
+            //newRow["UnitCost"] = gvr.Cells["UnitCost2"].Value;
+            //newRow["ExtCost"] = gvr.Cells["ExtCost2"].Value;
+            //newRow["UnitPrice"] = gvr.Cells["UnitPrice2"].Value;
+            //newRow["ExtPrice"] = gvr.Cells["ExtPrice2"].Value;
+            //dtMR.Rows.Add(newRow);
+
+
+
+
+
+
+
+
+
+
+            //dtRef.Rows.Add(myRows.Count - 1);
+            //string[] fields;
+            //int row = 0;
+            //int col = 0;
+
+            //foreach (string item in myRows)
+            //{
+            //    fields = item.Split('\t');
+            //    foreach (string f in fields)
+            //    {
+            //        //Console.WriteLine(f);
+            //        dtRef[col, row].Value = f;
+            //        col++;
+            //    }
+            //    row++;
+            //    col = 0;
+            //}
+        }
+
+        private void pasteMe_Click(object sender, EventArgs e)
+        {
+            string s = Clipboard.GetText();
+
+            string[] lines = s.Replace("\n", "").Split('\r');
+
+            dataGridView2.Rows.Add(lines.Length - 1);
+            string[] fields;
+            int row = 0;
+            int col = 0;
+
+            foreach (string item in lines)
+            {
+                fields = item.Split('\t');
+                foreach (string f in fields)
+                {
+                    Console.WriteLine(f);
+                    dataGridView2[col, row].Value = f;
+                    col++;
+                }
+                row++;
+                col = 0;
+            }
+
         }
 
         

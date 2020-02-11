@@ -106,6 +106,10 @@
             this.MenuStripLoad = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyFromExcelToSaleBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyFromExcelToDesignBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStripActualBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyFromExcelToActualBOM = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabSaleBOM.SuspendLayout();
@@ -117,6 +121,7 @@
             this.MenuStripDesignBOM.SuspendLayout();
             this.MenuStripProjects.SuspendLayout();
             this.MenuStripLoad.SuspendLayout();
+            this.MenuStripActualBOM.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtBOMFilePath
@@ -601,6 +606,7 @@
             this.dataGridView3.Size = new System.Drawing.Size(1249, 436);
             this.dataGridView3.TabIndex = 3;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
+            this.dataGridView3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView3_MouseClick);
             // 
             // SORef3
             // 
@@ -750,9 +756,10 @@
             // 
             this.MenuStripSaleBOM.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuStripSaleBOM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itmCopyAllToDesignBOM});
+            this.itmCopyAllToDesignBOM,
+            this.copyFromExcelToSaleBOMToolStripMenuItem});
             this.MenuStripSaleBOM.Name = "contextMenuStrip1";
-            this.MenuStripSaleBOM.Size = new System.Drawing.Size(240, 28);
+            this.MenuStripSaleBOM.Size = new System.Drawing.Size(240, 52);
             // 
             // itmCopyAllToDesignBOM
             // 
@@ -765,9 +772,10 @@
             // 
             this.MenuStripDesignBOM.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuStripDesignBOM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itmCopyAllToActualBOM});
+            this.itmCopyAllToActualBOM,
+            this.copyFromExcelToDesignBOMToolStripMenuItem});
             this.MenuStripDesignBOM.Name = "contextMenuStrip1";
-            this.MenuStripDesignBOM.Size = new System.Drawing.Size(236, 28);
+            this.MenuStripDesignBOM.Size = new System.Drawing.Size(236, 52);
             // 
             // itmCopyAllToActualBOM
             // 
@@ -1001,6 +1009,35 @@
             this.loadChageOrderToolStripMenuItem.Text = "Chage Order";
             this.loadChageOrderToolStripMenuItem.Click += new System.EventHandler(this.loadChageOrderToolStripMenuItem_Click);
             // 
+            // copyFromExcelToSaleBOMToolStripMenuItem
+            // 
+            this.copyFromExcelToSaleBOMToolStripMenuItem.Name = "copyFromExcelToSaleBOMToolStripMenuItem";
+            this.copyFromExcelToSaleBOMToolStripMenuItem.Size = new System.Drawing.Size(239, 24);
+            this.copyFromExcelToSaleBOMToolStripMenuItem.Text = "Paste Excel Data Here";
+            this.copyFromExcelToSaleBOMToolStripMenuItem.Click += new System.EventHandler(this.copyFromExcelToSaleBOMToolStripMenuItem_Click);
+            // 
+            // copyFromExcelToDesignBOMToolStripMenuItem
+            // 
+            this.copyFromExcelToDesignBOMToolStripMenuItem.Name = "copyFromExcelToDesignBOMToolStripMenuItem";
+            this.copyFromExcelToDesignBOMToolStripMenuItem.Size = new System.Drawing.Size(235, 24);
+            this.copyFromExcelToDesignBOMToolStripMenuItem.Text = "Paste Excel Data Here";
+            this.copyFromExcelToDesignBOMToolStripMenuItem.Click += new System.EventHandler(this.copyFromExcelToDesignBOMToolStripMenuItem_Click);
+            // 
+            // MenuStripActualBOM
+            // 
+            this.MenuStripActualBOM.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.MenuStripActualBOM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyFromExcelToActualBOM});
+            this.MenuStripActualBOM.Name = "contextMenuStrip1";
+            this.MenuStripActualBOM.Size = new System.Drawing.Size(223, 28);
+            // 
+            // copyFromExcelToActualBOM
+            // 
+            this.copyFromExcelToActualBOM.Name = "copyFromExcelToActualBOM";
+            this.copyFromExcelToActualBOM.Size = new System.Drawing.Size(222, 24);
+            this.copyFromExcelToActualBOM.Text = "Paste Excel Data Here";
+            this.copyFromExcelToActualBOM.Click += new System.EventHandler(this.copyFromExcelToActualBOM_Click);
+            // 
             // FrmBOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1032,6 +1069,7 @@
             this.MenuStripDesignBOM.ResumeLayout(false);
             this.MenuStripProjects.ResumeLayout(false);
             this.MenuStripLoad.ResumeLayout(false);
+            this.MenuStripActualBOM.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1115,6 +1153,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost2;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice2;
+        private System.Windows.Forms.ToolStripMenuItem copyFromExcelToSaleBOMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyFromExcelToDesignBOMToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip MenuStripActualBOM;
+        private System.Windows.Forms.ToolStripMenuItem copyFromExcelToActualBOM;
     }
 }
 

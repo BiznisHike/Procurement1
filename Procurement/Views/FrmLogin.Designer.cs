@@ -53,6 +53,7 @@
             this.txtLogin.TabIndex = 0;
             this.txtLogin.Text = "admin";
             this.FormLogin.SetToolTip(this.txtLogin, "Enter User Name");
+            this.txtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogin_KeyPress);
             // 
             // txtPwd
             // 
