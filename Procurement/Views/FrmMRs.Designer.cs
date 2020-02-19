@@ -304,7 +304,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmMRs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MR List";
+            this.Text = "Material Request List";
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).EndInit();
             this.MenuStripProjects.ResumeLayout(false);

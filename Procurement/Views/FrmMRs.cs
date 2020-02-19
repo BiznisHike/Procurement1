@@ -54,6 +54,7 @@ namespace Procurement
                 _LstMRVs = _mrvc.GetModels();
 
                 _dtMRVs = ToDataTable<MRVersion>(_LstMRVs);
+                _dtMRVs.Columns.Remove("Project");
                 _dtMRVs.Columns.Remove("MRs");
                 //_dtProjects.Columns.Remove("ProjectEmployeeDetails");
                 //_dtProjects.Columns.Remove("CreatedBy");

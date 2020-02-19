@@ -38,7 +38,7 @@ namespace Procurement.Controllers
         {
             //List<BOM> LstBoms = GetModels().AsQueryable().Where(x=>x.ProjectCode==ProjectCode && x.BOMTypeCode==bomTypeCode).ToList<BOM>(); //.Products.where(x => x.StoreId == store.StoreId)
 
-            List<MR> LstMRs = GetModels().AsQueryable().Where(x=> x.ProjectCode == ProjectCode && x.Version == MRVersion).ToList<MR>(); //.Products.where(x => x.StoreId == store.StoreId)
+            List<MR> LstMRs = GetModels().AsQueryable().Where(x=> x.MRVersion.ProjectCode == ProjectCode && x.Version == MRVersion).ToList<MR>(); //.Products.where(x => x.StoreId == store.StoreId)
             if (LstMRs.Count > 0)
             {
                 foreach (MR MRModel in LstMRs)

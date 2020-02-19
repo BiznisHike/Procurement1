@@ -18,7 +18,7 @@ namespace Procurement.Controllers
             interfaceObj = new ProcurementRepository<MRVersion>();
             _gMRModel = pMRModel;
         }
-        
+
         //public Object Create()
         //{
         //    FrmMRVersion frmMRVersion = new FrmMRVersion();
@@ -35,7 +35,7 @@ namespace Procurement.Controllers
         }
         public List<MRVersion> GetModels()
         {
-            return interfaceObj.GetModels().ToList<MRVersion>();
+            return interfaceObj.GetModels().Where(x => x.ProjectCode == CurrentOpenProject.CurrentProject.ProjectCode).ToList<MRVersion>();
             //return interfaceObj.GetModels().ToList<MRVersion>();
         }
         public void UpdateModel(MRVersion model)
@@ -44,15 +44,32 @@ namespace Procurement.Controllers
             interfaceObj.Save();
         }
 
-       
-        public decimal GetMaxMRVersionCode()
+
+        public decimal GetMaxMRVersionAutoRowId()
         {
-            List<MRVersion> MRVersions = GetModels();
+            List<MRVersion> MRVersions = interfaceObj.GetModels().ToList<MRVersion>();
             if (MRVersions.Count == 0) ReseedPk();
 
 
-            return MRVersions.DefaultIfEmpty().Max(p => p == null ? 1 : p.Version+1);
+            return MRVersions.DefaultIfEmpty().Max(p => p == null ? 1 : p.Version + 1);
         }
+
+        public decimal GetMaxMRVersionNo()
+        {
+            List<MRVersion> MRVersions = GetModels().Where(x => x.ProjectCode == CurrentOpenProject.CurrentProject.ProjectCode).ToList<MRVersion>();
+            if (MRVersions.Count == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return MRVersions.Count + 1;
+            }
+
+
+
+        }
+
         public void ReseedPk()
         {
             interfaceObj.ReseedPK("MRVersion");

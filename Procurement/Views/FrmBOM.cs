@@ -732,18 +732,18 @@ namespace Procurement
         private void copyFromExcelToSaleBOMToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            PasteFromExcel(ref _dtSalesBOM);
+            PasteFromExcel(ref _dtSalesBOM,1);
         }
         private void copyFromExcelToDesignBOMToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PasteFromExcel(ref _dtDesignBOM);
+            PasteFromExcel(ref _dtDesignBOM,2);
         }
         private void copyFromExcelToActualBOM_Click(object sender, EventArgs e)
         {
-            PasteFromExcel(ref _dtActualBOM);
+            PasteFromExcel(ref _dtActualBOM,3);
         }
 
-        private void PasteFromExcel(ref DataTable dtRef)
+        private void PasteFromExcel(ref DataTable dtRef,int gridviewNumber)
         {
 
             string excelData = Clipboard.GetText();
@@ -820,7 +820,20 @@ namespace Procurement
                 dtRef.Rows.Add(newRow);
 
             }
-            dataGridView1.DataSource = dtRef;
+            switch (gridviewNumber)
+            {
+                case 1:
+                    dataGridView1.DataSource = dtRef;
+                    break;
+                case 2:
+                    dataGridView2.DataSource = dtRef;
+                    break;
+                case 3:
+                    dataGridView3.DataSource = dtRef;
+                    break;
+            }
+
+            
             //foreach (string stringRow in stringRows)
             //{
             //    dtRef.Rows.Add(new DataRow(stringRow));

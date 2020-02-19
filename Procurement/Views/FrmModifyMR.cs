@@ -9,7 +9,7 @@ using Procurement.Controllers;
 using System.Reflection;
 using StaticClasses;
 using Procurement.Views;
-
+using System.Diagnostics;
 
 namespace Procurement
 {
@@ -19,14 +19,18 @@ namespace Procurement
         MRController _mrc;
         MRVersionController _mrvc;
         ProjectEmployeeDetailController _pedc;
-        decimal _maxMRVersion;
+        decimal _maxMRVersionAutoRowId;
 
         DataTable _dtDesignBOM;
         DataTable _dtMR;
+        DataTable _dtExportMRtoExcel;
         decimal _currentMRVerion;
+        string _currentMRVerionDesc;
         bool _newMode;
         Project _currentLoadedProject;
+        List<MR> _LstObjBoms;
         List<MRVersion> _LstMRVersion;
+
         //SingleTon 
         private static FrmModifyMR instance = null;
         private FrmModifyMR()
@@ -64,8 +68,10 @@ namespace Procurement
                 _currentLoadedProject = CurrentOpenProject.CurrentProject;
 
                 _mrvc = new MRVersionController();
+                _LstMRVersion = _mrvc.GetModels();
 
-                _LstMRVersion =_mrvc.GetModels();
+                //_mrc = new MRController();
+                //_mrc.GetModelByID()
 
                 var bindingSource3 = new BindingSource();
                 //_LstMRVersion= _LstMRVersion.OrderByDescending(c => c.Version).ToList();
@@ -75,6 +81,10 @@ namespace Procurement
                 cmbMRList.ValueMember = "Version";
                 cmbMRList.SelectedIndex = -1;
                 cmbMRList.DataSource = bindingSource3.DataSource;
+                if (cmbMRList.Items.Count == 0)
+                {
+                    MessageBox.Show("Please first create Material Request"); btnSave.Enabled = false;
+                }
                 
             }
             catch (Exception ex)
@@ -91,13 +101,16 @@ namespace Procurement
             //int selectedIndex = cmb.SelectedIndex;
             //decimal selectedValue = (decimal)cmb.SelectedValue;
 
-            decimal decimalValue = (decimal)(cmbMRList.SelectedValue);
-            _currentMRVerion = decimalValue;
-            List<MR> list2 = _currentLoadedProject.MRs.Where(y => y.Version == (decimal)cmbMRList.SelectedValue).ToList();
+            _currentMRVerion = (decimal)(cmbMRList.SelectedValue);
+            _currentMRVerionDesc = cmbMRList.Text;//cmbMRList.GetItemText(cmbMRList.SelectedItem);
+
+            //List<MR> list2 = _currentLoadedProject.MRVersions.Where(y => y.Version == (decimal)cmbMRList.SelectedValue).ToList();
+            List<MR> list2 = _currentLoadedProject.MRVersions.FirstOrDefault(x => x.Version == (decimal)cmbMRList.SelectedValue).MRs.ToList<MR>();
+            
             _dtDesignBOM = ToDataTable<MR>(list2);
-            _dtDesignBOM.Columns.Remove("ProjectCode");
+            //_dtDesignBOM.Columns.Remove("ProjectCode");
             _dtDesignBOM.Columns.Remove("RowAuto");
-            _dtDesignBOM.Columns.Remove("Project");
+            //_dtDesignBOM.Columns.Remove("Project");
             _dtDesignBOM.Columns.Remove("Version");
             _dtDesignBOM.Columns.Remove("MRVersion");
 
@@ -105,85 +118,174 @@ namespace Procurement
 
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.DataSource = _dtDesignBOM;
+            //_dtMR = new DataTable();
+            if (_dtMR !=null) _dtMR.Rows.Clear();
+            //dataGridView4.Rows.Clear();
+
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
-            Project projModel;
-            ProjectEmployeeDetail ped;
-            
-            if (_newMode == true)
-            {
-                //SaveData();
-                projModel = FillProjectModel();
-                projModel.CreatedBy = LoginInfo.LoginEmployee.EmployeeCode;
-                projModel.CreatedDate = DateTime.Now;
-                _pc = new ProjectController(projModel);
-                _pc.Save();
 
-                ped = new ProjectEmployeeDetail();
-                ped.EmployeeCode = LoginInfo.LoginEmployee.EmployeeCode;//_EmployeeCode;
-                ped.ProjectCode = projModel.ProjectCode;//(decimal)row1["ProjectCode"];
+            SaveFileDialog savefile = new SaveFileDialog();
+            // set a default file name
+            string datetime = DateTime.Now.ToString();
+            datetime = datetime.Replace(":", "");
 
-                _pedc = new ProjectEmployeeDetailController(ped);
-                _pedc.Save();
-                //-------------------
-               
-                _newMode = false;
-            }
-            else
+            savefile.FileName = "Material Request " + datetime + ".xlsx";
+            // set filters - this can be done in properties as well
+            savefile.Filter = "Excel Workbook (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+
+            if (savefile.ShowDialog() == DialogResult.OK)
             {
-                //UpdateData();
-                projModel = FillProjectModel();
-                projModel.CreatedBy = _currentLoadedProject.CreatedBy;
-                projModel.CreatedDate = _currentLoadedProject.CreatedDate;
-                projModel.UpdatedBy = LoginInfo.LoginEmployee.EmployeeCode;
-                projModel.UpdateDate = DateTime.Now;
-                _pc = new ProjectController(projModel);
-                _pc.UpdateModel(projModel);
+
+
+                this.Enabled = false;
+                Project projModel;
+                ProjectEmployeeDetail ped;
+
+                if (_newMode == true)
+                {
+                    //SaveData();
+                    projModel = FillProjectModel();
+                    projModel.CreatedBy = LoginInfo.LoginEmployee.EmployeeCode;
+                    projModel.CreatedDate = DateTime.Now;
+                    _pc = new ProjectController(projModel);
+                    _pc.Save();
+
+                    ped = new ProjectEmployeeDetail();
+                    ped.EmployeeCode = LoginInfo.LoginEmployee.EmployeeCode;//_EmployeeCode;
+                    ped.ProjectCode = projModel.ProjectCode;//(decimal)row1["ProjectCode"];
+
+                    _pedc = new ProjectEmployeeDetailController(ped);
+                    _pedc.Save();
+                    //-------------------
+
+                    _newMode = false;
+                }
+                else
+                {
+                    //UpdateData();
+                    projModel = FillProjectModel();
+                    projModel.CreatedBy = _currentLoadedProject.CreatedBy;
+                    projModel.CreatedDate = _currentLoadedProject.CreatedDate;
+                    projModel.UpdatedBy = LoginInfo.LoginEmployee.EmployeeCode;
+                    projModel.UpdateDate = DateTime.Now;
+                    _pc = new ProjectController(projModel);
+                    _pc.UpdateModel(projModel);
+
+                }
+
+                //fill MR Verion first
+                _mrvc = new MRVersionController();
+                _maxMRVersionAutoRowId = _mrvc.GetMaxMRVersionAutoRowId();
+
+                MRVersion mrvModel = new MRVersion();
+                mrvModel.ProjectCode = _currentLoadedProject.ProjectCode;
+                //mrvModel.Version = _maxMRVersion;
+                mrvModel.VersionNo = _mrvc.GetMaxMRVersionNo();
+                mrvModel.Description = _currentMRVerionDesc + "-" + (mrvModel.VersionNo-1);
+
+                _mrvc = new MRVersionController(mrvModel);
+                _mrvc.Save();
+                //
+
+                _LstObjBoms = new List<MR>();
+                FillBOMModel2();
+
+                _mrc = new MRController(_LstObjBoms);
+                _mrc.SaveList(projModel.ProjectCode, _maxMRVersionAutoRowId);
+
+
+              
+
+                ///////////////export to excel/////////////////
+                // Here is main process
+                Microsoft.Office.Interop.Excel.Application objexcelapp = new Microsoft.Office.Interop.Excel.Application();
+                objexcelapp.Application.Workbooks.Add(Type.Missing);
+                objexcelapp.Columns.AutoFit();
+
+
+                for (int i = _dtExportMRtoExcel.Columns.Count - 1; i >= 0; i--)
+                {
+                    if (!(_dtExportMRtoExcel.Columns[i].ColumnName == "PartNo" || _dtExportMRtoExcel.Columns[i].ColumnName == "Qty"))
+                    {
+                        _dtExportMRtoExcel.Columns.RemoveAt(i);
+                    }
+
+                }
+
+                for (int i = 1; i < _dtExportMRtoExcel.Columns.Count + 1; i++)
+                {
+                    if (_dtExportMRtoExcel.Columns[i - 1].ColumnName == "PartNo" || _dtExportMRtoExcel.Columns[i - 1].ColumnName == "Qty")
+                    {
+                        Microsoft.Office.Interop.Excel.Range xlRange = (Microsoft.Office.Interop.Excel.Range)objexcelapp.Cells[1, i];
+                        xlRange.Font.Bold = -1;
+                        xlRange.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+                        xlRange.Borders.Weight = 1d;
+                        xlRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                        objexcelapp.Cells[1, i] = _dtExportMRtoExcel.Columns[i - 1].ColumnName;
+                    }
+                }
+                /*For storing Each row and column value to excel sheet*/
+                for (int i = 0; i < _dtExportMRtoExcel.Rows.Count; i++)
+                {
+                    for (int j = 0; j < _dtExportMRtoExcel.Columns.Count; j++)
+                    {
+                        if (_dtExportMRtoExcel.Columns[j].ColumnName == "PartNo" || _dtExportMRtoExcel.Columns[j].ColumnName == "Qty")
+                        {
+                            if (_dtExportMRtoExcel.Rows[i][j] != null)
+                            {
+                                Microsoft.Office.Interop.Excel.Range xlRange = (Microsoft.Office.Interop.Excel.Range)objexcelapp.Cells[i + 2, j + 1];
+                                xlRange.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+                                xlRange.Borders.Weight = 1d;
+                                objexcelapp.Cells[i + 2, j + 1] = _dtExportMRtoExcel.Rows[i][j].ToString();
+                            }
+                        }
+                    }
+                }
+                objexcelapp.Columns.AutoFit(); // Auto fix the columns size
+                System.Windows.Forms.Application.DoEvents();
+                //if (Directory.Exists("C:\\CTR_Data\\")) // Folder dic
+                //{
+                //    objexcelapp.ActiveWorkbook.SaveCopyAs("C:\\CTR_Data\\" + "excelFilename" + ".xlsx");
+                //}
+                //else
+                //{
+                //    Directory.CreateDirectory("C:\\CTR_Data\\");
+                //    objexcelapp.ActiveWorkbook.SaveCopyAs("C:\\CTR_Data\\" + "excelFilename" + ".xlsx");
+                //}
+                objexcelapp.ActiveWorkbook.SaveCopyAs(savefile.FileName);
+                objexcelapp.ActiveWorkbook.Saved = true;
+                System.Windows.Forms.Application.DoEvents();
+                foreach (Process proc in System.Diagnostics.Process.GetProcessesByName("EXCEL"))
+                {
+                    proc.Kill();
+                }
+
+                /////
                 
+                System.Diagnostics.Process.Start(savefile.FileName);
+
+                //////////////update shared object///////////////////
+                _pc = new ProjectController();
+                CurrentOpenProject.CurrentProject = _pc.GetModelByID(CurrentOpenProject.CurrentProject.ProjectCode);
+                //////////////
+                this.Enabled = true;
+                this.Close();
             }
-
-            //fill MR Verion first
-            _mrvc = new MRVersionController();
-            _maxMRVersion = _mrvc.GetMaxMRVersionCode();
-            MRVersion mrvModel = new MRVersion();
-            //mrvModel.ProjectCode = _currentLoadedProject.ProjectCode;
-            mrvModel.Version = _maxMRVersion;
-
-            mrvModel.Description = _currentMRVerion.ToString() + "-1" ;
-
-            _mrvc = new MRVersionController(mrvModel);
-            _mrvc.Save();
-            //
-
-            List<MR> LstObjBom;
-            
-            LstObjBom = FillBOMModel2(ref projModel);
-            
-            _mrc = new MRController(LstObjBom);
-            _mrc.SaveList(projModel.ProjectCode, _maxMRVersion);
-            
-            this.Enabled = true;
-
-            //////////////update shared object///////////////////
-            _pc = new ProjectController();
-            CurrentOpenProject.CurrentProject = _pc.GetModelByID(CurrentOpenProject.CurrentProject.ProjectCode);
-            ////////////
-            this.Close();
         }
 
-        private List<MR> FillBOMModel2(ref Project pProjectModel)
+        private void FillBOMModel2()
         {
-            List<MR> LstObjBom = new List<MR>();
+            
             foreach (DataGridViewRow gvr in dataGridView4.Rows)
             {
-                FillBOMModelSub(ref pProjectModel, ref LstObjBom, gvr, 4);
+                FillBOMModelSub(gvr, 4);
             }
-            return LstObjBom;
+            
 
         }
-        private void FillBOMModelSub(ref Project pProjectModel, ref List<MR> pLstObjBom, DataGridViewRow pGvr, short pBOMTypeCode)
+        private void FillBOMModelSub(DataGridViewRow pGvr, short pBOMTypeCode)
         {
             //string colName=pGvr.Cells[0].OwningColumn.HeaderText;
 
@@ -206,8 +308,8 @@ namespace Procurement
                 MR lObjBom = new MR();
                 //lObjBom.BOMCode = (string)pGvr.Cells[0].Value;
                 
-                lObjBom.Version = _maxMRVersion;
-                lObjBom.ProjectCode = _currentLoadedProject.ProjectCode;
+                lObjBom.Version = _maxMRVersionAutoRowId;
+                //lObjBom.ProjectCode = _currentLoadedProject.ProjectCode;
 
                 var cellObj= pGvr.Cells["Sr" + pBOMTypeCode];
                 lObjBom.Sr = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
@@ -233,8 +335,8 @@ namespace Procurement
                 cellObj = pGvr.Cells["ExtPrice" + pBOMTypeCode];
                 lObjBom.ExtPrice = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
 
-                pLstObjBom.Add(lObjBom);
-                pProjectModel.MRs.Add(lObjBom);
+                _LstObjBoms.Add(lObjBom);
+                //pProjectModel.MRs.Add(lObjBom);
 
             }
 
@@ -308,6 +410,7 @@ namespace Procurement
 
         private decimal ReturnAppropriateValue(object ObjValue)
         {
+            if (ObjValue == null) return 0;
             decimal returnDecimalValue;
             if (decimal.TryParse(ObjValue.ToString(), out returnDecimalValue))
             {
@@ -378,6 +481,7 @@ namespace Procurement
 
             }
             dataGridView4.DataSource = _dtMR;
+            _dtExportMRtoExcel = _dtMR.Copy();
         }
 
         private void btnCopyUserSpecified_Click(object sender, EventArgs e)
@@ -427,6 +531,7 @@ namespace Procurement
 
             }
             dataGridView4.DataSource = _dtMR;
+            _dtExportMRtoExcel = _dtMR.Copy();
         }
 
         

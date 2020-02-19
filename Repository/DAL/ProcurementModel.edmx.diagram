@@ -19,7 +19,7 @@
         <EntityTypeShape EntityType="ProcurementModel.MR" Width="1.5" PointX="5.375" PointY="4.875" />
         <EntityTypeShape EntityType="ProcurementModel.MRVersion" Width="1.5" PointX="7.875" PointY="5.125" />
         <AssociationConnector Association="ProcurementModel.FK_MR_MRVersion" />
-        <AssociationConnector Association="ProcurementModel.FK_MR_Project" />
+        <AssociationConnector Association="ProcurementModel.FK_MRVersion_Project" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

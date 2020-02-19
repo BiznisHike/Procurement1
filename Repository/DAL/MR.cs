@@ -24,9 +24,7 @@ namespace Repository.DAL
         public string ExtCost { get; set; }
         public string UnitPrice { get; set; }
         public string ExtPrice { get; set; }
-        public Nullable<decimal> ProjectCode { get; set; }
     
         public virtual MRVersion MRVersion { get; set; }
-        public virtual Project Project { get; set; }
     }
 }

@@ -55,8 +55,6 @@
             this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbMRList = new System.Windows.Forms.ComboBox();
             this.Select2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Sr2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +64,8 @@
             this.ExtCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExtPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbMRList = new System.Windows.Forms.ComboBox();
             this.MenuStripSaleBOM.SuspendLayout();
             this.MenuStripDesignBOM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -80,12 +80,12 @@
             this.btnSave.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(1262, 684);
+            this.btnSave.Location = new System.Drawing.Point(1197, 684);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(97, 30);
+            this.btnSave.Size = new System.Drawing.Size(162, 30);
             this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Save and Export Excel";
             this.toolTip1.SetToolTip(this.btnSave, "Press Save button to save the BOM");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -97,7 +97,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.ImageKey = "Yes.bmp";
-            this.btnCancel.Location = new System.Drawing.Point(1160, 684);
+            this.btnCancel.Location = new System.Drawing.Point(1094, 684);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(97, 30);
@@ -477,32 +477,11 @@
             this.dataGridView2.Size = new System.Drawing.Size(1347, 290);
             this.dataGridView2.TabIndex = 21;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 17);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Request Ref";
-            // 
-            // cmbMRList
-            // 
-            this.cmbMRList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMRList.FormattingEnabled = true;
-            this.cmbMRList.Location = new System.Drawing.Point(105, 11);
-            this.cmbMRList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbMRList.Name = "cmbMRList";
-            this.cmbMRList.Size = new System.Drawing.Size(199, 24);
-            this.cmbMRList.TabIndex = 23;
-            this.cmbMRList.SelectedIndexChanged += new System.EventHandler(this.cmbMRList_SelectedIndexChanged);
-            // 
             // Select2
             // 
             this.Select2.HeaderText = " ";
             this.Select2.MinimumWidth = 6;
             this.Select2.Name = "Select2";
-            this.Select2.ReadOnly = false;
             this.Select2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Select2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Select2.Width = 30;
@@ -579,6 +558,26 @@
             this.ExtPrice2.ReadOnly = true;
             this.ExtPrice2.Width = 125;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 17);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Request Ref";
+            // 
+            // cmbMRList
+            // 
+            this.cmbMRList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMRList.FormattingEnabled = true;
+            this.cmbMRList.Location = new System.Drawing.Point(105, 11);
+            this.cmbMRList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbMRList.Name = "cmbMRList";
+            this.cmbMRList.Size = new System.Drawing.Size(199, 24);
+            this.cmbMRList.TabIndex = 23;
+            this.cmbMRList.SelectedIndexChanged += new System.EventHandler(this.cmbMRList_SelectedIndexChanged);
+            // 
             // FrmModifyMR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -597,7 +596,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmModifyMR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MR";
+            this.Text = "Modify Material Request";
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmBOM_KeyDown);
             this.MenuStripSaleBOM.ResumeLayout(false);

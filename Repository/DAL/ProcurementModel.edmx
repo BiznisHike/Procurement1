@@ -74,14 +74,15 @@
           <Property Name="ExtCost" Type="nvarchar" MaxLength="500" />
           <Property Name="UnitPrice" Type="nvarchar" MaxLength="500" />
           <Property Name="ExtPrice" Type="nvarchar" MaxLength="500" />
-          <Property Name="ProjectCode" Type="decimal" Precision="10" Scale="0" />
         </EntityType>
         <EntityType Name="MRVersion">
           <Key>
             <PropertyRef Name="Version" />
           </Key>
           <Property Name="Version" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VersionNo" Type="decimal" Precision="10" Scale="0" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProjectCode" Type="decimal" Precision="10" Scale="0" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -160,16 +161,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MR_Project">
+        <Association Name="FK_MRVersion_Project">
           <End Role="Project" Type="Self.Project" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="MR" Type="Self.MR" Multiplicity="*" />
+          <End Role="MRVersion" Type="Self.MRVersion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectCode" />
             </Principal>
-            <Dependent Role="MR">
+            <Dependent Role="MRVersion">
               <PropertyRef Name="ProjectCode" />
             </Dependent>
           </ReferentialConstraint>
@@ -227,9 +228,9 @@
             <End Role="MRVersion" EntitySet="MRVersion" />
             <End Role="MR" EntitySet="MR" />
           </AssociationSet>
-          <AssociationSet Name="FK_MR_Project" Association="Self.FK_MR_Project">
+          <AssociationSet Name="FK_MRVersion_Project" Association="Self.FK_MRVersion_Project">
             <End Role="Project" EntitySet="Project" />
-            <End Role="MR" EntitySet="MR" />
+            <End Role="MRVersion" EntitySet="MRVersion" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectEmployeeDetail_Employee" Association="Self.FK_ProjectEmployeeDetail_Employee">
             <End Role="Employee" EntitySet="Employee" />
@@ -277,9 +278,9 @@
             <End Role="MRVersion" EntitySet="MRVersions" />
             <End Role="MR" EntitySet="MRs" />
           </AssociationSet>
-          <AssociationSet Name="FK_MR_Project" Association="ProcurementModel.FK_MR_Project">
+          <AssociationSet Name="FK_MRVersion_Project" Association="ProcurementModel.FK_MRVersion_Project">
             <End Role="Project" EntitySet="Projects" />
-            <End Role="MR" EntitySet="MRs" />
+            <End Role="MRVersion" EntitySet="MRVersions" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="BOM">
@@ -357,7 +358,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="MRs" Relationship="ProcurementModel.FK_MR_Project" FromRole="Project" ToRole="MR" />
+          <NavigationProperty Name="MRVersions" Relationship="ProcurementModel.FK_MRVersion_Project" FromRole="Project" ToRole="MRVersion" />
         </EntityType>
         <Association Name="FK_BOM_BOMType">
           <End Type="ProcurementModel.BOMType" Role="BOMType" Multiplicity="0..1">
@@ -453,9 +454,7 @@
           <Property Name="ExtCost" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="UnitPrice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ExtPrice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ProjectCode" Type="Decimal" Precision="10" Scale="0" />
           <NavigationProperty Name="MRVersion" Relationship="ProcurementModel.FK_MR_MRVersion" FromRole="MR" ToRole="MRVersion" />
-          <NavigationProperty Name="Project" Relationship="ProcurementModel.FK_MR_Project" FromRole="MR" ToRole="Project" />
         </EntityType>
         <EntityType Name="MRVersion">
           <Key>
@@ -464,6 +463,9 @@
           <Property Name="Version" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MRs" Relationship="ProcurementModel.FK_MR_MRVersion" FromRole="MRVersion" ToRole="MR" />
+          <Property Name="ProjectCode" Type="Decimal" Precision="10" Scale="0" />
+          <NavigationProperty Name="Project" Relationship="ProcurementModel.FK_MRVersion_Project" FromRole="MRVersion" ToRole="Project" />
+          <Property Name="VersionNo" Type="Decimal" Precision="10" Scale="0" />
         </EntityType>
         <Association Name="FK_MR_MRVersion">
           <End Type="ProcurementModel.MRVersion" Role="MRVersion" Multiplicity="0..1">
@@ -479,16 +481,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MR_Project">
+        <Association Name="FK_MRVersion_Project">
           <End Type="ProcurementModel.Project" Role="Project" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="ProcurementModel.MR" Role="MR" Multiplicity="*" />
+          <End Type="ProcurementModel.MRVersion" Role="MRVersion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectCode" />
             </Principal>
-            <Dependent Role="MR">
+            <Dependent Role="MRVersion">
               <PropertyRef Name="ProjectCode" />
             </Dependent>
           </ReferentialConstraint>
@@ -584,7 +586,6 @@
           <EntitySetMapping Name="MRs">
             <EntityTypeMapping TypeName="ProcurementModel.MR">
               <MappingFragment StoreEntitySet="MR">
-                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
                 <ScalarProperty Name="ExtPrice" ColumnName="ExtPrice" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="ExtCost" ColumnName="ExtCost" />
@@ -601,6 +602,8 @@
           <EntitySetMapping Name="MRVersions">
             <EntityTypeMapping TypeName="ProcurementModel.MRVersion">
               <MappingFragment StoreEntitySet="MRVersion">
+                <ScalarProperty Name="VersionNo" ColumnName="VersionNo" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
               </MappingFragment>

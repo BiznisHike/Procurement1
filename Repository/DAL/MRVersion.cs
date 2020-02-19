@@ -22,8 +22,11 @@ namespace Repository.DAL
     
         public decimal Version { get; set; }
         public string Description { get; set; }
+        public Nullable<decimal> ProjectCode { get; set; }
+        public Nullable<decimal> VersionNo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MR> MRs { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

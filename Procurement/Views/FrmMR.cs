@@ -20,7 +20,7 @@ namespace Procurement
         MRController _mrc;
         MRVersionController _mrvc;
         ProjectEmployeeDetailController _pedc;
-        decimal _maxMRVersion;
+        decimal _maxMRVersionAutoRowId;
 
         DataTable _dtDesignBOM;
         DataTable _dtExportMRtoExcel;
@@ -28,7 +28,7 @@ namespace Procurement
         decimal _projectCode;
         bool _newMode;
         Project _currentLoadedProject;
-
+        List<MR> _LstObjBoms;
         //SingleTon 
         private static FrmMR instance = null;
         private FrmMR()
@@ -66,6 +66,7 @@ namespace Procurement
                 _currentLoadedProject = CurrentOpenProject.CurrentProject;
 
                 List<BOM> list2 = _currentLoadedProject.BOMs.Where(y => y.BOMTypeCode == 2).ToList();
+                if (list2.Count == 0) { MessageBox.Show("Please first create BOM"); btnSave.Enabled=false; return; }
                 _dtDesignBOM = ToDataTable<BOM>(list2);
                 _dtDesignBOM.Columns.Remove("ProjectCode");
                 _dtDesignBOM.Columns.Remove("RowAuto");
@@ -137,28 +138,24 @@ namespace Procurement
 
                 //fill MR Verion first
                 _mrvc = new MRVersionController();
-                _maxMRVersion = _mrvc.GetMaxMRVersionCode();
+                _maxMRVersionAutoRowId = _mrvc.GetMaxMRVersionAutoRowId();
+                
                 MRVersion mrvModel = new MRVersion();
-                //mrvModel.ProjectCode = _currentLoadedProject.ProjectCode;
-                mrvModel.Version = _maxMRVersion;
-                mrvModel.Description = mrvModel.Version.ToString();
+                mrvModel.ProjectCode = _currentLoadedProject.ProjectCode;
+                //mrvModel.Version = _maxMRVersion;
+                mrvModel.VersionNo = _mrvc.GetMaxMRVersionNo();
+                mrvModel.Description = _currentLoadedProject.ProjectCode.ToString();//mrvModel.VersionNo.ToString();//mrvModel.Version.ToString();
 
                 _mrvc = new MRVersionController(mrvModel);
                 _mrvc.Save();
                 //
 
-                List<MR> LstObjBom;
+                _LstObjBoms = new List<MR>();
+                FillBOMModel2();
 
-                LstObjBom = FillBOMModel2(ref projModel);
+                _mrc = new MRController(_LstObjBoms);
+                _mrc.SaveList(projModel.ProjectCode, _maxMRVersionAutoRowId);
 
-                _mrc = new MRController(LstObjBom);
-                _mrc.SaveList(projModel.ProjectCode, _maxMRVersion);
-
-                
-                //////////////update shared object///////////////////
-                _pc = new ProjectController();
-                CurrentOpenProject.CurrentProject = _pc.GetModelByID(CurrentOpenProject.CurrentProject.ProjectCode);
-                //////////////
 
                 ///////////////export to excel/////////////////
                 // Here is main process
@@ -225,23 +222,29 @@ namespace Procurement
                 }
 
                 /////
-                this.Enabled = true;
+                
                 System.Diagnostics.Process.Start(savefile.FileName);
+
+                //////////////update shared object///////////////////
+                _pc = new ProjectController();
+                CurrentOpenProject.CurrentProject = _pc.GetModelByID(CurrentOpenProject.CurrentProject.ProjectCode);
+                //////////////
+                this.Enabled = true;
                 this.Close();
             }
         }
 
-        private List<MR> FillBOMModel2(ref Project pProjectModel)
+        private void FillBOMModel2()
         {
-            List<MR> LstObjBom = new List<MR>();
+            
             foreach (DataGridViewRow gvr in dataGridView4.Rows)
             {
-                FillBOMModelSub(ref pProjectModel, ref LstObjBom, gvr, 4);
+                FillBOMModelSub(gvr, 4);
             }
-            return LstObjBom;
+            
 
         }
-        private void FillBOMModelSub(ref Project pProjectModel, ref List<MR> pLstObjBom, DataGridViewRow pGvr, short pBOMTypeCode)
+        private void FillBOMModelSub(DataGridViewRow pGvr, short pBOMTypeCode)
         {
             //string colName=pGvr.Cells[0].OwningColumn.HeaderText;
 
@@ -264,8 +267,8 @@ namespace Procurement
                 MR lObjBom = new MR();
                 //lObjBom.BOMCode = (string)pGvr.Cells[0].Value;
 
-                lObjBom.Version = _maxMRVersion;
-                lObjBom.ProjectCode = _currentLoadedProject.ProjectCode;
+                lObjBom.Version = _maxMRVersionAutoRowId;
+                //lObjBom.ProjectCode = _currentLoadedProject.ProjectCode;
 
                 var cellObj = pGvr.Cells["Sr" + pBOMTypeCode];
                 lObjBom.Sr = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
@@ -291,13 +294,14 @@ namespace Procurement
                 cellObj = pGvr.Cells["ExtPrice" + pBOMTypeCode];
                 lObjBom.ExtPrice = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
 
-                pLstObjBom.Add(lObjBom);
-                pProjectModel.MRs.Add(lObjBom);
+                _LstObjBoms.Add(lObjBom);
+                
 
             }
 
             //return null;
         }
+        
         private Project FillProjectModel()
         {
             Project lObjProj = new Project();
@@ -366,6 +370,7 @@ namespace Procurement
 
         private decimal ReturnAppropriateValue(object ObjValue)
         {
+            if (ObjValue == null) return 0;
             decimal returnDecimalValue;
             if (decimal.TryParse(ObjValue.ToString(), out returnDecimalValue))
             {
