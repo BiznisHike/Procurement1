@@ -42,10 +42,11 @@ namespace Procurement.Views
             this.Visible = false;
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.ShowDialog();
+            userToolStripMenuItem.Text = LoginInfo.LoginEmployee.EmployeeName;
         }
-            private void projectsListToolStripMenuItem_Click(object sender, EventArgs e)
+        private void projectsListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         
+
             FrmProject_Show();
         }
         private void FrmProject_Show()
@@ -78,7 +79,7 @@ namespace Procurement.Views
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmNewProject_Show();
-            
+
 
         }
         private void FrmNewProject_Show()
@@ -101,7 +102,7 @@ namespace Procurement.Views
                 }
 
             }
-            
+
         }
 
         private void openBOMsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -227,6 +228,51 @@ namespace Procurement.Views
             }
 
         }
-    }
 
+        private void employeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEmployees_Show();
+        }
+        private void FrmEmployees_Show()
+        {
+            FrmEmployee.Instance.MdiParent = FrmMDI.Instance; //this;
+            
+            if (!FrmEmployee.Instance.Visible)
+            {
+                FrmEmployee.Instance.Show();
+            }
+            else
+            {
+                if (FrmEmployee.Instance.WindowState == FormWindowState.Minimized)
+                {
+                    FrmEmployee.Instance.WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    FrmEmployee.Instance.BringToFront();
+                }
+
+            }
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "FrmMDI")
+                {
+                    Application.OpenForms[i].Close();
+                }
+            }
+            OnFormLoad();
+        }
+
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEmployee.Instance._EmployeeCode = LoginInfo.LoginEmployee.EmployeeCode;
+            FrmEmployees_Show();
+            
+        }
+        
+    }
 }

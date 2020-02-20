@@ -138,6 +138,13 @@ namespace Procurement
                         "' Project Customer: '" + projModel.Customer +
                         "' Project End User: '" + projModel.EndUser + "'";
 
+            
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "FrmMDI" && Application.OpenForms[i].Name != "FrmProject")
+                    Application.OpenForms[i].Close();
+            }
+
             ////////////
             this.Close();
         }

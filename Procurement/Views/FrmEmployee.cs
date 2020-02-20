@@ -34,25 +34,24 @@ namespace Procurement
         Employee _currentLoadedEmployee;
 
 
-
-        private static FrmEmployee insEmp = null;
+        private static FrmEmployee instance = null;
         private FrmEmployee()
         {
             InitializeComponent();
         }
 
-        public static FrmEmployee InsEmp
+        public static FrmEmployee Instance
         {
             get
             {
-                if (insEmp == null || insEmp.IsDisposed)
+                if (instance == null || instance.IsDisposed)
                 {
 
-                    insEmp = new FrmEmployee();
+                    instance = new FrmEmployee();
                 }
 
 
-                return insEmp;
+                return instance;
             }
         }
 
@@ -60,10 +59,10 @@ namespace Procurement
 
 
         #region "Load On Start"
-        public FrmEmployee(decimal pEmployeeCode)
-        {
-            _EmployeeCode = pEmployeeCode;
-        }
+        //public FrmEmployee(decimal pEmployeeCode)
+        //{
+        //    _EmployeeCode = pEmployeeCode;
+        //}
 
 
         private void FrmEmployees_Load(object sender, EventArgs e)
@@ -95,6 +94,35 @@ namespace Procurement
                 }
 
                 _LstEmployeeTypes = _etc.GetModels();
+
+                EmployeeType removeET;
+                switch (LoginInfo.LoginEmployee.EmployeeTypeCode)
+                {
+                    case 1://Manager
+                        //remove admin
+                        removeET = _LstEmployeeTypes.Where(x => x.EmployeeTypeCode == 3).FirstOrDefault();
+                        _LstEmployeeTypes.Remove(removeET);
+                        break;
+
+                    case 2://Employee
+                        //remove admin, manager
+                        removeET = _LstEmployeeTypes.Where(x => x.EmployeeTypeCode == 1).FirstOrDefault();
+                        _LstEmployeeTypes.Remove(removeET);
+                        removeET = _LstEmployeeTypes.Where(x => x.EmployeeTypeCode == 3).FirstOrDefault();
+                        _LstEmployeeTypes.Remove(removeET);
+                        break;
+
+                    //case 3://Admin
+                    //    Console.WriteLine("case 9");
+                    //    break;
+
+                    
+                }
+
+
+
+
+
                 _LstProjects = _pc.GetModels();
 
                
@@ -123,7 +151,7 @@ namespace Procurement
                 cmbEmployeeType.DataSource = bindingSource3.DataSource;
                 cmbEmployeeType.DisplayMember = "EmployeeType1";
                 cmbEmployeeType.ValueMember = "EmployeeTypeCode";
-                cmbEmployeeType.SelectedIndex = 1;
+                cmbEmployeeType.SelectedIndex = 0;
 
 
 
