@@ -25,7 +25,7 @@ namespace Procurement
         decimal _projectCode;
         bool _newMode;
         Project _currentLoadedProject;
-
+        List<string> _columnNames;
         //SingleTon 
         private static FrmBOM instance = null;
         private FrmBOM()
@@ -63,7 +63,25 @@ namespace Procurement
                 ClearAll();
 
                 _currentLoadedProject = CurrentOpenProject.CurrentProject;
-
+                _columnNames = new List<String> { "SORef",
+                                                "Sr",
+                                                "ProductCategory",
+                                                "Product",
+                                                "CostHead",
+                                                "CostSubHead",
+                                                "System",
+                                                "Area",
+                                                "Panel",
+                                                "Category",
+                                                "Manufacturer",
+                                                "PartNo",
+                                                "Description",
+                                                "Qty",
+                                                "UnitCost",
+                                                "ExtCost",
+                                                "UnitPrice",
+                                                "ExtPrice",
+                                            };
                 if (_currentLoadedProject == null)
                 {
                     _newMode = true;
@@ -148,6 +166,7 @@ namespace Procurement
 
                     OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
                     DataTable dtTemp = new DataTable();
+
                     sda.Fill(dtTemp);
                     Con.Close();
                     //DataRow newDataRow;
@@ -159,8 +178,27 @@ namespace Procurement
                     //    //Col.SetOrdinal(0);// to put the column in position 0;
 
                     //}
-                    DataTable dtBOM = new DataTable();
-                    dtBOM = dtTemp.Clone();
+                    DataTable dtBOM = new DataTable("dtBOM");
+                    //dtBOM = dtTemp.Clone();
+                    dtBOM.Columns.Add(_columnNames[0]);
+                    dtBOM.Columns.Add(_columnNames[1]);
+                    dtBOM.Columns.Add(_columnNames[2]);
+                    dtBOM.Columns.Add(_columnNames[3]);
+                    dtBOM.Columns.Add(_columnNames[4]);
+                    dtBOM.Columns.Add(_columnNames[5]);
+                    dtBOM.Columns.Add(_columnNames[6]);
+                    dtBOM.Columns.Add(_columnNames[7]);
+                    dtBOM.Columns.Add(_columnNames[8]);
+                    dtBOM.Columns.Add(_columnNames[9]);
+                    dtBOM.Columns.Add(_columnNames[10]);
+                    dtBOM.Columns.Add(_columnNames[11]);
+                    dtBOM.Columns.Add(_columnNames[12]);
+                    dtBOM.Columns.Add(_columnNames[13]);
+                    dtBOM.Columns.Add(_columnNames[14]);
+                    dtBOM.Columns.Add(_columnNames[15]);
+                    dtBOM.Columns.Add(_columnNames[16]);
+                    dtBOM.Columns.Add(_columnNames[17]);
+
                     dataGridView1.AutoGenerateColumns = false;
 
                     //}
@@ -732,18 +770,18 @@ namespace Procurement
         private void copyFromExcelToSaleBOMToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            PasteFromExcel(ref _dtSalesBOM,1);
+            PasteFromExcel(ref _dtSalesBOM, 1);
         }
         private void copyFromExcelToDesignBOMToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PasteFromExcel(ref _dtDesignBOM,2);
+            PasteFromExcel(ref _dtDesignBOM, 2);
         }
         private void copyFromExcelToActualBOM_Click(object sender, EventArgs e)
         {
-            PasteFromExcel(ref _dtActualBOM,3);
+            PasteFromExcel(ref _dtActualBOM, 3);
         }
 
-        private void PasteFromExcel(ref DataTable dtRef,int gridviewNumber)
+        private void PasteFromExcel(ref DataTable dtRef, int gridviewNumber)
         {
 
             string excelData = Clipboard.GetText();
@@ -754,25 +792,7 @@ namespace Procurement
             //string[] lines = Regex.Split(s.TrimEnd("\r\n".ToCharArray()), "\r\n");
             string[] fields;
 
-            List<string> colomnNames = new List<String> { "SORef",
-                                                            "Sr",
-                                                            "ProductCategory",
-                                                            "Product",
-                                                            "CostHead",
-                                                            "CostSubHead",
-                                                            "System",
-                                                            "Area",
-                                                            "Panel",
-                                                            "Category",
-                                                            "Manufacturer",
-                                                            "PartNo",
-                                                            "Description",
-                                                            "Qty",
-                                                            "UnitCost",
-                                                            "ExtCost",
-                                                            "UnitPrice",
-                                                            "ExtPrice",
-                                                                };
+            
             int rowCounter = 0;
             bool IsCopyData = true;
             foreach (string row in Rows.ToList<string>())
@@ -789,7 +809,7 @@ namespace Procurement
 
                 if (fields.Count() < 18)
                 {
-                    MessageBox.Show("Data not copied. Please remove 'enter' after '" + fields.Last() +  "' in column " + colomnNames[fields.Count()-1]  + " from Row number " + rowCounter);
+                    MessageBox.Show("Data not copied. Please remove 'enter' after '" + fields.Last() + "' in column " + _columnNames[fields.Count() - 1] + " from Row number " + rowCounter);
                     IsCopyData = false;
                     break;
                 }
@@ -833,7 +853,7 @@ namespace Procurement
                     break;
             }
 
-            
+
             //foreach (string stringRow in stringRows)
             //{
             //    dtRef.Rows.Add(new DataRow(stringRow));
@@ -905,6 +925,6 @@ namespace Procurement
 
         }
 
-        
+
     }
 }
