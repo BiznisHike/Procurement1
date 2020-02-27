@@ -32,25 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMR));
             this.btnSave = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Select2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SORef2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sr2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductCategory2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostHead2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostSubHead2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.System2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Area2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Panel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Manufacturer2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PartNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExtCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExtPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCancel = new System.Windows.Forms.Button();
             this.MenuStripSaleBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.itmCopyAllToDesignBOM = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +55,28 @@
             this.MenuStripLoad = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Select2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column1_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SORef2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sr2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductCategory2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostHead2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostSubHead2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.System2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Area2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Panel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Manufacturer2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PartNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExtCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExtPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.MenuStripSaleBOM.SuspendLayout();
             this.MenuStripDesignBOM.SuspendLayout();
@@ -107,6 +110,9 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select2,
+            this.Column1_2,
+            this.Column2_2,
+            this.Column3_2,
             this.SORef2,
             this.Sr2,
             this.ProductCategory2,
@@ -134,159 +140,6 @@
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
-            // 
-            // Select2
-            // 
-            this.Select2.HeaderText = " ";
-            this.Select2.MinimumWidth = 6;
-            this.Select2.Name = "Select2";
-            this.Select2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Select2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Select2.Width = 30;
-            // 
-            // SORef2
-            // 
-            this.SORef2.DataPropertyName = "SORef";
-            this.SORef2.HeaderText = "SO Ref";
-            this.SORef2.MinimumWidth = 6;
-            this.SORef2.Name = "SORef2";
-            this.SORef2.Width = 125;
-            // 
-            // Sr2
-            // 
-            this.Sr2.DataPropertyName = "Sr";
-            this.Sr2.HeaderText = "Sr";
-            this.Sr2.MinimumWidth = 6;
-            this.Sr2.Name = "Sr2";
-            this.Sr2.Width = 125;
-            // 
-            // ProductCategory2
-            // 
-            this.ProductCategory2.DataPropertyName = "ProductCategory";
-            this.ProductCategory2.HeaderText = "Product Category";
-            this.ProductCategory2.MinimumWidth = 6;
-            this.ProductCategory2.Name = "ProductCategory2";
-            this.ProductCategory2.Width = 125;
-            // 
-            // Product2
-            // 
-            this.Product2.DataPropertyName = "Product";
-            this.Product2.HeaderText = "Product";
-            this.Product2.MinimumWidth = 6;
-            this.Product2.Name = "Product2";
-            this.Product2.Width = 125;
-            // 
-            // CostHead2
-            // 
-            this.CostHead2.DataPropertyName = "CostHead";
-            this.CostHead2.HeaderText = "Cost Head";
-            this.CostHead2.MinimumWidth = 6;
-            this.CostHead2.Name = "CostHead2";
-            this.CostHead2.Width = 125;
-            // 
-            // CostSubHead2
-            // 
-            this.CostSubHead2.DataPropertyName = "CostSubHead";
-            this.CostSubHead2.HeaderText = "Cost Sub-Head";
-            this.CostSubHead2.MinimumWidth = 6;
-            this.CostSubHead2.Name = "CostSubHead2";
-            this.CostSubHead2.Width = 125;
-            // 
-            // System2
-            // 
-            this.System2.DataPropertyName = "System";
-            this.System2.HeaderText = "System";
-            this.System2.MinimumWidth = 6;
-            this.System2.Name = "System2";
-            this.System2.Width = 125;
-            // 
-            // Area2
-            // 
-            this.Area2.DataPropertyName = "Area";
-            this.Area2.HeaderText = "Area";
-            this.Area2.MinimumWidth = 6;
-            this.Area2.Name = "Area2";
-            this.Area2.Width = 125;
-            // 
-            // Panel2
-            // 
-            this.Panel2.DataPropertyName = "Panel";
-            this.Panel2.HeaderText = "Panel";
-            this.Panel2.MinimumWidth = 6;
-            this.Panel2.Name = "Panel2";
-            this.Panel2.Width = 125;
-            // 
-            // Category2
-            // 
-            this.Category2.DataPropertyName = "Category";
-            this.Category2.HeaderText = "Category";
-            this.Category2.MinimumWidth = 6;
-            this.Category2.Name = "Category2";
-            this.Category2.Width = 125;
-            // 
-            // Manufacturer2
-            // 
-            this.Manufacturer2.DataPropertyName = "Manufacturer";
-            this.Manufacturer2.HeaderText = "Manufacturer";
-            this.Manufacturer2.MinimumWidth = 6;
-            this.Manufacturer2.Name = "Manufacturer2";
-            this.Manufacturer2.Width = 125;
-            // 
-            // PartNo2
-            // 
-            this.PartNo2.DataPropertyName = "PartNo";
-            this.PartNo2.HeaderText = "PartNo";
-            this.PartNo2.MinimumWidth = 6;
-            this.PartNo2.Name = "PartNo2";
-            this.PartNo2.Width = 125;
-            // 
-            // Description2
-            // 
-            this.Description2.DataPropertyName = "Description";
-            this.Description2.HeaderText = "Description";
-            this.Description2.MinimumWidth = 6;
-            this.Description2.Name = "Description2";
-            this.Description2.Width = 125;
-            // 
-            // Qty2
-            // 
-            this.Qty2.DataPropertyName = "Qty";
-            this.Qty2.HeaderText = "Qty";
-            this.Qty2.MinimumWidth = 6;
-            this.Qty2.Name = "Qty2";
-            this.Qty2.Width = 125;
-            // 
-            // UnitCost2
-            // 
-            this.UnitCost2.DataPropertyName = "UnitCost";
-            this.UnitCost2.HeaderText = "UnitCost";
-            this.UnitCost2.MinimumWidth = 6;
-            this.UnitCost2.Name = "UnitCost2";
-            this.UnitCost2.Width = 125;
-            // 
-            // ExtCost2
-            // 
-            this.ExtCost2.DataPropertyName = "ExtCost";
-            this.ExtCost2.HeaderText = "ExtCost";
-            this.ExtCost2.MinimumWidth = 6;
-            this.ExtCost2.Name = "ExtCost2";
-            this.ExtCost2.Width = 125;
-            // 
-            // UnitPrice2
-            // 
-            this.UnitPrice2.DataPropertyName = "UnitPrice";
-            this.UnitPrice2.HeaderText = "UnitPrice";
-            this.UnitPrice2.MinimumWidth = 6;
-            this.UnitPrice2.Name = "UnitPrice2";
-            this.UnitPrice2.Width = 125;
-            // 
-            // ExtPrice2
-            // 
-            this.ExtPrice2.DataPropertyName = "ExtPrice";
-            this.ExtPrice2.HeaderText = "ExtPrice";
-            this.ExtPrice2.MinimumWidth = 6;
-            this.ExtPrice2.Name = "ExtPrice2";
-            this.ExtPrice2.Width = 125;
             // 
             // btnCancel
             // 
@@ -651,6 +504,183 @@
             this.loadChageOrderToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.loadChageOrderToolStripMenuItem.Text = "Chage Order";
             // 
+            // Select2
+            // 
+            this.Select2.HeaderText = " ";
+            this.Select2.MinimumWidth = 6;
+            this.Select2.Name = "Select2";
+            this.Select2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Select2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Select2.Width = 30;
+            // 
+            // Column1_2
+            // 
+            this.Column1_2.DataPropertyName = "Column1";
+            this.Column1_2.HeaderText = "Column 1";
+            this.Column1_2.MinimumWidth = 6;
+            this.Column1_2.Name = "Column1_2";
+            this.Column1_2.Width = 125;
+            // 
+            // Column2_2
+            // 
+            this.Column2_2.DataPropertyName = "Column2";
+            this.Column2_2.HeaderText = "Column 2";
+            this.Column2_2.MinimumWidth = 6;
+            this.Column2_2.Name = "Column2_2";
+            this.Column2_2.Width = 125;
+            // 
+            // Column3_2
+            // 
+            this.Column3_2.DataPropertyName = "Column3";
+            this.Column3_2.HeaderText = "Column 3";
+            this.Column3_2.MinimumWidth = 6;
+            this.Column3_2.Name = "Column3_2";
+            this.Column3_2.Width = 125;
+            // 
+            // SORef2
+            // 
+            this.SORef2.DataPropertyName = "SORef";
+            this.SORef2.HeaderText = "SO Ref";
+            this.SORef2.MinimumWidth = 6;
+            this.SORef2.Name = "SORef2";
+            this.SORef2.Width = 125;
+            // 
+            // Sr2
+            // 
+            this.Sr2.DataPropertyName = "Sr";
+            this.Sr2.HeaderText = "Sr";
+            this.Sr2.MinimumWidth = 6;
+            this.Sr2.Name = "Sr2";
+            this.Sr2.Width = 125;
+            // 
+            // ProductCategory2
+            // 
+            this.ProductCategory2.DataPropertyName = "ProductCategory";
+            this.ProductCategory2.HeaderText = "Product Category";
+            this.ProductCategory2.MinimumWidth = 6;
+            this.ProductCategory2.Name = "ProductCategory2";
+            this.ProductCategory2.Width = 125;
+            // 
+            // Product2
+            // 
+            this.Product2.DataPropertyName = "Product";
+            this.Product2.HeaderText = "Product";
+            this.Product2.MinimumWidth = 6;
+            this.Product2.Name = "Product2";
+            this.Product2.Width = 125;
+            // 
+            // CostHead2
+            // 
+            this.CostHead2.DataPropertyName = "CostHead";
+            this.CostHead2.HeaderText = "Cost Head";
+            this.CostHead2.MinimumWidth = 6;
+            this.CostHead2.Name = "CostHead2";
+            this.CostHead2.Width = 125;
+            // 
+            // CostSubHead2
+            // 
+            this.CostSubHead2.DataPropertyName = "CostSubHead";
+            this.CostSubHead2.HeaderText = "Cost Sub-Head";
+            this.CostSubHead2.MinimumWidth = 6;
+            this.CostSubHead2.Name = "CostSubHead2";
+            this.CostSubHead2.Width = 125;
+            // 
+            // System2
+            // 
+            this.System2.DataPropertyName = "System";
+            this.System2.HeaderText = "System";
+            this.System2.MinimumWidth = 6;
+            this.System2.Name = "System2";
+            this.System2.Width = 125;
+            // 
+            // Area2
+            // 
+            this.Area2.DataPropertyName = "Area";
+            this.Area2.HeaderText = "Area";
+            this.Area2.MinimumWidth = 6;
+            this.Area2.Name = "Area2";
+            this.Area2.Width = 125;
+            // 
+            // Panel2
+            // 
+            this.Panel2.DataPropertyName = "Panel";
+            this.Panel2.HeaderText = "Panel";
+            this.Panel2.MinimumWidth = 6;
+            this.Panel2.Name = "Panel2";
+            this.Panel2.Width = 125;
+            // 
+            // Category2
+            // 
+            this.Category2.DataPropertyName = "Category";
+            this.Category2.HeaderText = "Category";
+            this.Category2.MinimumWidth = 6;
+            this.Category2.Name = "Category2";
+            this.Category2.Width = 125;
+            // 
+            // Manufacturer2
+            // 
+            this.Manufacturer2.DataPropertyName = "Manufacturer";
+            this.Manufacturer2.HeaderText = "Manufacturer";
+            this.Manufacturer2.MinimumWidth = 6;
+            this.Manufacturer2.Name = "Manufacturer2";
+            this.Manufacturer2.Width = 125;
+            // 
+            // PartNo2
+            // 
+            this.PartNo2.DataPropertyName = "PartNo";
+            this.PartNo2.HeaderText = "PartNo";
+            this.PartNo2.MinimumWidth = 6;
+            this.PartNo2.Name = "PartNo2";
+            this.PartNo2.Width = 125;
+            // 
+            // Description2
+            // 
+            this.Description2.DataPropertyName = "Description";
+            this.Description2.HeaderText = "Description";
+            this.Description2.MinimumWidth = 6;
+            this.Description2.Name = "Description2";
+            this.Description2.Width = 125;
+            // 
+            // Qty2
+            // 
+            this.Qty2.DataPropertyName = "Qty";
+            this.Qty2.HeaderText = "Qty";
+            this.Qty2.MinimumWidth = 6;
+            this.Qty2.Name = "Qty2";
+            this.Qty2.Width = 125;
+            // 
+            // UnitCost2
+            // 
+            this.UnitCost2.DataPropertyName = "UnitCost";
+            this.UnitCost2.HeaderText = "UnitCost";
+            this.UnitCost2.MinimumWidth = 6;
+            this.UnitCost2.Name = "UnitCost2";
+            this.UnitCost2.Width = 125;
+            // 
+            // ExtCost2
+            // 
+            this.ExtCost2.DataPropertyName = "ExtCost";
+            this.ExtCost2.HeaderText = "ExtCost";
+            this.ExtCost2.MinimumWidth = 6;
+            this.ExtCost2.Name = "ExtCost2";
+            this.ExtCost2.Width = 125;
+            // 
+            // UnitPrice2
+            // 
+            this.UnitPrice2.DataPropertyName = "UnitPrice";
+            this.UnitPrice2.HeaderText = "UnitPrice";
+            this.UnitPrice2.MinimumWidth = 6;
+            this.UnitPrice2.Name = "UnitPrice2";
+            this.UnitPrice2.Width = 125;
+            // 
+            // ExtPrice2
+            // 
+            this.ExtPrice2.DataPropertyName = "ExtPrice";
+            this.ExtPrice2.HeaderText = "ExtPrice";
+            this.ExtPrice2.MinimumWidth = 6;
+            this.ExtPrice2.Name = "ExtPrice2";
+            this.ExtPrice2.Width = 125;
+            // 
             // FrmMR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -697,24 +727,6 @@
         private System.Windows.Forms.Button btnCopyUserSpecified;
         private System.Windows.Forms.Button btnCopySame;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Select2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SORef2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sr2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostHead2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostSubHead2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn System2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Area2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Manufacturer2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qty2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCost2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice2;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sr4;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartNo4;
@@ -724,7 +736,28 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost4;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice4;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Select2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SORef2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sr2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostHead2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostSubHead2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn System2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Area2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Panel2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Manufacturer2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qty2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCost2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice2;
     }
 }
 

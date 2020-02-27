@@ -51,6 +51,7 @@ namespace Procurement
 
         private void FrmBOM_Load(object sender, EventArgs e)
         {
+
             try
             {
 
@@ -63,24 +64,11 @@ namespace Procurement
                 ClearAll();
 
                 _currentLoadedProject = CurrentOpenProject.CurrentProject;
-                _columnNames = new List<String> { "SORef",
-                                                "Sr",
-                                                "ProductCategory",
-                                                "Product",
-                                                "CostHead",
-                                                "CostSubHead",
-                                                "System",
-                                                "Area",
-                                                "Panel",
-                                                "Category",
-                                                "Manufacturer",
-                                                "PartNo",
-                                                "Description",
-                                                "Qty",
-                                                "UnitCost",
-                                                "ExtCost",
-                                                "UnitPrice",
-                                                "ExtPrice",
+                _columnNames = new List<String> {"Column1","Column2","Column3", "SORef",
+                                                "Sr","ProductCategory","Product","CostHead",
+                                                "CostSubHead","System","Area","Panel",
+                                                "Category","Manufacturer","PartNo","Description",
+                                                "Qty","UnitCost","ExtCost","UnitPrice","ExtPrice",
                                             };
                 if (_currentLoadedProject == null)
                 {
@@ -198,6 +186,9 @@ namespace Procurement
                     dtBOM.Columns.Add(_columnNames[15]);
                     dtBOM.Columns.Add(_columnNames[16]);
                     dtBOM.Columns.Add(_columnNames[17]);
+                    dtBOM.Columns.Add(_columnNames[18]);
+                    dtBOM.Columns.Add(_columnNames[19]);
+                    dtBOM.Columns.Add(_columnNames[20]);
 
                     dataGridView1.AutoGenerateColumns = false;
 
@@ -565,7 +556,16 @@ namespace Procurement
                 //cntr += 1;
                 //MessageBox.Show(dataGridView1.Columns[cntr].Name);
                 //string columnName = dataGridView1.Columns[cntr].Name;
-                var cellObj = pGvr.Cells["SORef" + pBOMTypeCode];
+                var cellObj= pGvr.Cells["Column1_" + pBOMTypeCode];
+                lObjBom.Column1 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+                
+                cellObj = pGvr.Cells["Column2_" + pBOMTypeCode];
+                lObjBom.Column2 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+                
+                cellObj = pGvr.Cells["Column3_" + pBOMTypeCode];
+                lObjBom.Column3 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+
+                cellObj = pGvr.Cells["SORef" + pBOMTypeCode];
                 lObjBom.SORef = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
 
                 cellObj = pGvr.Cells["Sr" + pBOMTypeCode];
@@ -792,7 +792,7 @@ namespace Procurement
             //string[] lines = Regex.Split(s.TrimEnd("\r\n".ToCharArray()), "\r\n");
             string[] fields;
 
-            
+
             int rowCounter = 0;
             bool IsCopyData = true;
             foreach (string row in Rows.ToList<string>())
@@ -819,24 +819,27 @@ namespace Procurement
             {
                 fields = row.Split('\t');
                 DataRow newRow = dtRef.NewRow();
-                newRow["SORef"] = fields[0];
-                newRow["Sr"] = fields[1];
-                newRow["ProductCategory"] = fields[2];
-                newRow["Product"] = fields[3];
-                newRow["CostHead"] = fields[4];
-                newRow["CostSubHead"] = fields[5];
-                newRow["System"] = fields[6];
-                newRow["Area"] = fields[7];
-                newRow["Panel"] = fields[8];
-                newRow["Category"] = fields[9];
-                newRow["Manufacturer"] = fields[10];
-                newRow["PartNo"] = fields[11];
-                newRow["Description"] = fields[12];
-                newRow["Qty"] = fields[13];
-                newRow["UnitCost"] = fields[14];
-                newRow["ExtCost"] = fields[15];
-                newRow["UnitPrice"] = fields[16];
-                newRow["ExtPrice"] = fields[17];
+                newRow["Column1"] = fields[0];
+                newRow["Column2"] = fields[1];
+                newRow["Column3"] = fields[2];
+                newRow["SORef"] = fields[3];
+                newRow["Sr"] = fields[4];
+                newRow["ProductCategory"] = fields[5];
+                newRow["Product"] = fields[6];
+                newRow["CostHead"] = fields[7];
+                newRow["CostSubHead"] = fields[8];
+                newRow["System"] = fields[9];
+                newRow["Area"] = fields[10];
+                newRow["Panel"] = fields[11];
+                newRow["Category"] = fields[12];
+                newRow["Manufacturer"] = fields[13];
+                newRow["PartNo"] = fields[14];
+                newRow["Description"] = fields[15];
+                newRow["Qty"] = fields[16];
+                newRow["UnitCost"] = fields[17];
+                newRow["ExtCost"] = fields[18];
+                newRow["UnitPrice"] = fields[19];
+                newRow["ExtPrice"] = fields[20];
                 dtRef.Rows.Add(newRow);
 
             }

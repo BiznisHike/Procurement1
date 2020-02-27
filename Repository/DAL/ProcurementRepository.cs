@@ -15,6 +15,9 @@ namespace Repository.DAL
         public ProcurementRepository()
         {
             _context = new ProcurementEntities();
+            _context.Configuration.ProxyCreationEnabled = true;
+            _context.Configuration.LazyLoadingEnabled = true;
+
             dbEntity = _context.Set<T>();
         }
         public void DeleteModel(decimal modelID)

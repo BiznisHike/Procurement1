@@ -17,6 +17,9 @@ namespace Repository.DAL
         public Nullable<decimal> ProjectCode { get; set; }
         public decimal RowAuto { get; set; }
         public Nullable<short> BOMTypeCode { get; set; }
+        public string Column1 { get; set; }
+        public string Column2 { get; set; }
+        public string Column3 { get; set; }
         public string SORef { get; set; }
         public string Sr { get; set; }
         public string ProductCategory { get; set; }

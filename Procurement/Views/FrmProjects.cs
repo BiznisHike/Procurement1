@@ -49,14 +49,46 @@ namespace Procurement
         {
             try
             {
-
+                
                
                 _pc = new ProjectController();
                 _LstProjects = _pc.GetModels();
 
+
+                //foreach (Project project in _LstProjects)
+                //{
+                //    //project.BOMs = new List<BOM>();
+                //    //project.ProjectEmployeeDetails = new List<ProjectEmployeeDetail>();
+                //    //project.MRVersions = new List<MRVersion>();
+
+                //    foreach (BOM bom in project.BOMs.ToList<BOM>())
+                //    {
+                //        project.BOMs.Remove(bom);
+                //    }
+                //    foreach (ProjectEmployeeDetail ped in project.ProjectEmployeeDetails.ToList<ProjectEmployeeDetail>())
+                //    {
+                //        project.ProjectEmployeeDetails.Remove(ped);
+                //    }
+                //    foreach (MRVersion mrv in project.MRVersions.ToList<MRVersion>())
+                //    {
+                //        project.MRVersions.Remove(mrv);
+                //    }
+
+                //}
+
+                //for (int i = 0; i <= _LstProjects.Count - 1; i++)
+                //{
+                //    _LstProjects[i].BOMs= new List<BOM>();
+                //    _LstProjects[i].ProjectEmployeeDetails = new List<ProjectEmployeeDetail>();
+                //    _LstProjects[i].MRVersions = new List<MRVersion>();
+                //}
+
+
+
                 _dtProjects = ToDataTable<Project>(_LstProjects);
-                _dtProjects.Columns.Remove("BOMs");
-                _dtProjects.Columns.Remove("ProjectEmployeeDetails");
+                //_dtProjects.Columns.Remove("BOMs");
+                //_dtProjects.Columns.Remove("ProjectEmployeeDetails");
+                //_dtProjects.Columns.Remove("MRVersions");
                 _dtProjects.Columns.Remove("CreatedBy");
                 _dtProjects.Columns.Remove("UpdatedBy");
                 DataView dv = _dtProjects.DefaultView;
@@ -100,6 +132,8 @@ namespace Procurement
             PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             foreach (PropertyInfo prop in Props)
             {
+                if (prop.Name == "BOMs" || prop.Name == "ProjectEmployeeDetails" || prop.Name == "MRVersions") continue;
+
                 //Defining type of data column gives proper data table 
                 var type = (prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType);
                 //Setting column names as Property names
@@ -107,9 +141,10 @@ namespace Procurement
             }
             foreach (T item in items)
             {
-                var values = new object[Props.Length];
+                var values = new object[Props.Length-3];
                 for (int i = 0; i < Props.Length; i++)
                 {
+                    if (Props[i].Name == "BOMs" || Props[i].Name == "ProjectEmployeeDetails" || Props[i].Name == "MRVersions") continue;
                     //inserting property values to datatable rows
                     values[i] = Props[i].GetValue(item, null);
                 }
