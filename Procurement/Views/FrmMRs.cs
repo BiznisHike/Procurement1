@@ -17,7 +17,7 @@ namespace Procurement
         MRVersionController _mrvc;
         List<MRVersion> _LstMRVs;
         DataTable _dtMRVs;
-        
+
         decimal _MRVersion;
         bool _newMode;
         Project _currentLoadedProject;
@@ -47,6 +47,7 @@ namespace Procurement
 
         private void FrmBOM_Load(object sender, EventArgs e)
         {
+            dataGridViewProjects.AllowUserToDeleteRows = false;
             try
             {
 
@@ -70,7 +71,7 @@ namespace Procurement
                 {
 
                     _newMode = true;
-                    
+
                 }
             }
             catch (Exception ex)
@@ -79,7 +80,7 @@ namespace Procurement
                 MessageBox.Show(ex.ToString());
             }
         }
-      
+
         private void dataGridViewProjects_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewProjects.SelectedCells.Count > 0 && dataGridViewProjects.SelectedCells[0].Value != DBNull.Value)
@@ -87,7 +88,7 @@ namespace Procurement
                 int selectedrowindex = dataGridViewProjects.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataGridViewProjects.Rows[selectedrowindex];
                 _MRVersion = Convert.ToDecimal(selectedRow.Cells["Version"].Value);
-                
+
             }
 
         }
@@ -118,14 +119,14 @@ namespace Procurement
             return dataTable;
         }
 
-        
-        
+
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        
+
         private void dataGridViewProjects_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -178,7 +179,7 @@ namespace Procurement
 
                     if (_dtMRVs.Rows.Count == 0)
                     {
-                        
+
                         //_mrc.ReseedPk();
                         _newMode = true;
                     }
@@ -189,7 +190,7 @@ namespace Procurement
             }
             else
             {
-                
+
             }
         }
 
@@ -213,11 +214,12 @@ namespace Procurement
 
             //FrmShowMR_Show();
 
-
-            FrmShowMR frmShowMR = new FrmShowMR();
-            frmShowMR._currentMRVersion = _MRVersion;
-            frmShowMR.ShowDialog();
-            
+            if (_MRVersion > 0)
+            {
+                FrmShowMR frmShowMR = new FrmShowMR();
+                frmShowMR._currentMRVersion = _MRVersion;
+                frmShowMR.ShowDialog();
+            }
         }
 
         //private void FrmShowMR_Show()
@@ -244,10 +246,10 @@ namespace Procurement
 
         private void FrmMRs_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            //if (e.KeyCode == Keys.Escape)
+            //{
+            //    this.Close();
+            //}
         }
 
         private void linkAddNewProject_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -257,7 +259,7 @@ namespace Procurement
         private void FrmNewMR_Show()
         {
             FrmMR.Instance.MdiParent = FrmMDI.Instance; //this;
-            
+
             if (!FrmMR.Instance.Visible)
             {
                 FrmMR.Instance.Show();
@@ -283,7 +285,7 @@ namespace Procurement
             //_currentLoadedProject = _mrc.GetModelByID(_projectCode);
 
             CurrentOpenProject.CurrentProject = _currentLoadedProject;
-           
+
             //for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
             //{
             //    if (Application.OpenForms[i].Name != "FrmMDI" && Application.OpenForms[i].Name != "FrmMRs")
@@ -299,7 +301,7 @@ namespace Procurement
         private void FrmEditProject_Show()
         {
             FrmNewProject.Instance.MdiParent = FrmMDI.Instance; //this;
-            
+
             if (!FrmNewProject.Instance.Visible)
             {
                 FrmNewProject.Instance.Show();
@@ -321,14 +323,19 @@ namespace Procurement
 
         private void dataGridViewProjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnOpenProject_Click(null,null);
+            btnOpenProject_Click(null, null);
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No) return;
+
             this.Close();
+        }
+
+        private void FrmMRs_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) e.Cancel = true;
         }
     }
 }

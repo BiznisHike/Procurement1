@@ -37,10 +37,10 @@
             this.itemDeleteProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOpenProject = new System.Windows.Forms.Button();
             this.MenuStripLoad = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnOpenProject = new System.Windows.Forms.Button();
             this.linkAddNewProject = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).BeginInit();
             this.MenuStripProjects.SuspendLayout();
@@ -262,6 +262,21 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
+            // btnOpenProject
+            // 
+            this.btnOpenProject.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnOpenProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenProject.ForeColor = System.Drawing.Color.Transparent;
+            this.btnOpenProject.Location = new System.Drawing.Point(1024, 707);
+            this.btnOpenProject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOpenProject.Name = "btnOpenProject";
+            this.btnOpenProject.Size = new System.Drawing.Size(97, 32);
+            this.btnOpenProject.TabIndex = 9;
+            this.btnOpenProject.Text = "Open";
+            this.toolTip1.SetToolTip(this.btnOpenProject, "Open selected project");
+            this.btnOpenProject.UseVisualStyleBackColor = false;
+            this.btnOpenProject.Click += new System.EventHandler(this.btnOpenProject_Click);
+            // 
             // MenuStripLoad
             // 
             this.MenuStripLoad.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -282,21 +297,6 @@
             this.loadChageOrderToolStripMenuItem.Name = "loadChageOrderToolStripMenuItem";
             this.loadChageOrderToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.loadChageOrderToolStripMenuItem.Text = "Chage Order";
-            // 
-            // btnOpenProject
-            // 
-            this.btnOpenProject.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnOpenProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenProject.ForeColor = System.Drawing.Color.Transparent;
-            this.btnOpenProject.Location = new System.Drawing.Point(1024, 707);
-            this.btnOpenProject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnOpenProject.Name = "btnOpenProject";
-            this.btnOpenProject.Size = new System.Drawing.Size(97, 32);
-            this.btnOpenProject.TabIndex = 9;
-            this.btnOpenProject.Text = "Open";
-            this.toolTip1.SetToolTip(this.btnOpenProject, "Open selected project");
-            this.btnOpenProject.UseVisualStyleBackColor = false;
-            this.btnOpenProject.Click += new System.EventHandler(this.btnOpenProject_Click);
             // 
             // linkAddNewProject
             // 
@@ -325,6 +325,7 @@
             this.Name = "FrmProjects";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Open Project";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmProjects_FormClosing);
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmProjects_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).EndInit();

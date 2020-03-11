@@ -124,7 +124,7 @@
             this.itmCopyAllToActualBOM = new System.Windows.Forms.ToolStripMenuItem();
             this.copyFromExcelToDesignBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.MenuStripProjects = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MenuStripDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.itemDeleteProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
@@ -171,7 +171,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.MenuStripSaleBOM.SuspendLayout();
             this.MenuStripDesignBOM.SuspendLayout();
-            this.MenuStripProjects.SuspendLayout();
+            this.MenuStripDelete.SuspendLayout();
             this.MenuStripLoad.SuspendLayout();
             this.MenuStripActualBOM.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -1224,19 +1224,20 @@
             this.imageList1.Images.SetKeyName(148, "Yes.bmp");
             this.imageList1.Images.SetKeyName(149, "Zoom.bmp");
             // 
-            // MenuStripProjects
+            // MenuStripDelete
             // 
-            this.MenuStripProjects.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.MenuStripProjects.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuStripDelete.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.MenuStripDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemDeleteProject});
-            this.MenuStripProjects.Name = "contextMenuStrip1";
-            this.MenuStripProjects.Size = new System.Drawing.Size(123, 28);
+            this.MenuStripDelete.Name = "contextMenuStrip1";
+            this.MenuStripDelete.Size = new System.Drawing.Size(123, 28);
             // 
             // itemDeleteProject
             // 
             this.itemDeleteProject.Name = "itemDeleteProject";
             this.itemDeleteProject.Size = new System.Drawing.Size(122, 24);
             this.itemDeleteProject.Text = "Delete";
+            this.itemDeleteProject.Click += new System.EventHandler(this.itemDeleteProject_Click);
             // 
             // btnCancel
             // 
@@ -1721,6 +1722,7 @@
             this.Text = "BOM";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.FrmBOM_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBOM_FormClosing);
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmBOM_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -1732,7 +1734,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.MenuStripSaleBOM.ResumeLayout(false);
             this.MenuStripDesignBOM.ResumeLayout(false);
-            this.MenuStripProjects.ResumeLayout(false);
+            this.MenuStripDelete.ResumeLayout(false);
             this.MenuStripLoad.ResumeLayout(false);
             this.MenuStripActualBOM.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -1756,7 +1758,7 @@
         private System.Windows.Forms.ContextMenuStrip MenuStripDesignBOM;
         private System.Windows.Forms.ToolStripMenuItem itmCopyAllToActualBOM;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.ContextMenuStrip MenuStripProjects;
+        private System.Windows.Forms.ContextMenuStrip MenuStripDelete;
         private System.Windows.Forms.ToolStripMenuItem itemDeleteProject;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ContextMenuStrip MenuStripLoad;

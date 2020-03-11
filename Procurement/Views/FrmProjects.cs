@@ -47,6 +47,7 @@ namespace Procurement
 
         private void FrmBOM_Load(object sender, EventArgs e)
         {
+            dataGridViewProjects.AllowUserToDeleteRows = false;
             try
             {
                 
@@ -258,7 +259,7 @@ namespace Procurement
                     Application.OpenForms[i].Close();
             }
 
-            this.Close();
+            MessageBox.Show("Project Opened Successfully");
 
 
         }
@@ -287,10 +288,10 @@ namespace Procurement
 
         private void FrmProjects_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            //if (e.KeyCode == Keys.Escape)
+            //{
+            //    this.Close();
+            //}
         }
 
         private void linkAddNewProject_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -366,6 +367,12 @@ namespace Procurement
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmProjects_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) e.Cancel = true;
         }
     }
 }

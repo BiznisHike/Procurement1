@@ -125,8 +125,8 @@ namespace Procurement
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Save and Close this window?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No) return;
+            //DialogResult dialogResult = MessageBox.Show("Save and Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.No) return;
             SaveFileDialog savefile = new SaveFileDialog();
             // set a default file name
             string datetime = DateTime.Now.ToString();
@@ -391,8 +391,7 @@ namespace Procurement
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No) return;
+            
             this.Close();
         }
 
@@ -427,10 +426,10 @@ namespace Procurement
 
         private void FrmBOM_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            //if (e.KeyCode == Keys.Escape)
+            //{
+            //    this.Close();
+            //}
         }
         private void LoadBOM_Click(object sender, EventArgs e)
         {
@@ -537,6 +536,10 @@ namespace Procurement
             _dtExportMRtoExcel = _dtMR.Copy();
         }
 
-        
+        private void FrmModifyMR_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) e.Cancel = true;
+        }
     }
 }

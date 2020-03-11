@@ -51,6 +51,7 @@ namespace Procurement
 
         private void FrmBOM_Load(object sender, EventArgs e)
         {
+            dataGridView4.AllowUserToDeleteRows = false;
             try
             {
                 
@@ -128,10 +129,10 @@ namespace Procurement
         
         private void FrmBOM_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            //if (e.KeyCode == Keys.Escape)
+            //{
+            //    this.Close();
+            //}
         }
         private void LoadBOM_Click(object sender, EventArgs e)
         {

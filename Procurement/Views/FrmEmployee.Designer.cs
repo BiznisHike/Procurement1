@@ -566,6 +566,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employees";
             this.Activated += new System.EventHandler(this.FrmEmployee_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmEmployee_FormClosing);
             this.Load += new System.EventHandler(this.FrmEmployees_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmEmployee_KeyDown);
             this.MenuStripSaleBOM.ResumeLayout(false);

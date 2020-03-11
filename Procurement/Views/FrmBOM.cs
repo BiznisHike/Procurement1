@@ -52,7 +52,9 @@ namespace Procurement
 
         private void FrmBOM_Load(object sender, EventArgs e)
         {
-
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView3.AllowUserToDeleteRows = false;
             try
             {
 
@@ -376,15 +378,23 @@ namespace Procurement
         {
             //mnuCopyAllToDesignBOM.ShowDropDown();
             //contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
+            if (e.RowIndex >= 0 && e.ColumnIndex == -1)
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    MenuStripDelete.Show(Cursor.Position);
+
+                }
+            }
 
             if (e.RowIndex == -1 && e.ColumnIndex >= 0)
             {
                 if (e.Button == System.Windows.Forms.MouseButtons.Right)
                 {
-                    flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y-50);
+                    flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y - 50);
                     //flowLayoutPanel1.Show();
                     flowLayoutPanel1.Visible = true;
-                    
+
                 }
             }
 
@@ -413,6 +423,14 @@ namespace Procurement
 
         private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex == -1)
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    MenuStripDelete.Show(Cursor.Position);
+
+                }
+            }
             if (e.RowIndex == -1 && e.ColumnIndex >= 0)
             {
                 if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -436,6 +454,14 @@ namespace Procurement
 
         private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex == -1)
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    MenuStripDelete.Show(Cursor.Position);
+
+                }
+            }
             if (e.RowIndex == -1 && e.ColumnIndex >= 0)
             {
                 if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -749,11 +775,12 @@ namespace Procurement
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+        private void FrmBOM_FormClosing(object sender, FormClosingEventArgs e)
+        {
             DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            if (dialogResult == DialogResult.No) e.Cancel = true;
         }
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -822,10 +849,10 @@ namespace Procurement
 
         private void FrmBOM_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            //if (e.KeyCode == Keys.Escape)
+            //{
+            //    this.Close();
+            //}
         }
         private void LoadBOM_Click(object sender, EventArgs e)
         {
@@ -1043,7 +1070,7 @@ namespace Procurement
                 Category1.Visible = false;
                 Category2.Visible = false;
                 Category3.Visible = false;
-                
+
             }
         }
 
@@ -1454,5 +1481,60 @@ namespace Procurement
 
             }
         }
+
+        //private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        //{
+        //    if (showDeleteConfirmation == true)
+        //    {
+        //        DialogResult dialogResult = MessageBox.Show("Do you want to delete row(s)?", "Confirmation", MessageBoxButtons.YesNo);
+        //        if (dialogResult == DialogResult.No)
+        //        {
+        //            e.Cancel = true;
+        //            answervalue = true;
+        //            showDeleteConfirmation = false;
+
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        e.Cancel = answervalue;
+        //    }
+
+        //}
+        //bool answervalue = false;
+        //bool showDeleteConfirmation = true;
+        private void itemDeleteProject_Click(object sender, EventArgs e)
+        {
+            //showDeleteConfirmation = false;
+            DialogResult dialogResult = MessageBox.Show("Do you want to delete row(s)?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) return;
+
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    dataGridView1.Rows.RemoveAt(row.Index);
+                }
+            }
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+            {
+                foreach (DataGridViewRow row in dataGridView2.SelectedRows)
+                {
+                    dataGridView2.Rows.RemoveAt(row.Index);
+                }
+            }
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
+            {
+                foreach (DataGridViewRow row in dataGridView3.SelectedRows)
+                {
+                    dataGridView3.Rows.RemoveAt(row.Index);
+                }
+            }
+
+            //showDeleteConfirmation = true;
+        }
+
+        
     }
 }

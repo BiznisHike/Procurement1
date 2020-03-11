@@ -500,11 +500,13 @@ namespace Procurement
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No) return;
             this.Close();
         }
-
+        private void FrmEmployee_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) e.Cancel = true;
+        }
         private void btnResize_Click(object sender, EventArgs e)
         {
             if (splitContainer1.SplitterDistance < 51)
@@ -609,10 +611,12 @@ namespace Procurement
 
         private void FrmEmployee_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            //if (e.KeyCode == Keys.Escape)
+            //{
+            //    this.Close();
+            //}
         }
+
+
     }
 }

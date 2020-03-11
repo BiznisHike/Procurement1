@@ -749,6 +749,7 @@
             this.Name = "FrmMR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Material Request";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMR_FormClosing);
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmBOM_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

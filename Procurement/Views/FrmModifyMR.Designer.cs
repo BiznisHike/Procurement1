@@ -597,6 +597,7 @@
             this.Name = "FrmModifyMR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modify Material Request";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmModifyMR_FormClosing);
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmBOM_KeyDown);
             this.MenuStripSaleBOM.ResumeLayout(false);

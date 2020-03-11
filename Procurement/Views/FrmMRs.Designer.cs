@@ -36,12 +36,12 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDeleteProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCancel = new System.Windows.Forms.Button();
             this.MenuStripLoad = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOpenProject = new System.Windows.Forms.Button();
             this.linkAddNewMR = new System.Windows.Forms.LinkLabel();
-            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).BeginInit();
             this.MenuStripProjects.SuspendLayout();
             this.MenuStripLoad.SuspendLayout();
@@ -245,6 +245,23 @@
             this.itemDeleteProject.Text = "Delete";
             this.itemDeleteProject.Click += new System.EventHandler(this.itemDeleteProject_Click);
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.ImageKey = "Yes.bmp";
+            this.btnCancel.Location = new System.Drawing.Point(921, 709);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(97, 30);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "Close";
+            this.toolTip1.SetToolTip(this.btnCancel, "Press Close button to exit the FormBOM ");
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
+            // 
             // MenuStripLoad
             // 
             this.MenuStripLoad.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -291,23 +308,6 @@
             this.linkAddNewMR.Text = "Add New MR";
             this.linkAddNewMR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddNewProject_LinkClicked);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.ImageKey = "Yes.bmp";
-            this.btnCancel.Location = new System.Drawing.Point(921, 709);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(97, 30);
-            this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "Close";
-            this.toolTip1.SetToolTip(this.btnCancel, "Press Close button to exit the FormBOM ");
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
-            // 
             // FrmMRs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -324,6 +324,7 @@
             this.Name = "FrmMRs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Material Request List";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMRs_FormClosing);
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).EndInit();
             this.MenuStripProjects.ResumeLayout(false);

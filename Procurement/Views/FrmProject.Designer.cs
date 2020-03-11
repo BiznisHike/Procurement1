@@ -407,6 +407,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Project";
             this.Activated += new System.EventHandler(this.FrmBOM_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmNewProject_FormClosing);
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmBOM_KeyDown);
             this.MenuStripSaleBOM.ResumeLayout(false);
