@@ -86,7 +86,7 @@
             this.btnSave.Size = new System.Drawing.Size(162, 30);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save and Export Excel";
-            this.toolTip1.SetToolTip(this.btnSave, "Press Save button to save the BOM");
+            this.toolTip1.SetToolTip(this.btnSave, "Save and close this window");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -102,8 +102,8 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(97, 30);
             this.btnCancel.TabIndex = 8;
-            this.btnCancel.Text = "Close";
-            this.toolTip1.SetToolTip(this.btnCancel, "Press Close button to exit the FormBOM ");
+            this.btnCancel.Text = "Cancel";
+            this.toolTip1.SetToolTip(this.btnCancel, "Close this window");
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 

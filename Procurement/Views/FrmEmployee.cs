@@ -230,6 +230,8 @@ namespace Procurement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Save and Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) return;
             this.Enabled = false;
             Employee empModel;
             List<ProjectEmployeeDetail> LstPed;
@@ -498,6 +500,8 @@ namespace Procurement
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) return;
             this.Close();
         }
 

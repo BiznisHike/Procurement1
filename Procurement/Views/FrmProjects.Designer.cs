@@ -36,6 +36,7 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDeleteProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCancel = new System.Windows.Forms.Button();
             this.MenuStripLoad = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -244,6 +245,23 @@
             this.itemDeleteProject.Text = "Delete";
             this.itemDeleteProject.Click += new System.EventHandler(this.itemDeleteProject_Click);
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.ImageKey = "Yes.bmp";
+            this.btnCancel.Location = new System.Drawing.Point(921, 709);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(97, 30);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "Close";
+            this.toolTip1.SetToolTip(this.btnCancel, "Close this window");
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
+            // 
             // MenuStripLoad
             // 
             this.MenuStripLoad.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -276,6 +294,7 @@
             this.btnOpenProject.Size = new System.Drawing.Size(97, 32);
             this.btnOpenProject.TabIndex = 9;
             this.btnOpenProject.Text = "Open";
+            this.toolTip1.SetToolTip(this.btnOpenProject, "Open selected project");
             this.btnOpenProject.UseVisualStyleBackColor = false;
             this.btnOpenProject.Click += new System.EventHandler(this.btnOpenProject_Click);
             // 
@@ -296,6 +315,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1133, 750);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.linkAddNewProject);
             this.Controls.Add(this.btnOpenProject);
             this.Controls.Add(this.dataGridViewProjects);
@@ -327,6 +347,7 @@
         private System.Windows.Forms.Button btnOpenProject;
         private System.Windows.Forms.LinkLabel linkAddNewProject;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
 

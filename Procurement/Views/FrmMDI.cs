@@ -35,7 +35,7 @@ namespace Procurement.Views
         private void FrmMDI_Load(object sender, EventArgs e)
         {
             OnFormLoad();
-            FrmProject_Show();
+            FrmProjects_Show();
         }
         private void OnFormLoad()
         {
@@ -47,9 +47,9 @@ namespace Procurement.Views
         private void projectsListToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            FrmProject_Show();
+            FrmProjects_Show();
         }
-        private void FrmProject_Show()
+        private void FrmProjects_Show()
         {
             FrmProjects.Instance.MdiParent = FrmMDI.Instance; //this;
             if (!FrmProjects.Instance.Visible)

@@ -399,13 +399,16 @@ namespace Procurement
         }
         private void itmCopyAllToDesignBOM_Click(object sender, EventArgs e)
         {
-            _dtDesignBOM = new DataTable();
-            _dtDesignBOM = _dtSalesBOM.Copy();
+            DialogResult dialogResult = MessageBox.Show("All data from Bid BOM will copy to Planned BOM... Sure?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                _dtDesignBOM = new DataTable();
+                _dtDesignBOM = _dtSalesBOM.Copy();
 
-            //dataGridView2.DataSource =dataGridView1.DataSource;
-            dataGridView2.DataSource = _dtDesignBOM;
-            tabControl1.SelectedTab = tabDesignBOM;
-
+                //dataGridView2.DataSource =dataGridView1.DataSource;
+                dataGridView2.DataSource = _dtDesignBOM;
+                tabControl1.SelectedTab = tabDesignBOM;
+            }
         }
 
         private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -452,12 +455,16 @@ namespace Procurement
         }
         private void itmCopyAllToActualBOM_Click(object sender, EventArgs e)
         {
-            _dtActualBOM = new DataTable();
-            _dtActualBOM = _dtDesignBOM.Copy();
+            DialogResult dialogResult = MessageBox.Show("All data from Planned BOM will copy to Actual BOM... Sure?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                _dtActualBOM = new DataTable();
+                _dtActualBOM = _dtDesignBOM.Copy();
 
-            //dataGridView2.DataSource =dataGridView1.DataSource;
-            dataGridView3.DataSource = _dtActualBOM;
-            tabControl1.SelectedTab = tabActualBOM;
+                //dataGridView2.DataSource =dataGridView1.DataSource;
+                dataGridView3.DataSource = _dtActualBOM;
+                tabControl1.SelectedTab = tabActualBOM;
+            }
         }
         private Project FillProjectModel()
         {
@@ -472,6 +479,9 @@ namespace Procurement
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Save and Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) return;
+
             this.Enabled = false;
             Project projModel;
             ProjectEmployeeDetail ped;
@@ -739,7 +749,11 @@ namespace Procurement
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)

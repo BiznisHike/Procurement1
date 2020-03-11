@@ -323,5 +323,12 @@ namespace Procurement
         {
             btnOpenProject_Click(null,null);
         }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) return;
+            this.Close();
+        }
     }
 }

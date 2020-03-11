@@ -41,6 +41,7 @@
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOpenProject = new System.Windows.Forms.Button();
             this.linkAddNewMR = new System.Windows.Forms.LinkLabel();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).BeginInit();
             this.MenuStripProjects.SuspendLayout();
             this.MenuStripLoad.SuspendLayout();
@@ -290,12 +291,30 @@
             this.linkAddNewMR.Text = "Add New MR";
             this.linkAddNewMR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddNewProject_LinkClicked);
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.ImageKey = "Yes.bmp";
+            this.btnCancel.Location = new System.Drawing.Point(921, 709);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(97, 30);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "Close";
+            this.toolTip1.SetToolTip(this.btnCancel, "Press Close button to exit the FormBOM ");
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
+            // 
             // FrmMRs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1133, 750);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.linkAddNewMR);
             this.Controls.Add(this.btnOpenProject);
             this.Controls.Add(this.dataGridViewProjects);
@@ -326,6 +345,7 @@
         private System.Windows.Forms.Button btnOpenProject;
         private System.Windows.Forms.LinkLabel linkAddNewMR;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
 

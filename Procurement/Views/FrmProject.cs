@@ -92,6 +92,8 @@ namespace Procurement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Save and Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) return;
             this.Enabled = false;
             Project projModel;
             ProjectEmployeeDetail ped;
@@ -130,23 +132,50 @@ namespace Procurement
 
             this.Enabled = true;
             //////////////update shared object///////////////////
-            _pc = new ProjectController();
+            //_pc = new ProjectController();
 
-            CurrentOpenProject.CurrentProject = _pc.GetModelByID(projModel.ProjectCode);
-            FrmMDI.Instance.Text = " Project Code: '" + projModel.ProjectCode +
-                        "' Project Name: '" + projModel.ProjectName +
-                        "' Project Customer: '" + projModel.Customer +
-                        "' Project End User: '" + projModel.EndUser + "'";
+            //CurrentOpenProject.CurrentProject = _pc.GetModelByID(projModel.ProjectCode);
+            //FrmMDI.Instance.Text = " Project Code: '" + projModel.ProjectCode +
+            //            "' Project Name: '" + projModel.ProjectName +
+            //            "' Project Customer: '" + projModel.Customer +
+            //            "' Project End User: '" + projModel.EndUser + "'";
 
             
-            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
-            {
-                if (Application.OpenForms[i].Name != "FrmMDI" && Application.OpenForms[i].Name != "FrmProject")
-                    Application.OpenForms[i].Close();
-            }
+            //for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            //{
+            //    if (Application.OpenForms[i].Name != "FrmMDI" && Application.OpenForms[i].Name != "FrmProject")
+            //        Application.OpenForms[i].Close();
+            //}
 
             ////////////
             this.Close();
+            FrmProjects_Show();
+        }
+        private void FrmProjects_Show()
+        {
+            FrmProjects.Instance.MdiParent = FrmMDI.Instance; //this;
+            if (!FrmProjects.Instance.Visible)
+            {
+                FrmProjects.Instance.Show();
+            }
+            else
+            {
+                if (FrmProjects.Instance.WindowState == FormWindowState.Minimized)
+                {
+                    FrmProjects.Instance.WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    FrmProjects.Instance.BringToFront();
+                }
+
+            }
+            // FrmBOM_Show();
+
+            //FrmBOM frmBOM = FrmBOM.Instance;
+            //frmBOM.Show();
+            // FrmBOM.Instance.Show();
+
         }
 
         private Project FillProjectModel()
@@ -178,6 +207,8 @@ namespace Procurement
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) return;
             this.Close();
         }
 

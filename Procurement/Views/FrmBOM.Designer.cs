@@ -129,6 +129,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.MenuStripLoad = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -161,7 +162,6 @@
             this.cbColumn3 = new System.Windows.Forms.CheckBox();
             this.cbColumn4 = new System.Windows.Forms.CheckBox();
             this.cbColumn5 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabSaleBOM.SuspendLayout();
@@ -1030,19 +1030,19 @@
             this.itmCopyAllToDesignBOM,
             this.copyFromExcelToSaleBOMToolStripMenuItem});
             this.MenuStripSaleBOM.Name = "contextMenuStrip1";
-            this.MenuStripSaleBOM.Size = new System.Drawing.Size(276, 52);
+            this.MenuStripSaleBOM.Size = new System.Drawing.Size(283, 52);
             // 
             // itmCopyAllToDesignBOM
             // 
             this.itmCopyAllToDesignBOM.Name = "itmCopyAllToDesignBOM";
-            this.itmCopyAllToDesignBOM.Size = new System.Drawing.Size(275, 24);
-            this.itmCopyAllToDesignBOM.Text = "Copy All Data to Design BOM";
+            this.itmCopyAllToDesignBOM.Size = new System.Drawing.Size(282, 24);
+            this.itmCopyAllToDesignBOM.Text = "Copy All Data to Planned BOM";
             this.itmCopyAllToDesignBOM.Click += new System.EventHandler(this.itmCopyAllToDesignBOM_Click);
             // 
             // copyFromExcelToSaleBOMToolStripMenuItem
             // 
             this.copyFromExcelToSaleBOMToolStripMenuItem.Name = "copyFromExcelToSaleBOMToolStripMenuItem";
-            this.copyFromExcelToSaleBOMToolStripMenuItem.Size = new System.Drawing.Size(275, 24);
+            this.copyFromExcelToSaleBOMToolStripMenuItem.Size = new System.Drawing.Size(282, 24);
             this.copyFromExcelToSaleBOMToolStripMenuItem.Text = "Paste Excel Data";
             this.copyFromExcelToSaleBOMToolStripMenuItem.Click += new System.EventHandler(this.copyFromExcelToSaleBOMToolStripMenuItem_Click);
             // 
@@ -1250,8 +1250,8 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(97, 30);
             this.btnCancel.TabIndex = 10;
-            this.btnCancel.Text = "Close";
-            this.toolTip1.SetToolTip(this.btnCancel, "Press Close button to exit the FormBOM ");
+            this.btnCancel.Text = "Cancel";
+            this.toolTip1.SetToolTip(this.btnCancel, "Close this window");
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -1267,9 +1267,26 @@
             this.btnSave.Size = new System.Drawing.Size(97, 30);
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
-            this.toolTip1.SetToolTip(this.btnSave, "Press Save button to save the BOM");
+            this.toolTip1.SetToolTip(this.btnSave, "Save and close this window");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageKey = "Yes.bmp";
+            this.button1.Location = new System.Drawing.Point(149, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 30);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Close";
+            this.toolTip1.SetToolTip(this.button1, "Press Close button to exit the FormBOM ");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MenuStripLoad
             // 
@@ -1684,23 +1701,6 @@
             this.cbColumn5.Text = "Column 5";
             this.cbColumn5.UseVisualStyleBackColor = true;
             this.cbColumn5.CheckedChanged += new System.EventHandler(this.cbColumn5_CheckedChanged);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.ImageKey = "Yes.bmp";
-            this.button1.Location = new System.Drawing.Point(149, 2);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 30);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Close";
-            this.toolTip1.SetToolTip(this.button1, "Press Close button to exit the FormBOM ");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmBOM
             // 

@@ -75,10 +75,10 @@
             this.btnSave.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSave.Location = new System.Drawing.Point(570, 482);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Location = new System.Drawing.Point(760, 593);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(73, 26);
+            this.btnSave.Size = new System.Drawing.Size(97, 32);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.FormEmployee.SetToolTip(this.btnSave, "press Save button to save the record");
@@ -88,30 +88,29 @@
             // txtEmployeeName
             // 
             this.txtEmployeeName.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.txtEmployeeName.Location = new System.Drawing.Point(130, 102);
-            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEmployeeName.Location = new System.Drawing.Point(173, 126);
+            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmployeeName.Name = "txtEmployeeName";
-            this.txtEmployeeName.Size = new System.Drawing.Size(150, 24);
+            this.txtEmployeeName.Size = new System.Drawing.Size(199, 28);
             this.txtEmployeeName.TabIndex = 0;
             this.FormEmployee.SetToolTip(this.txtEmployeeName, "Enter Employee Name");
             // 
             // txtEmployeeCode
             // 
-            this.txtEmployeeCode.Location = new System.Drawing.Point(130, 51);
-            this.txtEmployeeCode.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEmployeeCode.Location = new System.Drawing.Point(173, 63);
+            this.txtEmployeeCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmployeeCode.Multiline = true;
             this.txtEmployeeCode.Name = "txtEmployeeCode";
             this.txtEmployeeCode.ReadOnly = true;
-            this.txtEmployeeCode.Size = new System.Drawing.Size(77, 25);
+            this.txtEmployeeCode.Size = new System.Drawing.Size(101, 30);
             this.txtEmployeeCode.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(517, 189);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(689, 233);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(52, 17);
             this.label3.TabIndex = 11;
             this.label3.Text = "Project";
             this.label3.Visible = false;
@@ -119,20 +118,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 104);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(61, 128);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.Size = new System.Drawing.Size(111, 17);
             this.label2.TabIndex = 10;
             this.label2.Text = "Employee Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(61, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(107, 17);
             this.label1.TabIndex = 9;
             this.label1.Text = "Employee Code";
             // 
@@ -142,12 +139,12 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.ImageKey = "Yes.bmp";
-            this.btnCancel.Location = new System.Drawing.Point(493, 483);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Location = new System.Drawing.Point(657, 594);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(73, 24);
+            this.btnCancel.Size = new System.Drawing.Size(97, 30);
             this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Close";
+            this.btnCancel.Text = "Cancel";
             this.FormEmployee.SetToolTip(this.btnCancel, "Press Close button to exit the Form");
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -158,12 +155,12 @@
             this.MenuStripSaleBOM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itmCopyAllToDesignBOM});
             this.MenuStripSaleBOM.Name = "contextMenuStrip1";
-            this.MenuStripSaleBOM.Size = new System.Drawing.Size(203, 26);
+            this.MenuStripSaleBOM.Size = new System.Drawing.Size(240, 28);
             // 
             // itmCopyAllToDesignBOM
             // 
             this.itmCopyAllToDesignBOM.Name = "itmCopyAllToDesignBOM";
-            this.itmCopyAllToDesignBOM.Size = new System.Drawing.Size(202, 22);
+            this.itmCopyAllToDesignBOM.Size = new System.Drawing.Size(239, 24);
             this.itmCopyAllToDesignBOM.Text = "Copy All to Design BOM";
             // 
             // MenuStripDesignBOM
@@ -172,19 +169,19 @@
             this.MenuStripDesignBOM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itmCopyAllToActualBOM});
             this.MenuStripDesignBOM.Name = "contextMenuStrip1";
-            this.MenuStripDesignBOM.Size = new System.Drawing.Size(201, 26);
+            this.MenuStripDesignBOM.Size = new System.Drawing.Size(236, 28);
             // 
             // itmCopyAllToActualBOM
             // 
             this.itmCopyAllToActualBOM.Name = "itmCopyAllToActualBOM";
-            this.itmCopyAllToActualBOM.Size = new System.Drawing.Size(200, 22);
+            this.itmCopyAllToActualBOM.Size = new System.Drawing.Size(235, 24);
             this.itmCopyAllToActualBOM.Text = "Copy All to Actual BOM";
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -212,9 +209,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.txtEmployeeName);
-            this.splitContainer1.Size = new System.Drawing.Size(1028, 609);
-            this.splitContainer1.SplitterDistance = 140;
-            this.splitContainer1.SplitterWidth = 3;
+            this.splitContainer1.Size = new System.Drawing.Size(1371, 750);
+            this.splitContainer1.SplitterDistance = 186;
             this.splitContainer1.TabIndex = 0;
             // 
             // btnResize
@@ -224,10 +220,10 @@
             this.btnResize.ForeColor = System.Drawing.Color.Transparent;
             this.btnResize.ImageKey = "Left-right.bmp";
             this.btnResize.ImageList = this.imageList1;
-            this.btnResize.Location = new System.Drawing.Point(10, 5);
-            this.btnResize.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResize.Location = new System.Drawing.Point(13, 6);
+            this.btnResize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnResize.Name = "btnResize";
-            this.btnResize.Size = new System.Drawing.Size(30, 32);
+            this.btnResize.Size = new System.Drawing.Size(40, 39);
             this.btnResize.TabIndex = 0;
             this.FormEmployee.SetToolTip(this.btnResize, "Resize");
             this.btnResize.UseVisualStyleBackColor = false;
@@ -397,10 +393,10 @@
             this.btnNewEmployee.ForeColor = System.Drawing.Color.Transparent;
             this.btnNewEmployee.ImageKey = "Create.bmp";
             this.btnNewEmployee.ImageList = this.imageList1;
-            this.btnNewEmployee.Location = new System.Drawing.Point(45, 5);
-            this.btnNewEmployee.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewEmployee.Location = new System.Drawing.Point(60, 6);
+            this.btnNewEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNewEmployee.Name = "btnNewEmployee";
-            this.btnNewEmployee.Size = new System.Drawing.Size(30, 32);
+            this.btnNewEmployee.Size = new System.Drawing.Size(40, 39);
             this.btnNewEmployee.TabIndex = 1;
             this.FormEmployee.SetToolTip(this.btnNewEmployee, "Add a new Employee");
             this.btnNewEmployee.UseVisualStyleBackColor = false;
@@ -414,15 +410,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewEmployees.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployees.Location = new System.Drawing.Point(9, 42);
-            this.dataGridViewEmployees.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewEmployees.Location = new System.Drawing.Point(12, 52);
+            this.dataGridViewEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowHeadersVisible = false;
             this.dataGridViewEmployees.RowHeadersWidth = 51;
             this.dataGridViewEmployees.RowTemplate.Height = 24;
             this.dataGridViewEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewEmployees.Size = new System.Drawing.Size(129, 526);
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(171, 647);
             this.dataGridViewEmployees.TabIndex = 2;
             this.dataGridViewEmployees.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewEmployees_CellMouseDown);
             this.dataGridViewEmployees.SelectionChanged += new System.EventHandler(this.dataGridViewEmployees_SelectionChanged);
@@ -435,10 +431,10 @@
             this.btnShowPassword.ForeColor = System.Drawing.Color.Transparent;
             this.btnShowPassword.ImageKey = "show.png";
             this.btnShowPassword.ImageList = this.imageList1;
-            this.btnShowPassword.Location = new System.Drawing.Point(280, 141);
-            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.btnShowPassword.Location = new System.Drawing.Point(373, 174);
+            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShowPassword.Name = "btnShowPassword";
-            this.btnShowPassword.Size = new System.Drawing.Size(30, 32);
+            this.btnShowPassword.Size = new System.Drawing.Size(40, 39);
             this.btnShowPassword.TabIndex = 22;
             this.btnShowPassword.UseVisualStyleBackColor = false;
             this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
@@ -446,31 +442,29 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(74, 147);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(99, 181);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.Size = new System.Drawing.Size(69, 17);
             this.label6.TabIndex = 29;
             this.label6.Text = "Password";
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.txtPassword.Location = new System.Drawing.Point(130, 145);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPassword.Location = new System.Drawing.Point(173, 178);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
-            this.txtPassword.Size = new System.Drawing.Size(150, 24);
+            this.txtPassword.Size = new System.Drawing.Size(199, 28);
             this.txtPassword.TabIndex = 1;
             this.FormEmployee.SetToolTip(this.txtPassword, "Enter Password");
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 235);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(51, 289);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 13);
+            this.label5.Size = new System.Drawing.Size(123, 17);
             this.label5.TabIndex = 28;
             this.label5.Text = "Permitted Projects";
             // 
@@ -479,24 +473,24 @@
             this.dataGridViewSelectProjects.AllowUserToAddRows = false;
             this.dataGridViewSelectProjects.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewSelectProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSelectProjects.Location = new System.Drawing.Point(130, 235);
-            this.dataGridViewSelectProjects.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewSelectProjects.Location = new System.Drawing.Point(173, 289);
+            this.dataGridViewSelectProjects.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewSelectProjects.Name = "dataGridViewSelectProjects";
             this.dataGridViewSelectProjects.RowHeadersVisible = false;
             this.dataGridViewSelectProjects.RowHeadersWidth = 51;
             this.dataGridViewSelectProjects.RowTemplate.Height = 24;
             this.dataGridViewSelectProjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSelectProjects.Size = new System.Drawing.Size(512, 232);
+            this.dataGridViewSelectProjects.Size = new System.Drawing.Size(683, 286);
             this.dataGridViewSelectProjects.TabIndex = 27;
             // 
             // cmbManagers
             // 
             this.cmbManagers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbManagers.FormattingEnabled = true;
-            this.cmbManagers.Location = new System.Drawing.Point(350, 189);
-            this.cmbManagers.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbManagers.Location = new System.Drawing.Point(467, 233);
+            this.cmbManagers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbManagers.Name = "cmbManagers";
-            this.cmbManagers.Size = new System.Drawing.Size(150, 21);
+            this.cmbManagers.Size = new System.Drawing.Size(199, 24);
             this.cmbManagers.TabIndex = 3;
             this.FormEmployee.SetToolTip(this.cmbManagers, "Select Manager");
             this.cmbManagers.Visible = false;
@@ -505,10 +499,10 @@
             // 
             this.cmbEmployeeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeeType.FormattingEnabled = true;
-            this.cmbEmployeeType.Location = new System.Drawing.Point(130, 189);
-            this.cmbEmployeeType.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbEmployeeType.Location = new System.Drawing.Point(173, 233);
+            this.cmbEmployeeType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbEmployeeType.Name = "cmbEmployeeType";
-            this.cmbEmployeeType.Size = new System.Drawing.Size(150, 21);
+            this.cmbEmployeeType.Size = new System.Drawing.Size(199, 24);
             this.cmbEmployeeType.TabIndex = 2;
             this.FormEmployee.SetToolTip(this.cmbEmployeeType, "Select Employee Type");
             this.cmbEmployeeType.SelectedIndexChanged += new System.EventHandler(this.cmbEmployeeType_SelectedIndexChanged);
@@ -516,10 +510,9 @@
             // lblManager
             // 
             this.lblManager.AutoSize = true;
-            this.lblManager.Location = new System.Drawing.Point(298, 189);
-            this.lblManager.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblManager.Location = new System.Drawing.Point(397, 233);
             this.lblManager.Name = "lblManager";
-            this.lblManager.Size = new System.Drawing.Size(49, 13);
+            this.lblManager.Size = new System.Drawing.Size(64, 17);
             this.lblManager.TabIndex = 23;
             this.lblManager.Text = "Manager";
             this.lblManager.Visible = false;
@@ -527,10 +520,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 189);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(67, 233);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 13);
+            this.label4.Size = new System.Drawing.Size(106, 17);
             this.label4.TabIndex = 21;
             this.label4.Text = "Employee Type";
             // 
@@ -538,10 +530,10 @@
             // 
             this.cmbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjects.FormattingEnabled = true;
-            this.cmbProjects.Location = new System.Drawing.Point(560, 187);
-            this.cmbProjects.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbProjects.Location = new System.Drawing.Point(747, 230);
+            this.cmbProjects.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbProjects.Name = "cmbProjects";
-            this.cmbProjects.Size = new System.Drawing.Size(150, 21);
+            this.cmbProjects.Size = new System.Drawing.Size(199, 24);
             this.cmbProjects.TabIndex = 4;
             this.FormEmployee.SetToolTip(this.cmbProjects, "Select Project ");
             this.cmbProjects.Visible = false;
@@ -552,24 +544,24 @@
             this.MenuStripProjects.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemDeleteProject});
             this.MenuStripProjects.Name = "contextMenuStrip1";
-            this.MenuStripProjects.Size = new System.Drawing.Size(108, 26);
+            this.MenuStripProjects.Size = new System.Drawing.Size(123, 28);
             // 
             // itemDeleteProject
             // 
             this.itemDeleteProject.Name = "itemDeleteProject";
-            this.itemDeleteProject.Size = new System.Drawing.Size(107, 22);
+            this.itemDeleteProject.Size = new System.Drawing.Size(122, 24);
             this.itemDeleteProject.Text = "Delete";
             this.itemDeleteProject.Click += new System.EventHandler(this.itemDeleteProject_Click);
             // 
             // FrmEmployee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1371, 750);
             this.Controls.Add(this.splitContainer1);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employees";
