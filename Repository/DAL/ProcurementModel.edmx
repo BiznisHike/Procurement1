@@ -12,9 +12,9 @@
           <Property Name="RowAuto" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProjectCode" Type="decimal" Precision="10" Scale="0" />
           <Property Name="BOMTypeCode" Type="smallint" />
-          <Property Name="Column1" Type="nvarchar" MaxLength="500" />
-          <Property Name="Column2" Type="nvarchar" MaxLength="500" />
-          <Property Name="Column3" Type="nvarchar" MaxLength="500" />
+          <Property Name="Category1" Type="nvarchar" MaxLength="500" />
+          <Property Name="Category2" Type="nvarchar" MaxLength="500" />
+          <Property Name="Category3" Type="nvarchar" MaxLength="500" />
           <Property Name="SORef" Type="nvarchar" MaxLength="500" />
           <Property Name="Sr" Type="nvarchar" MaxLength="500" />
           <Property Name="ProductCategory" Type="nvarchar" MaxLength="500" />
@@ -33,6 +33,11 @@
           <Property Name="ExtCost" Type="nvarchar" MaxLength="500" />
           <Property Name="UnitPrice" Type="nvarchar" MaxLength="500" />
           <Property Name="ExtPrice" Type="nvarchar" MaxLength="500" />
+          <Property Name="Column1" Type="nvarchar" MaxLength="500" />
+          <Property Name="Column2" Type="nvarchar" MaxLength="500" />
+          <Property Name="Column3" Type="nvarchar" MaxLength="500" />
+          <Property Name="Column4" Type="nvarchar" MaxLength="500" />
+          <Property Name="Column5" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="BOMType">
           <Key>
@@ -290,12 +295,12 @@
           <Key>
             <PropertyRef Name="RowAuto" />
           </Key>
+          <Property Name="Category1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Category2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Category3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ProjectCode" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="RowAuto" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BOMTypeCode" Type="Int16" />
-          <Property Name="Column1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Column2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Column3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="SORef" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Sr" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ProductCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -316,6 +321,11 @@
           <NavigationProperty Name="BOMType" Relationship="ProcurementModel.FK_BOM_BOMType" FromRole="BOM" ToRole="BOMType" />
           <NavigationProperty Name="Project" Relationship="ProcurementModel.FK_BOM_Project" FromRole="BOM" ToRole="Project" />
           <Property Name="ExtPrice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Column1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Column2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Column3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Column4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Column5" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BOMType">
           <Key>
@@ -510,9 +520,14 @@
           <EntitySetMapping Name="BOMs">
             <EntityTypeMapping TypeName="ProcurementModel.BOM">
               <MappingFragment StoreEntitySet="BOM">
+                <ScalarProperty Name="Column5" ColumnName="Column5" />
+                <ScalarProperty Name="Column4" ColumnName="Column4" />
                 <ScalarProperty Name="Column3" ColumnName="Column3" />
                 <ScalarProperty Name="Column2" ColumnName="Column2" />
                 <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Category3" ColumnName="Category3" />
+                <ScalarProperty Name="Category2" ColumnName="Category2" />
+                <ScalarProperty Name="Category1" ColumnName="Category1" />
                 <ScalarProperty Name="ExtCost" ColumnName="ExtCost" />
                 <ScalarProperty Name="ExtPrice" ColumnName="ExtPrice" />
                 <ScalarProperty Name="Sr" ColumnName="Sr" />

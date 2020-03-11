@@ -164,6 +164,7 @@ namespace Procurement
         
         private void dataGridViewProjects_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 // Add this

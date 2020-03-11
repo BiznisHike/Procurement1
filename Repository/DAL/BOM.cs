@@ -14,12 +14,12 @@ namespace Repository.DAL
     
     public partial class BOM
     {
+        public string Category1 { get; set; }
+        public string Category2 { get; set; }
+        public string Category3 { get; set; }
         public Nullable<decimal> ProjectCode { get; set; }
         public decimal RowAuto { get; set; }
         public Nullable<short> BOMTypeCode { get; set; }
-        public string Column1 { get; set; }
-        public string Column2 { get; set; }
-        public string Column3 { get; set; }
         public string SORef { get; set; }
         public string Sr { get; set; }
         public string ProductCategory { get; set; }
@@ -38,6 +38,11 @@ namespace Repository.DAL
         public string ExtCost { get; set; }
         public string UnitPrice { get; set; }
         public string ExtPrice { get; set; }
+        public string Column1 { get; set; }
+        public string Column2 { get; set; }
+        public string Column3 { get; set; }
+        public string Column4 { get; set; }
+        public string Column5 { get; set; }
     
         public virtual BOMType BOMType { get; set; }
         public virtual Project Project { get; set; }

@@ -11,6 +11,7 @@ using StaticClasses;
 using Procurement.Views;
 using System.Text.RegularExpressions;
 using System.Text;
+using System.Drawing;
 
 namespace Procurement
 {
@@ -64,11 +65,12 @@ namespace Procurement
                 ClearAll();
 
                 _currentLoadedProject = CurrentOpenProject.CurrentProject;
-                _columnNames = new List<String> {"Column1","Column2","Column3", "SORef",
+                _columnNames = new List<String> {"Category1","Category2","Category3", "SORef",
                                                 "Sr","ProductCategory","Product","CostHead",
                                                 "CostSubHead","System","Area","Panel",
                                                 "Category","Manufacturer","PartNo","Description",
                                                 "Qty","UnitCost","ExtCost","UnitPrice","ExtPrice",
+                                                "Column1","Column2","Column3","Column4","Column5",
                                             };
                 if (_currentLoadedProject == null)
                 {
@@ -120,6 +122,10 @@ namespace Procurement
         }
         private void loadBOMToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+            //{ 
+
+            //}
             try
             {
                 OpenFileDialog dlg_im = new OpenFileDialog();
@@ -146,7 +152,7 @@ namespace Procurement
                     }
                     string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
 
-
+                    //firstSheetName = "BOM$";
 
                     OleDbCommand cmd = new OleDbCommand("SELECT * FROM [" + firstSheetName + "]", Con);
 
@@ -189,6 +195,11 @@ namespace Procurement
                     dtBOM.Columns.Add(_columnNames[18]);
                     dtBOM.Columns.Add(_columnNames[19]);
                     dtBOM.Columns.Add(_columnNames[20]);
+                    dtBOM.Columns.Add(_columnNames[21]);
+                    dtBOM.Columns.Add(_columnNames[22]);
+                    dtBOM.Columns.Add(_columnNames[23]);
+                    dtBOM.Columns.Add(_columnNames[24]);
+                    dtBOM.Columns.Add(_columnNames[25]);
 
                     dataGridView1.AutoGenerateColumns = false;
 
@@ -361,16 +372,31 @@ namespace Procurement
             }
         }
 
-        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //mnuCopyAllToDesignBOM.ShowDropDown();
             //contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
+
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y-50);
+                    //flowLayoutPanel1.Show();
+                    flowLayoutPanel1.Visible = true;
+                    
+                }
+            }
+
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 MenuStripSaleBOM.Show(Cursor.Position);
             }
-        }
 
+
+        }
         private void itmCopyAllToDesignBOM_Click(object sender, EventArgs e)
         {
             _dtDesignBOM = new DataTable();
@@ -381,17 +407,44 @@ namespace Procurement
             tabControl1.SelectedTab = tabDesignBOM;
 
         }
-        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+
+        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y - 50);
+                    //flowLayoutPanel1.Show();
+                    flowLayoutPanel1.Visible = true;
+
+                }
+            }
+
             //mnuCopyAllToDesignBOM.ShowDropDown();
             //contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 MenuStripDesignBOM.Show(Cursor.Position);
             }
         }
-        private void dataGridView3_MouseClick(object sender, MouseEventArgs e)
+
+        private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y - 50);
+                    //flowLayoutPanel1.Show();
+                    flowLayoutPanel1.Visible = true;
+
+                }
+            }
+
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 MenuStripActualBOM.Show(Cursor.Position);
@@ -556,14 +609,14 @@ namespace Procurement
                 //cntr += 1;
                 //MessageBox.Show(dataGridView1.Columns[cntr].Name);
                 //string columnName = dataGridView1.Columns[cntr].Name;
-                var cellObj= pGvr.Cells["Column1_" + pBOMTypeCode];
-                lObjBom.Column1 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
-                
-                cellObj = pGvr.Cells["Column2_" + pBOMTypeCode];
-                lObjBom.Column2 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
-                
-                cellObj = pGvr.Cells["Column3_" + pBOMTypeCode];
-                lObjBom.Column3 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+                var cellObj = pGvr.Cells["Category1_" + pBOMTypeCode];
+                lObjBom.Category1 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+
+                cellObj = pGvr.Cells["Category2_" + pBOMTypeCode];
+                lObjBom.Category2 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+
+                cellObj = pGvr.Cells["Category3_" + pBOMTypeCode];
+                lObjBom.Category3 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
 
                 cellObj = pGvr.Cells["SORef" + pBOMTypeCode];
                 lObjBom.SORef = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
@@ -619,6 +672,26 @@ namespace Procurement
                 cellObj = pGvr.Cells["ExtPrice" + pBOMTypeCode];
                 lObjBom.ExtPrice = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
 
+                cellObj = pGvr.Cells["Column1_" + pBOMTypeCode];
+                lObjBom.Column1 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+
+                cellObj = pGvr.Cells["Column2_" + pBOMTypeCode];
+                lObjBom.Column2 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+
+                cellObj = pGvr.Cells["Column3_" + pBOMTypeCode];
+                lObjBom.Column3 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+
+                cellObj = pGvr.Cells["Column4_" + pBOMTypeCode];
+                lObjBom.Column4 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+
+                cellObj = pGvr.Cells["Column5_" + pBOMTypeCode];
+                lObjBom.Column5 = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
+
+
+
+
+
+
                 pLstObjBom.Add(lObjBom);
                 pProjectModel.BOMs.Add(lObjBom);
 
@@ -668,20 +741,6 @@ namespace Procurement
         {
             this.Close();
         }
-
-
-
-
-        private void dataGridViewProjects_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
-            {
-
-                MenuStripProjects.Show(Cursor.Position);
-            }
-        }
-
-
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -819,9 +878,9 @@ namespace Procurement
             {
                 fields = row.Split('\t');
                 DataRow newRow = dtRef.NewRow();
-                newRow["Column1"] = fields[0];
-                newRow["Column2"] = fields[1];
-                newRow["Column3"] = fields[2];
+                newRow["Category1"] = fields[0];
+                newRow["Category2"] = fields[1];
+                newRow["Category3"] = fields[2];
                 newRow["SORef"] = fields[3];
                 newRow["Sr"] = fields[4];
                 newRow["ProductCategory"] = fields[5];
@@ -840,6 +899,13 @@ namespace Procurement
                 newRow["ExtCost"] = fields[18];
                 newRow["UnitPrice"] = fields[19];
                 newRow["ExtPrice"] = fields[20];
+                newRow["Column1"] = fields[21];
+                newRow["Column2"] = fields[22];
+                newRow["Column3"] = fields[23];
+                newRow["Column4"] = fields[24];
+                newRow["Column5"] = fields[25];
+
+
                 dtRef.Rows.Add(newRow);
 
             }
@@ -928,6 +994,451 @@ namespace Procurement
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Visible = false;
+        }
 
+        private void cbArea_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbArea.Checked == true)
+            {
+                Area1.Visible = true;
+                Area2.Visible = true;
+                Area3.Visible = true;
+            }
+            else
+            {
+                Area1.Visible = false;
+                Area2.Visible = false;
+                Area3.Visible = false;
+
+            }
+        }
+
+        private void cbCategory_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCategory.Checked == true)
+            {
+                Category1.Visible = true;
+                Category2.Visible = true;
+                Category3.Visible = true;
+            }
+            else
+            {
+                Category1.Visible = false;
+                Category2.Visible = false;
+                Category3.Visible = false;
+                
+            }
+        }
+
+        private void cbCategory1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCategory1.Checked == true)
+            {
+                Category1_1.Visible = true;
+                Category1_2.Visible = true;
+                Category1_3.Visible = true;
+            }
+            else
+            {
+                Category1_1.Visible = false;
+                Category1_2.Visible = false;
+                Category1_3.Visible = false;
+
+            }
+        }
+
+        private void cbCategory2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCategory2.Checked == true)
+            {
+                Category2_1.Visible = true;
+                Category2_2.Visible = true;
+                Category2_3.Visible = true;
+            }
+            else
+            {
+                Category2_1.Visible = false;
+                Category2_2.Visible = false;
+                Category2_3.Visible = false;
+
+            }
+        }
+
+        private void cbCategory3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCategory3.Checked == true)
+            {
+                Category3_1.Visible = true;
+                Category3_2.Visible = true;
+                Category3_3.Visible = true;
+            }
+            else
+            {
+                Category3_1.Visible = false;
+                Category3_2.Visible = false;
+                Category3_3.Visible = false;
+
+            }
+        }
+
+        private void cbColumn1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbColumn1.Checked == true)
+            {
+                Column1_1.Visible = true;
+                Column1_2.Visible = true;
+                Column1_3.Visible = true;
+            }
+            else
+            {
+                Column1_1.Visible = false;
+                Column1_2.Visible = false;
+                Column1_3.Visible = false;
+
+            }
+        }
+
+        private void cbColumn2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbColumn2.Checked == true)
+            {
+                Column2_1.Visible = true;
+                Column2_2.Visible = true;
+                Column2_3.Visible = true;
+            }
+            else
+            {
+                Column2_1.Visible = false;
+                Column2_2.Visible = false;
+                Column2_3.Visible = false;
+
+            }
+        }
+
+        private void cbColumn3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbColumn3.Checked == true)
+            {
+                Column3_1.Visible = true;
+                Column3_2.Visible = true;
+                Column3_3.Visible = true;
+            }
+            else
+            {
+                Column3_1.Visible = false;
+                Column3_2.Visible = false;
+                Column3_3.Visible = false;
+
+            }
+        }
+
+        private void cbColumn4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbColumn4.Checked == true)
+            {
+                Column4_1.Visible = true;
+                Column4_2.Visible = true;
+                Column4_3.Visible = true;
+            }
+            else
+            {
+                Column4_1.Visible = false;
+                Column4_2.Visible = false;
+                Column4_3.Visible = false;
+
+            }
+        }
+
+        private void cbColumn5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbColumn5.Checked == true)
+            {
+                Column5_1.Visible = true;
+                Column5_2.Visible = true;
+                Column5_3.Visible = true;
+            }
+            else
+            {
+                Column5_1.Visible = false;
+                Column5_2.Visible = false;
+                Column5_3.Visible = false;
+
+            }
+        }
+
+        private void cbCostHead_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCostHead.Checked == true)
+            {
+                CostHead1.Visible = true;
+                CostHead2.Visible = true;
+                CostHead3.Visible = true;
+            }
+            else
+            {
+                CostHead1.Visible = false;
+                CostHead2.Visible = false;
+                CostHead3.Visible = false;
+
+            }
+        }
+
+        private void cbCostSubHead_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCostSubHead.Checked == true)
+            {
+                CostSubHead1.Visible = true;
+                CostSubHead2.Visible = true;
+                CostSubHead3.Visible = true;
+            }
+            else
+            {
+                CostSubHead1.Visible = false;
+                CostSubHead2.Visible = false;
+                CostSubHead3.Visible = false;
+
+            }
+        }
+
+        private void cbDescription_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbDescription.Checked == true)
+            {
+                Description1.Visible = true;
+                Description2.Visible = true;
+                Description3.Visible = true;
+            }
+            else
+            {
+                Description1.Visible = false;
+                Description2.Visible = false;
+                Description3.Visible = false;
+
+            }
+        }
+
+        private void cbExtCost_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbExtCost.Checked == true)
+            {
+                ExtCost1.Visible = true;
+                ExtCost2.Visible = true;
+                ExtCost3.Visible = true;
+            }
+            else
+            {
+                ExtCost1.Visible = false;
+                ExtCost2.Visible = false;
+                ExtCost3.Visible = false;
+
+            }
+        }
+
+        private void cbExtPrice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbExtPrice.Checked == true)
+            {
+                ExtPrice1.Visible = true;
+                ExtPrice2.Visible = true;
+                ExtPrice3.Visible = true;
+            }
+            else
+            {
+                ExtPrice1.Visible = false;
+                ExtPrice2.Visible = false;
+                ExtPrice3.Visible = false;
+
+            }
+        }
+
+        private void cbManufacturer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbManufacturer.Checked == true)
+            {
+                Manufacturer1.Visible = true;
+                Manufacturer2.Visible = true;
+                Manufacturer3.Visible = true;
+            }
+            else
+            {
+                Manufacturer1.Visible = false;
+                Manufacturer2.Visible = false;
+                Manufacturer3.Visible = false;
+
+            }
+        }
+
+        private void cbPanel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbPanel.Checked == true)
+            {
+                Panel1.Visible = true;
+                Panel2.Visible = true;
+                Panel3.Visible = true;
+            }
+            else
+            {
+                Panel1.Visible = false;
+                Panel2.Visible = false;
+                Panel3.Visible = false;
+
+            }
+        }
+
+        private void cbPartNo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbPartNo.Checked == true)
+            {
+                PartNo1.Visible = true;
+                PartNo2.Visible = true;
+                PartNo3.Visible = true;
+            }
+            else
+            {
+                PartNo1.Visible = false;
+                PartNo2.Visible = false;
+                PartNo3.Visible = false;
+
+            }
+        }
+
+        private void cbProduct_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbProduct.Checked == true)
+            {
+                Product1.Visible = true;
+                Product2.Visible = true;
+                Product3.Visible = true;
+            }
+            else
+            {
+                Product1.Visible = false;
+                Product2.Visible = false;
+                Product3.Visible = false;
+
+            }
+        }
+
+        private void cbProductCategory_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbProductCategory.Checked == true)
+            {
+                ProductCategory1.Visible = true;
+                ProductCategory2.Visible = true;
+                ProductCategory3.Visible = true;
+            }
+            else
+            {
+                ProductCategory1.Visible = false;
+                ProductCategory2.Visible = false;
+                ProductCategory3.Visible = false;
+
+            }
+        }
+
+        private void cbQty_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbQty.Checked == true)
+            {
+                Qty1.Visible = true;
+                Qty2.Visible = true;
+                Qty3.Visible = true;
+            }
+            else
+            {
+                Qty1.Visible = false;
+                Qty2.Visible = false;
+                Qty3.Visible = false;
+
+            }
+        }
+
+        private void cbSORef_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSORef.Checked == true)
+            {
+                SORef1.Visible = true;
+                SORef2.Visible = true;
+                SORef3.Visible = true;
+            }
+            else
+            {
+                SORef1.Visible = false;
+                SORef2.Visible = false;
+                SORef3.Visible = false;
+
+            }
+        }
+
+        private void cbSr_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSr.Checked == true)
+            {
+                Sr1.Visible = true;
+                Sr2.Visible = true;
+                Sr3.Visible = true;
+            }
+            else
+            {
+                Sr1.Visible = false;
+                Sr2.Visible = false;
+                Sr3.Visible = false;
+
+            }
+        }
+
+        private void cbSystem_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSystem.Checked == true)
+            {
+                System1.Visible = true;
+                System2.Visible = true;
+                System3.Visible = true;
+            }
+            else
+            {
+                System1.Visible = false;
+                System2.Visible = false;
+                System3.Visible = false;
+
+            }
+        }
+
+        private void cbUnitCost_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbUnitCost.Checked == true)
+            {
+                UnitCost1.Visible = true;
+                UnitCost2.Visible = true;
+                UnitCost3.Visible = true;
+            }
+            else
+            {
+                UnitCost1.Visible = false;
+                UnitCost2.Visible = false;
+                UnitCost3.Visible = false;
+
+            }
+        }
+
+        private void cbUnitPrice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbUnitPrice.Checked == true)
+            {
+                UnitPrice1.Visible = true;
+                UnitPrice2.Visible = true;
+                UnitPrice3.Visible = true;
+            }
+            else
+            {
+                UnitPrice1.Visible = false;
+                UnitPrice2.Visible = false;
+                UnitPrice3.Visible = false;
+
+            }
+        }
     }
 }

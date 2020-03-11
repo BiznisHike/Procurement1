@@ -65,9 +65,9 @@ namespace Procurement
 
                 _currentLoadedProject = CurrentOpenProject.CurrentProject;
 
-                List<BOM> list2 = _currentLoadedProject.BOMs.Where(y => y.BOMTypeCode == 2).ToList();
-                if (list2.Count == 0) { MessageBox.Show("Please first create BOM"); btnSave.Enabled=false; return; }
-                _dtDesignBOM = ToDataTable<BOM>(list2);
+                List<BOM> list3 = _currentLoadedProject.BOMs.Where(y => y.BOMTypeCode == 3).ToList();
+                if (list3.Count == 0) { MessageBox.Show("Please first create BOM"); btnSave.Enabled=false; return; }
+                _dtDesignBOM = ToDataTable<BOM>(list3);
                 _dtDesignBOM.Columns.Remove("ProjectCode");
                 _dtDesignBOM.Columns.Remove("RowAuto");
                 _dtDesignBOM.Columns.Remove("BomTypeCode");

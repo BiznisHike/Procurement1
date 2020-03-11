@@ -56,9 +56,9 @@
             this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Select2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column1_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category1_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category2_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category3_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SORef2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sr2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductCategory2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +77,11 @@
             this.ExtCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExtPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.MenuStripSaleBOM.SuspendLayout();
             this.MenuStripDesignBOM.SuspendLayout();
@@ -103,6 +108,7 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -110,9 +116,9 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select2,
-            this.Column1_2,
-            this.Column2_2,
-            this.Column3_2,
+            this.Category1_2,
+            this.Category2_2,
+            this.Category3_2,
             this.SORef2,
             this.Sr2,
             this.ProductCategory2,
@@ -130,7 +136,12 @@
             this.UnitCost2,
             this.ExtCost2,
             this.UnitPrice2,
-            this.ExtPrice2});
+            this.ExtPrice2,
+            this.Column1_2,
+            this.Column2_2,
+            this.Column3_2,
+            this.Column4_2,
+            this.Column5_2});
             this.dataGridView2.Location = new System.Drawing.Point(12, 11);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
@@ -513,29 +524,29 @@
             this.Select2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Select2.Width = 30;
             // 
-            // Column1_2
+            // Category1_2
             // 
-            this.Column1_2.DataPropertyName = "Column1";
-            this.Column1_2.HeaderText = "Column 1";
-            this.Column1_2.MinimumWidth = 6;
-            this.Column1_2.Name = "Column1_2";
-            this.Column1_2.Width = 125;
+            this.Category1_2.DataPropertyName = "Category1";
+            this.Category1_2.HeaderText = "Category 1";
+            this.Category1_2.MinimumWidth = 6;
+            this.Category1_2.Name = "Category1_2";
+            this.Category1_2.Width = 125;
             // 
-            // Column2_2
+            // Category2_2
             // 
-            this.Column2_2.DataPropertyName = "Column2";
-            this.Column2_2.HeaderText = "Column 2";
-            this.Column2_2.MinimumWidth = 6;
-            this.Column2_2.Name = "Column2_2";
-            this.Column2_2.Width = 125;
+            this.Category2_2.DataPropertyName = "Category2";
+            this.Category2_2.HeaderText = "Category 2";
+            this.Category2_2.MinimumWidth = 6;
+            this.Category2_2.Name = "Category2_2";
+            this.Category2_2.Width = 125;
             // 
-            // Column3_2
+            // Category3_2
             // 
-            this.Column3_2.DataPropertyName = "Column3";
-            this.Column3_2.HeaderText = "Column 3";
-            this.Column3_2.MinimumWidth = 6;
-            this.Column3_2.Name = "Column3_2";
-            this.Column3_2.Width = 125;
+            this.Category3_2.DataPropertyName = "Category3";
+            this.Category3_2.HeaderText = "Category 3";
+            this.Category3_2.MinimumWidth = 6;
+            this.Category3_2.Name = "Category3_2";
+            this.Category3_2.Width = 125;
             // 
             // SORef2
             // 
@@ -681,6 +692,46 @@
             this.ExtPrice2.Name = "ExtPrice2";
             this.ExtPrice2.Width = 125;
             // 
+            // Column1_2
+            // 
+            this.Column1_2.DataPropertyName = "Column1";
+            this.Column1_2.HeaderText = "Column 1";
+            this.Column1_2.MinimumWidth = 6;
+            this.Column1_2.Name = "Column1_2";
+            this.Column1_2.Width = 125;
+            // 
+            // Column2_2
+            // 
+            this.Column2_2.DataPropertyName = "Column2";
+            this.Column2_2.HeaderText = "Column 2";
+            this.Column2_2.MinimumWidth = 6;
+            this.Column2_2.Name = "Column2_2";
+            this.Column2_2.Width = 125;
+            // 
+            // Column3_2
+            // 
+            this.Column3_2.DataPropertyName = "Column3";
+            this.Column3_2.HeaderText = "Column 3";
+            this.Column3_2.MinimumWidth = 6;
+            this.Column3_2.Name = "Column3_2";
+            this.Column3_2.Width = 125;
+            // 
+            // Column4_2
+            // 
+            this.Column4_2.DataPropertyName = "Column4";
+            this.Column4_2.HeaderText = "Column 4";
+            this.Column4_2.MinimumWidth = 6;
+            this.Column4_2.Name = "Column4_2";
+            this.Column4_2.Width = 125;
+            // 
+            // Column5_2
+            // 
+            this.Column5_2.DataPropertyName = "Column5";
+            this.Column5_2.HeaderText = "Column 5";
+            this.Column5_2.MinimumWidth = 6;
+            this.Column5_2.Name = "Column5_2";
+            this.Column5_2.Width = 125;
+            // 
             // FrmMR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -737,9 +788,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice4;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice4;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Select2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category1_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category2_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category3_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SORef2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sr2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory2;
@@ -758,6 +809,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost2;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5_2;
     }
 }
 

@@ -33,74 +33,9 @@
             this.txtBOMFilePath = new System.Windows.Forms.TextBox();
             this.btnLoadBOM = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabSaleBOM = new System.Windows.Forms.TabPage();
-            this.tabDesignBOM = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column1_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SORef2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sr2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductCategory2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostHead2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostSubHead2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.System2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Area2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Panel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Manufacturer2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PartNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExtCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExtPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabActualBOM = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.Column1_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SORef3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sr3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductCategory3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostHead3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostSubHead3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.System3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Area3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Panel3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Manufacturer3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PartNo3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitCost3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExtCost3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExtPrice3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MenuStripSaleBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.itmCopyAllToDesignBOM = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyFromExcelToSaleBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStripDesignBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.itmCopyAllToActualBOM = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyFromExcelToDesignBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.MenuStripProjects = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.itemDeleteProject = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.MenuStripLoad = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStripActualBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyFromExcelToActualBOM = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column1_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category1_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category2_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category3_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SORef1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductCategory1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,6 +54,114 @@
             this.ExtCost1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExtPrice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabSaleBOM = new System.Windows.Forms.TabPage();
+            this.tabDesignBOM = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Category1_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category2_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category3_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SORef2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sr2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductCategory2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostHead2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostSubHead2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.System2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Area2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Panel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Manufacturer2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PartNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExtCost2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExtPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabActualBOM = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.Category1_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category2_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category3_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SORef3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sr3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductCategory3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostHead3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostSubHead3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.System3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Area3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Panel3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Manufacturer3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PartNo3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitCost3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExtCost3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExtPrice3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MenuStripSaleBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.itmCopyAllToDesignBOM = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyFromExcelToSaleBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStripDesignBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.itmCopyAllToActualBOM = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyFromExcelToDesignBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.MenuStripProjects = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.itemDeleteProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.MenuStripLoad = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.loadBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStripActualBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyFromExcelToActualBOM = new System.Windows.Forms.ToolStripMenuItem();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cbCategory1 = new System.Windows.Forms.CheckBox();
+            this.cbCategory2 = new System.Windows.Forms.CheckBox();
+            this.cbCategory3 = new System.Windows.Forms.CheckBox();
+            this.cbSORef = new System.Windows.Forms.CheckBox();
+            this.cbSr = new System.Windows.Forms.CheckBox();
+            this.cbProductCategory = new System.Windows.Forms.CheckBox();
+            this.cbProduct = new System.Windows.Forms.CheckBox();
+            this.cbCostHead = new System.Windows.Forms.CheckBox();
+            this.cbCostSubHead = new System.Windows.Forms.CheckBox();
+            this.cbSystem = new System.Windows.Forms.CheckBox();
+            this.cbArea = new System.Windows.Forms.CheckBox();
+            this.cbPanel = new System.Windows.Forms.CheckBox();
+            this.cbCategory = new System.Windows.Forms.CheckBox();
+            this.cbManufacturer = new System.Windows.Forms.CheckBox();
+            this.cbPartNo = new System.Windows.Forms.CheckBox();
+            this.cbDescription = new System.Windows.Forms.CheckBox();
+            this.cbQty = new System.Windows.Forms.CheckBox();
+            this.cbUnitCost = new System.Windows.Forms.CheckBox();
+            this.cbExtCost = new System.Windows.Forms.CheckBox();
+            this.cbUnitPrice = new System.Windows.Forms.CheckBox();
+            this.cbExtPrice = new System.Windows.Forms.CheckBox();
+            this.cbColumn1 = new System.Windows.Forms.CheckBox();
+            this.cbColumn2 = new System.Windows.Forms.CheckBox();
+            this.cbColumn3 = new System.Windows.Forms.CheckBox();
+            this.cbColumn4 = new System.Windows.Forms.CheckBox();
+            this.cbColumn5 = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabSaleBOM.SuspendLayout();
@@ -131,6 +174,7 @@
             this.MenuStripProjects.SuspendLayout();
             this.MenuStripLoad.SuspendLayout();
             this.MenuStripActualBOM.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtBOMFilePath
@@ -160,12 +204,13 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1_1,
-            this.Column2_1,
-            this.Column3_1,
+            this.Category1_1,
+            this.Category2_1,
+            this.Category3_1,
             this.SORef1,
             this.Sr1,
             this.ProductCategory1,
@@ -183,7 +228,12 @@
             this.UnitCost1,
             this.ExtCost1,
             this.UnitPrice1,
-            this.ExtPrice1});
+            this.ExtPrice1,
+            this.Column1_1,
+            this.Column2_1,
+            this.Column3_1,
+            this.Column4_1,
+            this.Column5_1});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 2);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -192,7 +242,233 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1249, 436);
             this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
+            // 
+            // Category1_1
+            // 
+            this.Category1_1.DataPropertyName = "Category1";
+            this.Category1_1.HeaderText = "Category 1";
+            this.Category1_1.MinimumWidth = 6;
+            this.Category1_1.Name = "Category1_1";
+            this.Category1_1.Width = 125;
+            // 
+            // Category2_1
+            // 
+            this.Category2_1.DataPropertyName = "Category2";
+            this.Category2_1.HeaderText = "Category 2";
+            this.Category2_1.MinimumWidth = 6;
+            this.Category2_1.Name = "Category2_1";
+            this.Category2_1.Width = 125;
+            // 
+            // Category3_1
+            // 
+            this.Category3_1.DataPropertyName = "Category3";
+            this.Category3_1.HeaderText = "Category 3";
+            this.Category3_1.MinimumWidth = 6;
+            this.Category3_1.Name = "Category3_1";
+            this.Category3_1.Width = 125;
+            // 
+            // SORef1
+            // 
+            this.SORef1.DataPropertyName = "SORef";
+            this.SORef1.HeaderText = "SO Ref";
+            this.SORef1.MinimumWidth = 6;
+            this.SORef1.Name = "SORef1";
+            this.SORef1.ReadOnly = true;
+            this.SORef1.Width = 125;
+            // 
+            // Sr1
+            // 
+            this.Sr1.DataPropertyName = "Sr";
+            this.Sr1.HeaderText = "Sr";
+            this.Sr1.MinimumWidth = 6;
+            this.Sr1.Name = "Sr1";
+            this.Sr1.ReadOnly = true;
+            this.Sr1.Width = 125;
+            // 
+            // ProductCategory1
+            // 
+            this.ProductCategory1.DataPropertyName = "ProductCategory";
+            this.ProductCategory1.HeaderText = "Product Category";
+            this.ProductCategory1.MinimumWidth = 6;
+            this.ProductCategory1.Name = "ProductCategory1";
+            this.ProductCategory1.ReadOnly = true;
+            this.ProductCategory1.Width = 125;
+            // 
+            // Product1
+            // 
+            this.Product1.DataPropertyName = "Product";
+            this.Product1.HeaderText = "Product";
+            this.Product1.MinimumWidth = 6;
+            this.Product1.Name = "Product1";
+            this.Product1.ReadOnly = true;
+            this.Product1.Width = 125;
+            // 
+            // CostHead1
+            // 
+            this.CostHead1.DataPropertyName = "CostHead";
+            this.CostHead1.HeaderText = "Cost Head";
+            this.CostHead1.MinimumWidth = 6;
+            this.CostHead1.Name = "CostHead1";
+            this.CostHead1.ReadOnly = true;
+            this.CostHead1.Width = 125;
+            // 
+            // CostSubHead1
+            // 
+            this.CostSubHead1.DataPropertyName = "CostSubHead";
+            this.CostSubHead1.HeaderText = "Cost Sub-Head";
+            this.CostSubHead1.MinimumWidth = 6;
+            this.CostSubHead1.Name = "CostSubHead1";
+            this.CostSubHead1.ReadOnly = true;
+            this.CostSubHead1.Width = 125;
+            // 
+            // System1
+            // 
+            this.System1.DataPropertyName = "System";
+            this.System1.HeaderText = "System";
+            this.System1.MinimumWidth = 6;
+            this.System1.Name = "System1";
+            this.System1.ReadOnly = true;
+            this.System1.Width = 125;
+            // 
+            // Area1
+            // 
+            this.Area1.DataPropertyName = "Area";
+            this.Area1.HeaderText = "Area";
+            this.Area1.MinimumWidth = 6;
+            this.Area1.Name = "Area1";
+            this.Area1.ReadOnly = true;
+            this.Area1.Width = 125;
+            // 
+            // Panel1
+            // 
+            this.Panel1.DataPropertyName = "Panel";
+            this.Panel1.HeaderText = "Panel";
+            this.Panel1.MinimumWidth = 6;
+            this.Panel1.Name = "Panel1";
+            this.Panel1.ReadOnly = true;
+            this.Panel1.Width = 125;
+            // 
+            // Category1
+            // 
+            this.Category1.DataPropertyName = "Category";
+            this.Category1.HeaderText = "Category";
+            this.Category1.MinimumWidth = 6;
+            this.Category1.Name = "Category1";
+            this.Category1.ReadOnly = true;
+            this.Category1.Width = 125;
+            // 
+            // Manufacturer1
+            // 
+            this.Manufacturer1.DataPropertyName = "Manufacturer";
+            this.Manufacturer1.HeaderText = "Manufacturer";
+            this.Manufacturer1.MinimumWidth = 6;
+            this.Manufacturer1.Name = "Manufacturer1";
+            this.Manufacturer1.ReadOnly = true;
+            this.Manufacturer1.Width = 125;
+            // 
+            // PartNo1
+            // 
+            this.PartNo1.DataPropertyName = "PartNo";
+            this.PartNo1.HeaderText = "PartNo";
+            this.PartNo1.MinimumWidth = 6;
+            this.PartNo1.Name = "PartNo1";
+            this.PartNo1.ReadOnly = true;
+            this.PartNo1.Width = 125;
+            // 
+            // Description1
+            // 
+            this.Description1.DataPropertyName = "Description";
+            this.Description1.HeaderText = "Description";
+            this.Description1.MinimumWidth = 6;
+            this.Description1.Name = "Description1";
+            this.Description1.ReadOnly = true;
+            this.Description1.Width = 125;
+            // 
+            // Qty1
+            // 
+            this.Qty1.DataPropertyName = "Qty";
+            this.Qty1.HeaderText = "Qty";
+            this.Qty1.MinimumWidth = 6;
+            this.Qty1.Name = "Qty1";
+            this.Qty1.ReadOnly = true;
+            this.Qty1.Width = 125;
+            // 
+            // UnitCost1
+            // 
+            this.UnitCost1.DataPropertyName = "UnitCost";
+            this.UnitCost1.HeaderText = "UnitCost";
+            this.UnitCost1.MinimumWidth = 6;
+            this.UnitCost1.Name = "UnitCost1";
+            this.UnitCost1.ReadOnly = true;
+            this.UnitCost1.Width = 125;
+            // 
+            // ExtCost1
+            // 
+            this.ExtCost1.DataPropertyName = "ExtCost";
+            this.ExtCost1.HeaderText = "ExtCost";
+            this.ExtCost1.MinimumWidth = 6;
+            this.ExtCost1.Name = "ExtCost1";
+            this.ExtCost1.ReadOnly = true;
+            this.ExtCost1.Width = 125;
+            // 
+            // UnitPrice1
+            // 
+            this.UnitPrice1.DataPropertyName = "UnitPrice";
+            this.UnitPrice1.HeaderText = "UnitPrice";
+            this.UnitPrice1.MinimumWidth = 6;
+            this.UnitPrice1.Name = "UnitPrice1";
+            this.UnitPrice1.ReadOnly = true;
+            this.UnitPrice1.Width = 125;
+            // 
+            // ExtPrice1
+            // 
+            this.ExtPrice1.DataPropertyName = "ExtPrice";
+            this.ExtPrice1.HeaderText = "ExtPrice";
+            this.ExtPrice1.MinimumWidth = 6;
+            this.ExtPrice1.Name = "ExtPrice1";
+            this.ExtPrice1.ReadOnly = true;
+            this.ExtPrice1.Width = 125;
+            // 
+            // Column1_1
+            // 
+            this.Column1_1.DataPropertyName = "Column1";
+            this.Column1_1.HeaderText = "Column 1";
+            this.Column1_1.MinimumWidth = 6;
+            this.Column1_1.Name = "Column1_1";
+            this.Column1_1.Width = 125;
+            // 
+            // Column2_1
+            // 
+            this.Column2_1.DataPropertyName = "Column2";
+            this.Column2_1.HeaderText = "Column 2";
+            this.Column2_1.MinimumWidth = 6;
+            this.Column2_1.Name = "Column2_1";
+            this.Column2_1.Width = 125;
+            // 
+            // Column3_1
+            // 
+            this.Column3_1.DataPropertyName = "Column3";
+            this.Column3_1.HeaderText = "Column 3";
+            this.Column3_1.MinimumWidth = 6;
+            this.Column3_1.Name = "Column3_1";
+            this.Column3_1.Width = 125;
+            // 
+            // Column4_1
+            // 
+            this.Column4_1.DataPropertyName = "Column4";
+            this.Column4_1.HeaderText = "Column 4";
+            this.Column4_1.MinimumWidth = 6;
+            this.Column4_1.Name = "Column4_1";
+            this.Column4_1.Width = 125;
+            // 
+            // Column5_1
+            // 
+            this.Column5_1.DataPropertyName = "Column5";
+            this.Column5_1.HeaderText = "Column 5";
+            this.Column5_1.MinimumWidth = 6;
+            this.Column5_1.Name = "Column5_1";
+            this.Column5_1.Width = 125;
             // 
             // tabControl1
             // 
@@ -218,7 +494,7 @@
             this.tabSaleBOM.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabSaleBOM.Size = new System.Drawing.Size(1255, 440);
             this.tabSaleBOM.TabIndex = 0;
-            this.tabSaleBOM.Text = "Sale BOM";
+            this.tabSaleBOM.Text = "Bid BOM";
             this.tabSaleBOM.UseVisualStyleBackColor = true;
             // 
             // tabDesignBOM
@@ -230,17 +506,18 @@
             this.tabDesignBOM.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabDesignBOM.Size = new System.Drawing.Size(1255, 440);
             this.tabDesignBOM.TabIndex = 1;
-            this.tabDesignBOM.Text = "Design BOM";
+            this.tabDesignBOM.Text = "Planned BOM";
             this.tabDesignBOM.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1_2,
-            this.Column2_2,
-            this.Column3_2,
+            this.Category1_2,
+            this.Category2_2,
+            this.Category3_2,
             this.SORef2,
             this.Sr2,
             this.ProductCategory2,
@@ -258,7 +535,12 @@
             this.UnitCost2,
             this.ExtCost2,
             this.UnitPrice2,
-            this.ExtPrice2});
+            this.ExtPrice2,
+            this.Column1_2,
+            this.Column2_2,
+            this.Column3_2,
+            this.Column4_2,
+            this.Column5_2});
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(3, 2);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -268,31 +550,31 @@
             this.dataGridView2.Size = new System.Drawing.Size(1249, 436);
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
-            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
+            this.dataGridView2.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseClick);
             // 
-            // Column1_2
+            // Category1_2
             // 
-            this.Column1_2.DataPropertyName = "Column1";
-            this.Column1_2.HeaderText = "Column 1";
-            this.Column1_2.MinimumWidth = 6;
-            this.Column1_2.Name = "Column1_2";
-            this.Column1_2.Width = 125;
+            this.Category1_2.DataPropertyName = "Category1";
+            this.Category1_2.HeaderText = "Category 1";
+            this.Category1_2.MinimumWidth = 6;
+            this.Category1_2.Name = "Category1_2";
+            this.Category1_2.Width = 125;
             // 
-            // Column2_2
+            // Category2_2
             // 
-            this.Column2_2.DataPropertyName = "Column2";
-            this.Column2_2.HeaderText = "Column 2";
-            this.Column2_2.MinimumWidth = 6;
-            this.Column2_2.Name = "Column2_2";
-            this.Column2_2.Width = 125;
+            this.Category2_2.DataPropertyName = "Category2";
+            this.Category2_2.HeaderText = "Category 2";
+            this.Category2_2.MinimumWidth = 6;
+            this.Category2_2.Name = "Category2_2";
+            this.Category2_2.Width = 125;
             // 
-            // Column3_2
+            // Category3_2
             // 
-            this.Column3_2.DataPropertyName = "Column3";
-            this.Column3_2.HeaderText = "Column 3";
-            this.Column3_2.MinimumWidth = 6;
-            this.Column3_2.Name = "Column3_2";
-            this.Column3_2.Width = 125;
+            this.Category3_2.DataPropertyName = "Category3";
+            this.Category3_2.HeaderText = "Category 3";
+            this.Category3_2.MinimumWidth = 6;
+            this.Category3_2.Name = "Category3_2";
+            this.Category3_2.Width = 125;
             // 
             // SORef2
             // 
@@ -438,6 +720,46 @@
             this.ExtPrice2.Name = "ExtPrice2";
             this.ExtPrice2.Width = 125;
             // 
+            // Column1_2
+            // 
+            this.Column1_2.DataPropertyName = "Column1";
+            this.Column1_2.HeaderText = "Column 1";
+            this.Column1_2.MinimumWidth = 6;
+            this.Column1_2.Name = "Column1_2";
+            this.Column1_2.Width = 125;
+            // 
+            // Column2_2
+            // 
+            this.Column2_2.DataPropertyName = "Column2";
+            this.Column2_2.HeaderText = "Column 2";
+            this.Column2_2.MinimumWidth = 6;
+            this.Column2_2.Name = "Column2_2";
+            this.Column2_2.Width = 125;
+            // 
+            // Column3_2
+            // 
+            this.Column3_2.DataPropertyName = "Column3";
+            this.Column3_2.HeaderText = "Column 3";
+            this.Column3_2.MinimumWidth = 6;
+            this.Column3_2.Name = "Column3_2";
+            this.Column3_2.Width = 125;
+            // 
+            // Column4_2
+            // 
+            this.Column4_2.DataPropertyName = "Column4";
+            this.Column4_2.HeaderText = "Column 4";
+            this.Column4_2.MinimumWidth = 6;
+            this.Column4_2.Name = "Column4_2";
+            this.Column4_2.Width = 125;
+            // 
+            // Column5_2
+            // 
+            this.Column5_2.DataPropertyName = "Column5";
+            this.Column5_2.HeaderText = "Column 5";
+            this.Column5_2.MinimumWidth = 6;
+            this.Column5_2.Name = "Column5_2";
+            this.Column5_2.Width = 125;
+            // 
             // tabActualBOM
             // 
             this.tabActualBOM.Controls.Add(this.dataGridView3);
@@ -452,12 +774,13 @@
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AllowUserToOrderColumns = true;
             this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1_3,
-            this.Column2_3,
-            this.Column3_3,
+            this.Category1_3,
+            this.Category2_3,
+            this.Category3_3,
             this.SORef3,
             this.Sr3,
             this.ProductCategory3,
@@ -475,7 +798,12 @@
             this.UnitCost3,
             this.ExtCost3,
             this.UnitPrice3,
-            this.ExtPrice3});
+            this.ExtPrice3,
+            this.Column1_3,
+            this.Column2_3,
+            this.Column3_3,
+            this.Column4_3,
+            this.Column5_3});
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.Location = new System.Drawing.Point(3, 2);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -485,31 +813,31 @@
             this.dataGridView3.Size = new System.Drawing.Size(1249, 436);
             this.dataGridView3.TabIndex = 3;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
-            this.dataGridView3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView3_MouseClick);
+            this.dataGridView3.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseClick);
             // 
-            // Column1_3
+            // Category1_3
             // 
-            this.Column1_3.DataPropertyName = "Column1";
-            this.Column1_3.HeaderText = "Column 1";
-            this.Column1_3.MinimumWidth = 6;
-            this.Column1_3.Name = "Column1_3";
-            this.Column1_3.Width = 125;
+            this.Category1_3.DataPropertyName = "Category1";
+            this.Category1_3.HeaderText = "Category 1";
+            this.Category1_3.MinimumWidth = 6;
+            this.Category1_3.Name = "Category1_3";
+            this.Category1_3.Width = 125;
             // 
-            // Column2_3
+            // Category2_3
             // 
-            this.Column2_3.DataPropertyName = "Column2";
-            this.Column2_3.HeaderText = "Column 2";
-            this.Column2_3.MinimumWidth = 6;
-            this.Column2_3.Name = "Column2_3";
-            this.Column2_3.Width = 125;
+            this.Category2_3.DataPropertyName = "Category2";
+            this.Category2_3.HeaderText = "Category 2";
+            this.Category2_3.MinimumWidth = 6;
+            this.Category2_3.Name = "Category2_3";
+            this.Category2_3.Width = 125;
             // 
-            // Column3_3
+            // Category3_3
             // 
-            this.Column3_3.DataPropertyName = "Column3";
-            this.Column3_3.HeaderText = "Column 3";
-            this.Column3_3.MinimumWidth = 6;
-            this.Column3_3.Name = "Column3_3";
-            this.Column3_3.Width = 125;
+            this.Category3_3.DataPropertyName = "Category3";
+            this.Category3_3.HeaderText = "Category 3";
+            this.Category3_3.MinimumWidth = 6;
+            this.Category3_3.Name = "Category3_3";
+            this.Category3_3.Width = 125;
             // 
             // SORef3
             // 
@@ -655,6 +983,46 @@
             this.ExtPrice3.Name = "ExtPrice3";
             this.ExtPrice3.Width = 125;
             // 
+            // Column1_3
+            // 
+            this.Column1_3.DataPropertyName = "Column1";
+            this.Column1_3.HeaderText = "Column 1";
+            this.Column1_3.MinimumWidth = 6;
+            this.Column1_3.Name = "Column1_3";
+            this.Column1_3.Width = 125;
+            // 
+            // Column2_3
+            // 
+            this.Column2_3.DataPropertyName = "Column2";
+            this.Column2_3.HeaderText = "Column 2";
+            this.Column2_3.MinimumWidth = 6;
+            this.Column2_3.Name = "Column2_3";
+            this.Column2_3.Width = 125;
+            // 
+            // Column3_3
+            // 
+            this.Column3_3.DataPropertyName = "Column3";
+            this.Column3_3.HeaderText = "Column 3";
+            this.Column3_3.MinimumWidth = 6;
+            this.Column3_3.Name = "Column3_3";
+            this.Column3_3.Width = 125;
+            // 
+            // Column4_3
+            // 
+            this.Column4_3.DataPropertyName = "Column4";
+            this.Column4_3.HeaderText = "Column 4";
+            this.Column4_3.MinimumWidth = 6;
+            this.Column4_3.Name = "Column4_3";
+            this.Column4_3.Width = 125;
+            // 
+            // Column5_3
+            // 
+            this.Column5_3.DataPropertyName = "Column5";
+            this.Column5_3.HeaderText = "Column 5";
+            this.Column5_3.MinimumWidth = 6;
+            this.Column5_3.Name = "Column5_3";
+            this.Column5_3.Width = 125;
+            // 
             // MenuStripSaleBOM
             // 
             this.MenuStripSaleBOM.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -662,20 +1030,20 @@
             this.itmCopyAllToDesignBOM,
             this.copyFromExcelToSaleBOMToolStripMenuItem});
             this.MenuStripSaleBOM.Name = "contextMenuStrip1";
-            this.MenuStripSaleBOM.Size = new System.Drawing.Size(240, 52);
+            this.MenuStripSaleBOM.Size = new System.Drawing.Size(276, 52);
             // 
             // itmCopyAllToDesignBOM
             // 
             this.itmCopyAllToDesignBOM.Name = "itmCopyAllToDesignBOM";
-            this.itmCopyAllToDesignBOM.Size = new System.Drawing.Size(239, 24);
-            this.itmCopyAllToDesignBOM.Text = "Copy All to Design BOM";
+            this.itmCopyAllToDesignBOM.Size = new System.Drawing.Size(275, 24);
+            this.itmCopyAllToDesignBOM.Text = "Copy All Data to Design BOM";
             this.itmCopyAllToDesignBOM.Click += new System.EventHandler(this.itmCopyAllToDesignBOM_Click);
             // 
             // copyFromExcelToSaleBOMToolStripMenuItem
             // 
             this.copyFromExcelToSaleBOMToolStripMenuItem.Name = "copyFromExcelToSaleBOMToolStripMenuItem";
-            this.copyFromExcelToSaleBOMToolStripMenuItem.Size = new System.Drawing.Size(239, 24);
-            this.copyFromExcelToSaleBOMToolStripMenuItem.Text = "Paste Excel Data Here";
+            this.copyFromExcelToSaleBOMToolStripMenuItem.Size = new System.Drawing.Size(275, 24);
+            this.copyFromExcelToSaleBOMToolStripMenuItem.Text = "Paste Excel Data";
             this.copyFromExcelToSaleBOMToolStripMenuItem.Click += new System.EventHandler(this.copyFromExcelToSaleBOMToolStripMenuItem_Click);
             // 
             // MenuStripDesignBOM
@@ -685,20 +1053,20 @@
             this.itmCopyAllToActualBOM,
             this.copyFromExcelToDesignBOMToolStripMenuItem});
             this.MenuStripDesignBOM.Name = "contextMenuStrip1";
-            this.MenuStripDesignBOM.Size = new System.Drawing.Size(236, 52);
+            this.MenuStripDesignBOM.Size = new System.Drawing.Size(272, 52);
             // 
             // itmCopyAllToActualBOM
             // 
             this.itmCopyAllToActualBOM.Name = "itmCopyAllToActualBOM";
-            this.itmCopyAllToActualBOM.Size = new System.Drawing.Size(235, 24);
-            this.itmCopyAllToActualBOM.Text = "Copy All to Actual BOM";
+            this.itmCopyAllToActualBOM.Size = new System.Drawing.Size(271, 24);
+            this.itmCopyAllToActualBOM.Text = "Copy All Data to Actual BOM";
             this.itmCopyAllToActualBOM.Click += new System.EventHandler(this.itmCopyAllToActualBOM_Click);
             // 
             // copyFromExcelToDesignBOMToolStripMenuItem
             // 
             this.copyFromExcelToDesignBOMToolStripMenuItem.Name = "copyFromExcelToDesignBOMToolStripMenuItem";
-            this.copyFromExcelToDesignBOMToolStripMenuItem.Size = new System.Drawing.Size(235, 24);
-            this.copyFromExcelToDesignBOMToolStripMenuItem.Text = "Paste Excel Data Here";
+            this.copyFromExcelToDesignBOMToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
+            this.copyFromExcelToDesignBOMToolStripMenuItem.Text = "Paste Excel Data";
             this.copyFromExcelToDesignBOMToolStripMenuItem.Click += new System.EventHandler(this.copyFromExcelToDesignBOMToolStripMenuItem_Click);
             // 
             // imageList1
@@ -932,200 +1300,407 @@
             this.MenuStripActualBOM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyFromExcelToActualBOM});
             this.MenuStripActualBOM.Name = "contextMenuStrip1";
-            this.MenuStripActualBOM.Size = new System.Drawing.Size(223, 28);
+            this.MenuStripActualBOM.Size = new System.Drawing.Size(187, 28);
             // 
             // copyFromExcelToActualBOM
             // 
             this.copyFromExcelToActualBOM.Name = "copyFromExcelToActualBOM";
-            this.copyFromExcelToActualBOM.Size = new System.Drawing.Size(222, 24);
-            this.copyFromExcelToActualBOM.Text = "Paste Excel Data Here";
+            this.copyFromExcelToActualBOM.Size = new System.Drawing.Size(186, 24);
+            this.copyFromExcelToActualBOM.Text = "Paste Excel Data";
             this.copyFromExcelToActualBOM.Click += new System.EventHandler(this.copyFromExcelToActualBOM_Click);
             // 
-            // Column1_1
+            // flowLayoutPanel1
             // 
-            this.Column1_1.DataPropertyName = "Column1";
-            this.Column1_1.HeaderText = "Column 1";
-            this.Column1_1.MinimumWidth = 6;
-            this.Column1_1.Name = "Column1_1";
-            this.Column1_1.Width = 125;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Controls.Add(this.cbCategory1);
+            this.flowLayoutPanel1.Controls.Add(this.cbCategory2);
+            this.flowLayoutPanel1.Controls.Add(this.cbCategory3);
+            this.flowLayoutPanel1.Controls.Add(this.cbSORef);
+            this.flowLayoutPanel1.Controls.Add(this.cbSr);
+            this.flowLayoutPanel1.Controls.Add(this.cbProductCategory);
+            this.flowLayoutPanel1.Controls.Add(this.cbProduct);
+            this.flowLayoutPanel1.Controls.Add(this.cbCostHead);
+            this.flowLayoutPanel1.Controls.Add(this.cbCostSubHead);
+            this.flowLayoutPanel1.Controls.Add(this.cbSystem);
+            this.flowLayoutPanel1.Controls.Add(this.cbArea);
+            this.flowLayoutPanel1.Controls.Add(this.cbPanel);
+            this.flowLayoutPanel1.Controls.Add(this.cbCategory);
+            this.flowLayoutPanel1.Controls.Add(this.cbManufacturer);
+            this.flowLayoutPanel1.Controls.Add(this.cbPartNo);
+            this.flowLayoutPanel1.Controls.Add(this.cbDescription);
+            this.flowLayoutPanel1.Controls.Add(this.cbQty);
+            this.flowLayoutPanel1.Controls.Add(this.cbUnitCost);
+            this.flowLayoutPanel1.Controls.Add(this.cbExtCost);
+            this.flowLayoutPanel1.Controls.Add(this.cbUnitPrice);
+            this.flowLayoutPanel1.Controls.Add(this.cbExtPrice);
+            this.flowLayoutPanel1.Controls.Add(this.cbColumn1);
+            this.flowLayoutPanel1.Controls.Add(this.cbColumn2);
+            this.flowLayoutPanel1.Controls.Add(this.cbColumn3);
+            this.flowLayoutPanel1.Controls.Add(this.cbColumn4);
+            this.flowLayoutPanel1.Controls.Add(this.cbColumn5);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(567, -255);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 730);
+            this.flowLayoutPanel1.TabIndex = 11;
+            this.flowLayoutPanel1.Visible = false;
             // 
-            // Column2_1
+            // cbCategory1
             // 
-            this.Column2_1.DataPropertyName = "Column2";
-            this.Column2_1.HeaderText = "Column 2";
-            this.Column2_1.MinimumWidth = 6;
-            this.Column2_1.Name = "Column2_1";
-            this.Column2_1.Width = 125;
+            this.cbCategory1.AutoSize = true;
+            this.cbCategory1.Checked = true;
+            this.cbCategory1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCategory1.Location = new System.Drawing.Point(3, 3);
+            this.cbCategory1.Name = "cbCategory1";
+            this.cbCategory1.Size = new System.Drawing.Size(99, 21);
+            this.cbCategory1.TabIndex = 0;
+            this.cbCategory1.Text = "Category 1";
+            this.cbCategory1.UseVisualStyleBackColor = true;
+            this.cbCategory1.CheckedChanged += new System.EventHandler(this.cbCategory1_CheckedChanged);
             // 
-            // Column3_1
+            // cbCategory2
             // 
-            this.Column3_1.DataPropertyName = "Column3";
-            this.Column3_1.HeaderText = "Column 3";
-            this.Column3_1.MinimumWidth = 6;
-            this.Column3_1.Name = "Column3_1";
-            this.Column3_1.Width = 125;
+            this.cbCategory2.AutoSize = true;
+            this.cbCategory2.Checked = true;
+            this.cbCategory2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCategory2.Location = new System.Drawing.Point(3, 30);
+            this.cbCategory2.Name = "cbCategory2";
+            this.cbCategory2.Size = new System.Drawing.Size(99, 21);
+            this.cbCategory2.TabIndex = 1;
+            this.cbCategory2.Text = "Category 2";
+            this.cbCategory2.UseVisualStyleBackColor = true;
+            this.cbCategory2.CheckedChanged += new System.EventHandler(this.cbCategory2_CheckedChanged);
             // 
-            // SORef1
+            // cbCategory3
             // 
-            this.SORef1.DataPropertyName = "SORef";
-            this.SORef1.HeaderText = "SO Ref";
-            this.SORef1.MinimumWidth = 6;
-            this.SORef1.Name = "SORef1";
-            this.SORef1.ReadOnly = true;
-            this.SORef1.Width = 125;
+            this.cbCategory3.AutoSize = true;
+            this.cbCategory3.Checked = true;
+            this.cbCategory3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCategory3.Location = new System.Drawing.Point(3, 57);
+            this.cbCategory3.Name = "cbCategory3";
+            this.cbCategory3.Size = new System.Drawing.Size(99, 21);
+            this.cbCategory3.TabIndex = 2;
+            this.cbCategory3.Text = "Category 3";
+            this.cbCategory3.UseVisualStyleBackColor = true;
+            this.cbCategory3.CheckedChanged += new System.EventHandler(this.cbCategory3_CheckedChanged);
             // 
-            // Sr1
+            // cbSORef
             // 
-            this.Sr1.DataPropertyName = "Sr";
-            this.Sr1.HeaderText = "Sr";
-            this.Sr1.MinimumWidth = 6;
-            this.Sr1.Name = "Sr1";
-            this.Sr1.ReadOnly = true;
-            this.Sr1.Width = 125;
+            this.cbSORef.AutoSize = true;
+            this.cbSORef.Checked = true;
+            this.cbSORef.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbSORef.Location = new System.Drawing.Point(3, 84);
+            this.cbSORef.Name = "cbSORef";
+            this.cbSORef.Size = new System.Drawing.Size(76, 21);
+            this.cbSORef.TabIndex = 3;
+            this.cbSORef.Text = "SO Ref";
+            this.cbSORef.UseVisualStyleBackColor = true;
+            this.cbSORef.CheckedChanged += new System.EventHandler(this.cbSORef_CheckedChanged);
             // 
-            // ProductCategory1
+            // cbSr
             // 
-            this.ProductCategory1.DataPropertyName = "ProductCategory";
-            this.ProductCategory1.HeaderText = "Product Category";
-            this.ProductCategory1.MinimumWidth = 6;
-            this.ProductCategory1.Name = "ProductCategory1";
-            this.ProductCategory1.ReadOnly = true;
-            this.ProductCategory1.Width = 125;
+            this.cbSr.AutoSize = true;
+            this.cbSr.Checked = true;
+            this.cbSr.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbSr.Location = new System.Drawing.Point(3, 111);
+            this.cbSr.Name = "cbSr";
+            this.cbSr.Size = new System.Drawing.Size(44, 21);
+            this.cbSr.TabIndex = 4;
+            this.cbSr.Text = "Sr";
+            this.cbSr.UseVisualStyleBackColor = true;
+            this.cbSr.CheckedChanged += new System.EventHandler(this.cbSr_CheckedChanged);
             // 
-            // Product1
+            // cbProductCategory
             // 
-            this.Product1.DataPropertyName = "Product";
-            this.Product1.HeaderText = "Product";
-            this.Product1.MinimumWidth = 6;
-            this.Product1.Name = "Product1";
-            this.Product1.ReadOnly = true;
-            this.Product1.Width = 125;
+            this.cbProductCategory.AutoSize = true;
+            this.cbProductCategory.Checked = true;
+            this.cbProductCategory.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbProductCategory.Location = new System.Drawing.Point(3, 138);
+            this.cbProductCategory.Name = "cbProductCategory";
+            this.cbProductCategory.Size = new System.Drawing.Size(140, 21);
+            this.cbProductCategory.TabIndex = 5;
+            this.cbProductCategory.Text = "Product Category";
+            this.cbProductCategory.UseVisualStyleBackColor = true;
+            this.cbProductCategory.CheckedChanged += new System.EventHandler(this.cbProductCategory_CheckedChanged);
             // 
-            // CostHead1
+            // cbProduct
             // 
-            this.CostHead1.DataPropertyName = "CostHead";
-            this.CostHead1.HeaderText = "Cost Head";
-            this.CostHead1.MinimumWidth = 6;
-            this.CostHead1.Name = "CostHead1";
-            this.CostHead1.ReadOnly = true;
-            this.CostHead1.Width = 125;
+            this.cbProduct.AutoSize = true;
+            this.cbProduct.Checked = true;
+            this.cbProduct.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbProduct.Location = new System.Drawing.Point(3, 165);
+            this.cbProduct.Name = "cbProduct";
+            this.cbProduct.Size = new System.Drawing.Size(79, 21);
+            this.cbProduct.TabIndex = 6;
+            this.cbProduct.Text = "Product";
+            this.cbProduct.UseVisualStyleBackColor = true;
+            this.cbProduct.CheckedChanged += new System.EventHandler(this.cbProduct_CheckedChanged);
             // 
-            // CostSubHead1
+            // cbCostHead
             // 
-            this.CostSubHead1.DataPropertyName = "CostSubHead";
-            this.CostSubHead1.HeaderText = "Cost Sub-Head";
-            this.CostSubHead1.MinimumWidth = 6;
-            this.CostSubHead1.Name = "CostSubHead1";
-            this.CostSubHead1.ReadOnly = true;
-            this.CostSubHead1.Width = 125;
+            this.cbCostHead.AutoSize = true;
+            this.cbCostHead.Checked = true;
+            this.cbCostHead.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCostHead.Location = new System.Drawing.Point(3, 192);
+            this.cbCostHead.Name = "cbCostHead";
+            this.cbCostHead.Size = new System.Drawing.Size(96, 21);
+            this.cbCostHead.TabIndex = 7;
+            this.cbCostHead.Text = "Cost Head";
+            this.cbCostHead.UseVisualStyleBackColor = true;
+            this.cbCostHead.CheckedChanged += new System.EventHandler(this.cbCostHead_CheckedChanged);
             // 
-            // System1
+            // cbCostSubHead
             // 
-            this.System1.DataPropertyName = "System";
-            this.System1.HeaderText = "System";
-            this.System1.MinimumWidth = 6;
-            this.System1.Name = "System1";
-            this.System1.ReadOnly = true;
-            this.System1.Width = 125;
+            this.cbCostSubHead.AutoSize = true;
+            this.cbCostSubHead.Checked = true;
+            this.cbCostSubHead.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCostSubHead.Location = new System.Drawing.Point(3, 219);
+            this.cbCostSubHead.Name = "cbCostSubHead";
+            this.cbCostSubHead.Size = new System.Drawing.Size(126, 21);
+            this.cbCostSubHead.TabIndex = 8;
+            this.cbCostSubHead.Text = "Cost Sub-Head";
+            this.cbCostSubHead.UseVisualStyleBackColor = true;
+            this.cbCostSubHead.CheckedChanged += new System.EventHandler(this.cbCostSubHead_CheckedChanged);
             // 
-            // Area1
+            // cbSystem
             // 
-            this.Area1.DataPropertyName = "Area";
-            this.Area1.HeaderText = "Area";
-            this.Area1.MinimumWidth = 6;
-            this.Area1.Name = "Area1";
-            this.Area1.ReadOnly = true;
-            this.Area1.Width = 125;
+            this.cbSystem.AutoSize = true;
+            this.cbSystem.Checked = true;
+            this.cbSystem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbSystem.Location = new System.Drawing.Point(3, 246);
+            this.cbSystem.Name = "cbSystem";
+            this.cbSystem.Size = new System.Drawing.Size(76, 21);
+            this.cbSystem.TabIndex = 9;
+            this.cbSystem.Text = "System";
+            this.cbSystem.UseVisualStyleBackColor = true;
+            this.cbSystem.CheckedChanged += new System.EventHandler(this.cbSystem_CheckedChanged);
             // 
-            // Panel1
+            // cbArea
             // 
-            this.Panel1.DataPropertyName = "Panel";
-            this.Panel1.HeaderText = "Panel";
-            this.Panel1.MinimumWidth = 6;
-            this.Panel1.Name = "Panel1";
-            this.Panel1.ReadOnly = true;
-            this.Panel1.Width = 125;
+            this.cbArea.AutoSize = true;
+            this.cbArea.Checked = true;
+            this.cbArea.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbArea.Location = new System.Drawing.Point(3, 273);
+            this.cbArea.Name = "cbArea";
+            this.cbArea.Size = new System.Drawing.Size(60, 21);
+            this.cbArea.TabIndex = 10;
+            this.cbArea.Text = "Area";
+            this.cbArea.UseVisualStyleBackColor = true;
+            this.cbArea.CheckedChanged += new System.EventHandler(this.cbArea_CheckedChanged);
             // 
-            // Category1
+            // cbPanel
             // 
-            this.Category1.DataPropertyName = "Category";
-            this.Category1.HeaderText = "Category";
-            this.Category1.MinimumWidth = 6;
-            this.Category1.Name = "Category1";
-            this.Category1.ReadOnly = true;
-            this.Category1.Width = 125;
+            this.cbPanel.AutoSize = true;
+            this.cbPanel.Checked = true;
+            this.cbPanel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbPanel.Location = new System.Drawing.Point(3, 300);
+            this.cbPanel.Name = "cbPanel";
+            this.cbPanel.Size = new System.Drawing.Size(66, 21);
+            this.cbPanel.TabIndex = 11;
+            this.cbPanel.Text = "Panel";
+            this.cbPanel.UseVisualStyleBackColor = true;
+            this.cbPanel.CheckedChanged += new System.EventHandler(this.cbPanel_CheckedChanged);
             // 
-            // Manufacturer1
+            // cbCategory
             // 
-            this.Manufacturer1.DataPropertyName = "Manufacturer";
-            this.Manufacturer1.HeaderText = "Manufacturer";
-            this.Manufacturer1.MinimumWidth = 6;
-            this.Manufacturer1.Name = "Manufacturer1";
-            this.Manufacturer1.ReadOnly = true;
-            this.Manufacturer1.Width = 125;
+            this.cbCategory.AutoSize = true;
+            this.cbCategory.Checked = true;
+            this.cbCategory.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCategory.Location = new System.Drawing.Point(3, 327);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(87, 21);
+            this.cbCategory.TabIndex = 12;
+            this.cbCategory.Text = "Category";
+            this.cbCategory.UseVisualStyleBackColor = true;
+            this.cbCategory.CheckedChanged += new System.EventHandler(this.cbCategory_CheckedChanged);
             // 
-            // PartNo1
+            // cbManufacturer
             // 
-            this.PartNo1.DataPropertyName = "PartNo";
-            this.PartNo1.HeaderText = "PartNo";
-            this.PartNo1.MinimumWidth = 6;
-            this.PartNo1.Name = "PartNo1";
-            this.PartNo1.ReadOnly = true;
-            this.PartNo1.Width = 125;
+            this.cbManufacturer.AutoSize = true;
+            this.cbManufacturer.Checked = true;
+            this.cbManufacturer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbManufacturer.Location = new System.Drawing.Point(3, 354);
+            this.cbManufacturer.Name = "cbManufacturer";
+            this.cbManufacturer.Size = new System.Drawing.Size(114, 21);
+            this.cbManufacturer.TabIndex = 13;
+            this.cbManufacturer.Text = "Manufacturer";
+            this.cbManufacturer.UseVisualStyleBackColor = true;
+            this.cbManufacturer.CheckedChanged += new System.EventHandler(this.cbManufacturer_CheckedChanged);
             // 
-            // Description1
+            // cbPartNo
             // 
-            this.Description1.DataPropertyName = "Description";
-            this.Description1.HeaderText = "Description";
-            this.Description1.MinimumWidth = 6;
-            this.Description1.Name = "Description1";
-            this.Description1.ReadOnly = true;
-            this.Description1.Width = 125;
+            this.cbPartNo.AutoSize = true;
+            this.cbPartNo.Checked = true;
+            this.cbPartNo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbPartNo.Location = new System.Drawing.Point(3, 381);
+            this.cbPartNo.Name = "cbPartNo";
+            this.cbPartNo.Size = new System.Drawing.Size(78, 21);
+            this.cbPartNo.TabIndex = 14;
+            this.cbPartNo.Text = "Part No";
+            this.cbPartNo.UseVisualStyleBackColor = true;
+            this.cbPartNo.CheckedChanged += new System.EventHandler(this.cbPartNo_CheckedChanged);
             // 
-            // Qty1
+            // cbDescription
             // 
-            this.Qty1.DataPropertyName = "Qty";
-            this.Qty1.HeaderText = "Qty";
-            this.Qty1.MinimumWidth = 6;
-            this.Qty1.Name = "Qty1";
-            this.Qty1.ReadOnly = true;
-            this.Qty1.Width = 125;
+            this.cbDescription.AutoSize = true;
+            this.cbDescription.Checked = true;
+            this.cbDescription.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbDescription.Location = new System.Drawing.Point(3, 408);
+            this.cbDescription.Name = "cbDescription";
+            this.cbDescription.Size = new System.Drawing.Size(101, 21);
+            this.cbDescription.TabIndex = 15;
+            this.cbDescription.Text = "Description";
+            this.cbDescription.UseVisualStyleBackColor = true;
+            this.cbDescription.CheckedChanged += new System.EventHandler(this.cbDescription_CheckedChanged);
             // 
-            // UnitCost1
+            // cbQty
             // 
-            this.UnitCost1.DataPropertyName = "UnitCost";
-            this.UnitCost1.HeaderText = "UnitCost";
-            this.UnitCost1.MinimumWidth = 6;
-            this.UnitCost1.Name = "UnitCost1";
-            this.UnitCost1.ReadOnly = true;
-            this.UnitCost1.Width = 125;
+            this.cbQty.AutoSize = true;
+            this.cbQty.Checked = true;
+            this.cbQty.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbQty.Location = new System.Drawing.Point(3, 435);
+            this.cbQty.Name = "cbQty";
+            this.cbQty.Size = new System.Drawing.Size(52, 21);
+            this.cbQty.TabIndex = 16;
+            this.cbQty.Text = "Qty";
+            this.cbQty.UseVisualStyleBackColor = true;
+            this.cbQty.CheckedChanged += new System.EventHandler(this.cbQty_CheckedChanged);
             // 
-            // ExtCost1
+            // cbUnitCost
             // 
-            this.ExtCost1.DataPropertyName = "ExtCost";
-            this.ExtCost1.HeaderText = "ExtCost";
-            this.ExtCost1.MinimumWidth = 6;
-            this.ExtCost1.Name = "ExtCost1";
-            this.ExtCost1.ReadOnly = true;
-            this.ExtCost1.Width = 125;
+            this.cbUnitCost.AutoSize = true;
+            this.cbUnitCost.Checked = true;
+            this.cbUnitCost.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbUnitCost.Location = new System.Drawing.Point(3, 462);
+            this.cbUnitCost.Name = "cbUnitCost";
+            this.cbUnitCost.Size = new System.Drawing.Size(87, 21);
+            this.cbUnitCost.TabIndex = 17;
+            this.cbUnitCost.Text = "Unit Cost";
+            this.cbUnitCost.UseVisualStyleBackColor = true;
+            this.cbUnitCost.CheckedChanged += new System.EventHandler(this.cbUnitCost_CheckedChanged);
             // 
-            // UnitPrice1
+            // cbExtCost
             // 
-            this.UnitPrice1.DataPropertyName = "UnitPrice";
-            this.UnitPrice1.HeaderText = "UnitPrice";
-            this.UnitPrice1.MinimumWidth = 6;
-            this.UnitPrice1.Name = "UnitPrice1";
-            this.UnitPrice1.ReadOnly = true;
-            this.UnitPrice1.Width = 125;
+            this.cbExtCost.AutoSize = true;
+            this.cbExtCost.Checked = true;
+            this.cbExtCost.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbExtCost.Location = new System.Drawing.Point(3, 489);
+            this.cbExtCost.Name = "cbExtCost";
+            this.cbExtCost.Size = new System.Drawing.Size(81, 21);
+            this.cbExtCost.TabIndex = 18;
+            this.cbExtCost.Text = "Ext Cost";
+            this.cbExtCost.UseVisualStyleBackColor = true;
+            this.cbExtCost.CheckedChanged += new System.EventHandler(this.cbExtCost_CheckedChanged);
             // 
-            // ExtPrice1
+            // cbUnitPrice
             // 
-            this.ExtPrice1.DataPropertyName = "ExtPrice";
-            this.ExtPrice1.HeaderText = "ExtPrice";
-            this.ExtPrice1.MinimumWidth = 6;
-            this.ExtPrice1.Name = "ExtPrice1";
-            this.ExtPrice1.ReadOnly = true;
-            this.ExtPrice1.Width = 125;
+            this.cbUnitPrice.AutoSize = true;
+            this.cbUnitPrice.Checked = true;
+            this.cbUnitPrice.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbUnitPrice.Location = new System.Drawing.Point(3, 516);
+            this.cbUnitPrice.Name = "cbUnitPrice";
+            this.cbUnitPrice.Size = new System.Drawing.Size(91, 21);
+            this.cbUnitPrice.TabIndex = 19;
+            this.cbUnitPrice.Text = "Unit Price";
+            this.cbUnitPrice.UseVisualStyleBackColor = true;
+            this.cbUnitPrice.CheckedChanged += new System.EventHandler(this.cbUnitPrice_CheckedChanged);
+            // 
+            // cbExtPrice
+            // 
+            this.cbExtPrice.AutoSize = true;
+            this.cbExtPrice.Checked = true;
+            this.cbExtPrice.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbExtPrice.Location = new System.Drawing.Point(3, 543);
+            this.cbExtPrice.Name = "cbExtPrice";
+            this.cbExtPrice.Size = new System.Drawing.Size(85, 21);
+            this.cbExtPrice.TabIndex = 20;
+            this.cbExtPrice.Text = "Ext Price";
+            this.cbExtPrice.UseVisualStyleBackColor = true;
+            this.cbExtPrice.CheckedChanged += new System.EventHandler(this.cbExtPrice_CheckedChanged);
+            // 
+            // cbColumn1
+            // 
+            this.cbColumn1.AutoSize = true;
+            this.cbColumn1.Checked = true;
+            this.cbColumn1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbColumn1.Location = new System.Drawing.Point(3, 570);
+            this.cbColumn1.Name = "cbColumn1";
+            this.cbColumn1.Size = new System.Drawing.Size(89, 21);
+            this.cbColumn1.TabIndex = 21;
+            this.cbColumn1.Text = "Column 1";
+            this.cbColumn1.UseVisualStyleBackColor = true;
+            this.cbColumn1.CheckedChanged += new System.EventHandler(this.cbColumn1_CheckedChanged);
+            // 
+            // cbColumn2
+            // 
+            this.cbColumn2.AutoSize = true;
+            this.cbColumn2.Checked = true;
+            this.cbColumn2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbColumn2.Location = new System.Drawing.Point(3, 597);
+            this.cbColumn2.Name = "cbColumn2";
+            this.cbColumn2.Size = new System.Drawing.Size(89, 21);
+            this.cbColumn2.TabIndex = 22;
+            this.cbColumn2.Text = "Column 2";
+            this.cbColumn2.UseVisualStyleBackColor = true;
+            this.cbColumn2.CheckedChanged += new System.EventHandler(this.cbColumn2_CheckedChanged);
+            // 
+            // cbColumn3
+            // 
+            this.cbColumn3.AutoSize = true;
+            this.cbColumn3.Checked = true;
+            this.cbColumn3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbColumn3.Location = new System.Drawing.Point(3, 624);
+            this.cbColumn3.Name = "cbColumn3";
+            this.cbColumn3.Size = new System.Drawing.Size(89, 21);
+            this.cbColumn3.TabIndex = 23;
+            this.cbColumn3.Text = "Column 3";
+            this.cbColumn3.UseVisualStyleBackColor = true;
+            this.cbColumn3.CheckedChanged += new System.EventHandler(this.cbColumn3_CheckedChanged);
+            // 
+            // cbColumn4
+            // 
+            this.cbColumn4.AutoSize = true;
+            this.cbColumn4.Checked = true;
+            this.cbColumn4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbColumn4.Location = new System.Drawing.Point(3, 651);
+            this.cbColumn4.Name = "cbColumn4";
+            this.cbColumn4.Size = new System.Drawing.Size(89, 21);
+            this.cbColumn4.TabIndex = 24;
+            this.cbColumn4.Text = "Column 4";
+            this.cbColumn4.UseVisualStyleBackColor = true;
+            this.cbColumn4.CheckedChanged += new System.EventHandler(this.cbColumn4_CheckedChanged);
+            // 
+            // cbColumn5
+            // 
+            this.cbColumn5.AutoSize = true;
+            this.cbColumn5.Checked = true;
+            this.cbColumn5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbColumn5.Location = new System.Drawing.Point(3, 678);
+            this.cbColumn5.Name = "cbColumn5";
+            this.cbColumn5.Size = new System.Drawing.Size(89, 21);
+            this.cbColumn5.TabIndex = 25;
+            this.cbColumn5.Text = "Column 5";
+            this.cbColumn5.UseVisualStyleBackColor = true;
+            this.cbColumn5.CheckedChanged += new System.EventHandler(this.cbColumn5_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageKey = "Yes.bmp";
+            this.button1.Location = new System.Drawing.Point(149, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 30);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Close";
+            this.toolTip1.SetToolTip(this.button1, "Press Close button to exit the FormBOM ");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmBOM
             // 
@@ -1133,6 +1708,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1278, 571);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
@@ -1159,6 +1735,8 @@
             this.MenuStripProjects.ResumeLayout(false);
             this.MenuStripLoad.ResumeLayout(false);
             this.MenuStripActualBOM.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1192,51 +1770,9 @@
         private System.Windows.Forms.ToolStripMenuItem copyFromExcelToDesignBOMToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip MenuStripActualBOM;
         private System.Windows.Forms.ToolStripMenuItem copyFromExcelToActualBOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SORef2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sr2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostHead2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostSubHead2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn System2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Area2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Panel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Manufacturer2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qty2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCost2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2_3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3_3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SORef3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sr3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostHead3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostSubHead3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn System3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Area3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Panel3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Manufacturer3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qty3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCost3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category1_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category2_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category3_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn SORef1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sr1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory1;
@@ -1255,6 +1791,91 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost1;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category1_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category2_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category3_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SORef2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sr2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostHead2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostSubHead2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn System2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Area2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Panel2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Manufacturer2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qty2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCost2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category1_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category2_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category3_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SORef3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sr3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostHead3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostSubHead3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn System3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Area3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Panel3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Manufacturer3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qty3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCost3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExtCost3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExtPrice3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5_3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.CheckBox cbCategory1;
+        private System.Windows.Forms.CheckBox cbCategory2;
+        private System.Windows.Forms.CheckBox cbCategory3;
+        private System.Windows.Forms.CheckBox cbSORef;
+        private System.Windows.Forms.CheckBox cbSr;
+        private System.Windows.Forms.CheckBox cbProductCategory;
+        private System.Windows.Forms.CheckBox cbProduct;
+        private System.Windows.Forms.CheckBox cbCostHead;
+        private System.Windows.Forms.CheckBox cbCostSubHead;
+        private System.Windows.Forms.CheckBox cbSystem;
+        private System.Windows.Forms.CheckBox cbArea;
+        private System.Windows.Forms.CheckBox cbPanel;
+        private System.Windows.Forms.CheckBox cbCategory;
+        private System.Windows.Forms.CheckBox cbManufacturer;
+        private System.Windows.Forms.CheckBox cbPartNo;
+        private System.Windows.Forms.CheckBox cbDescription;
+        private System.Windows.Forms.CheckBox cbQty;
+        private System.Windows.Forms.CheckBox cbUnitCost;
+        private System.Windows.Forms.CheckBox cbExtCost;
+        private System.Windows.Forms.CheckBox cbUnitPrice;
+        private System.Windows.Forms.CheckBox cbExtPrice;
+        private System.Windows.Forms.CheckBox cbColumn1;
+        private System.Windows.Forms.CheckBox cbColumn2;
+        private System.Windows.Forms.CheckBox cbColumn3;
+        private System.Windows.Forms.CheckBox cbColumn4;
+        private System.Windows.Forms.CheckBox cbColumn5;
+        private System.Windows.Forms.Button button1;
     }
 }
 
