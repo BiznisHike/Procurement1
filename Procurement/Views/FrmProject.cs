@@ -92,7 +92,7 @@ namespace Procurement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Save and Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Do you want to save?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No) return;
             this.Enabled = false;
             Project projModel;
@@ -149,6 +149,18 @@ namespace Procurement
 
             ////////////
             this.Close();
+            
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                
+                if (Application.OpenForms[i].Name == "FrmProjects")
+                {
+                    StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation = true;
+                    Application.OpenForms[i].Close();
+                    StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation = false;
+                }
+            }
+            
             FrmProjects_Show();
         }
         private void FrmProjects_Show()
@@ -207,7 +219,8 @@ namespace Procurement
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-           
+            //DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.No) return;
             this.Close();
         }
 
@@ -230,6 +243,8 @@ namespace Procurement
 
         private void FrmNewProject_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.BringToFront();
+            if (StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation == true) return;
             DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No) e.Cancel = true;
         }

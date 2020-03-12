@@ -256,12 +256,16 @@ namespace Procurement
             for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
             {
                 if (Application.OpenForms[i].Name != "FrmMDI" && Application.OpenForms[i].Name != "FrmProjects")
+                {
+                    StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation = true;
                     Application.OpenForms[i].Close();
+                    StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation = false;
+                }
             }
 
             MessageBox.Show("Project Opened Successfully");
             //toolTip1.Show("Project Opened Successfully",dataGridViewProjects,Cursor.Position,5000);
-            
+            this.Close();
             
 
 
@@ -300,7 +304,7 @@ namespace Procurement
         private void linkAddNewProject_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmNewProject_Show();
-            this.Close();
+            //this.Close();
         }
         private void FrmNewProject_Show()
         {
@@ -369,13 +373,15 @@ namespace Procurement
 
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
+            
             this.Close();
         }
 
         private void FrmProjects_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
-            //if (dialogResult == DialogResult.No) e.Cancel = true;
+            if (StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation == true) return;
+            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No) e.Cancel = true;
         }
     }
 }

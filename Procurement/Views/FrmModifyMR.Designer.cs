@@ -86,7 +86,7 @@
             this.btnSave.Size = new System.Drawing.Size(162, 30);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save and Export Excel";
-            this.toolTip1.SetToolTip(this.btnSave, "Save and close this window");
+            this.toolTip1.SetToolTip(this.btnSave, "Save");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 

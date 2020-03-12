@@ -1246,6 +1246,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.ImageKey = "Yes.bmp";
@@ -1271,7 +1272,7 @@
             this.btnSave.Size = new System.Drawing.Size(97, 30);
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
-            this.toolTip1.SetToolTip(this.btnSave, "Save and close this window");
+            this.toolTip1.SetToolTip(this.btnSave, "Save");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 

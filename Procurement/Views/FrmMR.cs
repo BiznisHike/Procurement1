@@ -89,7 +89,7 @@ namespace Procurement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //DialogResult dialogResult = MessageBox.Show("Save and Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            //DialogResult dialogResult = MessageBox.Show("Do you want to save?", "Confirmation", MessageBoxButtons.YesNo);
             //if (dialogResult == DialogResult.No) return;
             SaveFileDialog savefile = new SaveFileDialog();
             // set a default file name
@@ -501,6 +501,7 @@ namespace Procurement
 
         private void FrmMR_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation == true) return;
             DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No) e.Cancel = true;
         }

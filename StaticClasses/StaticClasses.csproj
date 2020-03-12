@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NewProjectOpend.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CurrentOpenProject.cs" />
     <Compile Include="LoginInfo.cs" />

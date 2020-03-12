@@ -12,6 +12,8 @@ using Procurement.Views;
 using System.Text.RegularExpressions;
 using System.Text;
 using System.Drawing;
+using System.IO;
+using ExcelDataReader;
 
 namespace Procurement
 {
@@ -122,12 +124,8 @@ namespace Procurement
                 MessageBox.Show(ex.ToString());
             }
         }
-        private void loadBOMToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadExcelOldMethod()
         {
-            //using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
-            //{ 
-
-            //}
             try
             {
                 OpenFileDialog dlg_im = new OpenFileDialog();
@@ -157,7 +155,7 @@ namespace Procurement
                     //{
                     //    listBoxWorkSheets.Items.Add(item["TABLE_NAME"].ToString());
                     //}
-                    
+
                     //return;
 
                     string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
@@ -173,6 +171,7 @@ namespace Procurement
 
                     sda.Fill(dtTemp);
                     Con.Close();
+
                     //DataRow newDataRow;
                     //////////////////////////////////////////////////////////////
                     //if (!(tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"]))
@@ -278,105 +277,202 @@ namespace Procurement
                 MessageBox.Show(ex.ToString());
             }
         }
+        //DataTableCollection tableCollection;
+
+        private void LoadExcelNewMethod()
+        {
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel File|*.xls;*.xlsx;*.xlsm" })
+                {
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        DataSet tempDataSet;
+                        txtBOMFilePath.Text = openFileDialog.FileName;
+                        using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                        {
+                            using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                            {
+                                tempDataSet = reader.AsDataSet(new ExcelDataSetConfiguration()
+                                {
+                                    ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
+                                });
+                                //tableCollection = result.Tables;
+                                //dataGridView1.DataSource = result.Tables[0];//tableCollection[0];
+                            }
+                        }
+
+                        DataTable dtBOM = new DataTable("dtBOM");
+                        //dtBOM = dtTemp.Clone();
+                        dtBOM.Columns.Add(_columnNames[0], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[1], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[2], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[3], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[4], typeof(decimal));
+                        dtBOM.Columns.Add(_columnNames[5], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[6], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[7], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[8], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[9], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[10], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[11], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[12], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[13], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[14], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[15], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[16], typeof(decimal));
+                        dtBOM.Columns.Add(_columnNames[17], typeof(decimal));
+                        dtBOM.Columns.Add(_columnNames[18], typeof(decimal));
+                        dtBOM.Columns.Add(_columnNames[19], typeof(decimal));
+                        dtBOM.Columns.Add(_columnNames[20], typeof(decimal));
+                        dtBOM.Columns.Add(_columnNames[21], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[22], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[23], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[24], typeof(string));
+                        dtBOM.Columns.Add(_columnNames[25], typeof(string));
+
+                        dataGridView1.AutoGenerateColumns = false;
+
+                        foreach (DataRow dr in tempDataSet.Tables[0].Rows)
+                        {
+                            //string colName=gvr.Cells[0].OwningColumn.HeaderText;
+
+                            bool isAdd = false;
+                            for (int i = 0; i < tempDataSet.Tables[0].Columns.Count; i++)
+                            {
+                                //if (dr[i] == null || dr[i] == DBNull.Value || String.IsNullOrWhiteSpace(dr[i].ToString()))
+                                if (dr[i] == DBNull.Value)
+                                {
+                                    isAdd = false;
+                                }
+                                else
+                                {
+                                    isAdd = true;
+                                    break;
+                                }
+                            }
+
+                            if (isAdd == true)
+                            {
+                                //can not add like this dtBOM.Rows.Add(dr); :(  have to add new row and then add to list
+                                //newDataRow = dtBOM.NewRow();
+                                //for (int i = 0; i <  dtTemp.Columns.Count; i++)
+                                //{
+                                //    newDataRow[i] = dr[i];
+
+                                //}
+                                //dtBOM.Rows.Add(newDataRow);
+
+                                dtBOM.Rows.Add(dr.ItemArray);
+                            }
+
+                        }
+                        if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+                        {
+                            _dtSalesBOM = dtBOM;
+                            dataGridView1.DataSource = _dtSalesBOM;
+                        }
+                        if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+                        {
+                            _dtDesignBOM = dtBOM;
+                            dataGridView2.DataSource = _dtDesignBOM;
+                        }
+                        if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
+                        {
+                            _dtActualBOM = dtBOM;
+                            dataGridView3.DataSource = _dtActualBOM;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void loadBOMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            //Method1();
+            LoadExcelNewMethod();
+
+        }
 
         private void loadChageOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                OpenFileDialog dlg_im = new OpenFileDialog();
-                dlg_im.Filter = "Excel File|*.xls;*.xlsx;*.xlsm";
-                //dlg_im.Filter = "Excel File|*.xlsx";
-
-                if (dlg_im.ShowDialog() == DialogResult.OK)
+                using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel File|*.xls;*.xlsx;*.xlsm" })
                 {
-                    //dataGridView1.Rows.Clear();
-                    txtBOMFilePath.Text = dlg_im.FileName;
-
-
-                    string constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + txtBOMFilePath.Text + ";Extended Properties='Excel 12.0 XML;HDR=YES;';";
-
-                    OleDbConnection Con = new OleDbConnection(constr);
-
-                    Con.Open();
-
-                    // Get the name of the first worksheet:
-                    DataTable dbSchema = Con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                    if (dbSchema == null || dbSchema.Rows.Count < 1)
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        throw new Exception("Error: Could not determine the name of the first worksheet.");
-                    }
-                    string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
-
-
-
-                    OleDbCommand cmd = new OleDbCommand("SELECT * FROM [" + firstSheetName + "]", Con);
-
-
-
-                    OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
-                    DataTable dtTemp = new DataTable();
-                    sda.Fill(dtTemp);
-                    Con.Close();
-
-                    //////////////////////////////////////////////////////////////
-
-                    //_dtSalesBOM = new DataTable();
-                    //_dtSalesBOM = dtTemp.Clone();
-
-
-                    foreach (DataRow dr in dtTemp.Rows)
-                    {
-                        //string colName=gvr.Cells[0].OwningColumn.HeaderText;
-
-                        bool isAdd = false;
-                        for (int i = 0; i < dtTemp.Columns.Count; i++)
+                        DataSet tempDataSet;
+                        txtBOMFilePath.Text = openFileDialog.FileName;
+                        using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                         {
-                            //if (dr[i] == null || dr[i] == DBNull.Value || String.IsNullOrWhiteSpace(dr[i].ToString()))
-                            if (dr[i] == DBNull.Value)
+                            using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
                             {
-                                isAdd = false;
-                            }
-                            else
-                            {
-                                isAdd = true;
-                                break;
+                                tempDataSet = reader.AsDataSet(new ExcelDataSetConfiguration()
+                                {
+                                    ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
+                                });
+                                //tableCollection = result.Tables;
+                                //dataGridView1.DataSource = result.Tables[0];//tableCollection[0];
                             }
                         }
-
-                        if (isAdd == true)
+                        
+                        foreach (DataRow dr in tempDataSet.Tables[0].Rows)
                         {
-                            //can not add like this _dtSalesBOM.Rows.Add(dr); :(  have to add new row and then add to list
-                            //newDataRow = _dtSalesBOM.NewRow();
-                            //for (int i = 0; i <  dtTemp.Columns.Count; i++)
-                            //{
-                            //    newDataRow[i] = dr[i];
+                            //string colName=gvr.Cells[0].OwningColumn.HeaderText;
 
-                            //}
-                            //_dtSalesBOM.Rows.Add(newDataRow);
-
-                            //dtBOM.Rows.Add(dr.ItemArray);
-
-                            if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+                            bool isAdd = false;
+                            for (int i = 0; i < tempDataSet.Tables[0].Columns.Count; i++)
                             {
-                                _dtSalesBOM.Rows.Add(dr.ItemArray);
-                                //dataGridView1.DataSource = _dtSalesBOM;
+                                //if (dr[i] == null || dr[i] == DBNull.Value || String.IsNullOrWhiteSpace(dr[i].ToString()))
+                                if (dr[i] == DBNull.Value)
+                                {
+                                    isAdd = false;
+                                }
+                                else
+                                {
+                                    isAdd = true;
+                                    break;
+                                }
                             }
-                            if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+
+                            if (isAdd == true)
                             {
-                                _dtDesignBOM.Rows.Add(dr.ItemArray);
-                                //dataGridView2.DataSource = _dtDesignBOM;
-                            }
-                            if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
-                            {
-                                _dtActualBOM.Rows.Add(dr.ItemArray);
-                                //dataGridView3.DataSource = _dtActualBOM;
+                                //can not add like this dtBOM.Rows.Add(dr); :(  have to add new row and then add to list
+                                //newDataRow = dtBOM.NewRow();
+                                //for (int i = 0; i <  dtTemp.Columns.Count; i++)
+                                //{
+                                //    newDataRow[i] = dr[i];
+
+                                //}
+                                //dtBOM.Rows.Add(newDataRow);
+
+                                
+
+                                if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+                                {
+                                    _dtSalesBOM.Rows.Add(dr.ItemArray);
+                                    //dataGridView1.DataSource = _dtSalesBOM;
+                                }
+                                if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+                                {
+                                    _dtDesignBOM.Rows.Add(dr.ItemArray);
+                                    //dataGridView2.DataSource = _dtDesignBOM;
+                                }
+                                if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
+                                {
+                                    _dtActualBOM.Rows.Add(dr.ItemArray);
+                                    //dataGridView3.DataSource = _dtActualBOM;
+                                }
                             }
 
                         }
-
+                        
                     }
-                    //dataGridView1.DataSource = _dtSalesBOM;
-
                 }
             }
             catch (Exception ex)
@@ -516,7 +612,7 @@ namespace Procurement
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Save and Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Do you want to Save?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No) return;
 
             this.Enabled = false;
@@ -589,6 +685,7 @@ namespace Procurement
             _pc = new ProjectController();
             CurrentOpenProject.CurrentProject = _pc.GetModelByID(projModel.ProjectCode);
             ////////////
+            MessageBox.Show("Data Saved Successfully");
             this.Close();
         }
 
@@ -790,6 +887,7 @@ namespace Procurement
         }
         private void FrmBOM_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation == true) return;
             DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No) e.Cancel = true;
         }
@@ -817,7 +915,7 @@ namespace Procurement
                 dataGridView2.Columns[e.ColumnIndex].Name == "ExtPrice2")
             {
                 decimal parsedValue;
-                if (!String.IsNullOrEmpty(e.FormattedValue.ToString()) && decimal.TryParse(e.FormattedValue.ToString(),out parsedValue)==false)
+                if (!String.IsNullOrEmpty(e.FormattedValue.ToString()) && decimal.TryParse(e.FormattedValue.ToString(), out parsedValue) == false)
                 {
                     MessageBox.Show("Only numeric values are allowed");
                     e.Cancel = true;
@@ -849,6 +947,7 @@ namespace Procurement
                 }
             }
         }
+
         private decimal ReturnAppropriateValue(object ObjValue)
         {
             //lObjBom.PartNo = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
@@ -1580,6 +1679,6 @@ namespace Procurement
             //showDeleteConfirmation = true;
         }
 
-       
+
     }
 }

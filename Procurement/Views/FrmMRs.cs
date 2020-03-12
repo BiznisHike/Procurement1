@@ -334,6 +334,7 @@ namespace Procurement
 
         private void FrmMRs_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation == true) return;
             DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No) e.Cancel = true;
         }
