@@ -260,6 +260,9 @@ namespace Procurement
             }
 
             MessageBox.Show("Project Opened Successfully");
+            //toolTip1.Show("Project Opened Successfully",dataGridViewProjects,Cursor.Position,5000);
+            
+            
 
 
         }
@@ -371,8 +374,8 @@ namespace Procurement
 
         private void FrmProjects_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No) e.Cancel = true;
+            //DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.No) e.Cancel = true;
         }
     }
 }

@@ -162,6 +162,7 @@
             this.cbColumn3 = new System.Windows.Forms.CheckBox();
             this.cbColumn4 = new System.Windows.Forms.CheckBox();
             this.cbColumn5 = new System.Windows.Forms.CheckBox();
+            this.listBoxWorkSheets = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabSaleBOM.SuspendLayout();
@@ -551,6 +552,7 @@
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
             this.dataGridView2.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseClick);
+            this.dataGridView2.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView2_CellValidating);
             // 
             // Category1_2
             // 
@@ -814,6 +816,7 @@
             this.dataGridView3.TabIndex = 3;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             this.dataGridView3.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseClick);
+            this.dataGridView3.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView3_CellValidating);
             // 
             // Category1_3
             // 
@@ -1703,12 +1706,23 @@
             this.cbColumn5.UseVisualStyleBackColor = true;
             this.cbColumn5.CheckedChanged += new System.EventHandler(this.cbColumn5_CheckedChanged);
             // 
+            // listBoxWorkSheets
+            // 
+            this.listBoxWorkSheets.FormattingEnabled = true;
+            this.listBoxWorkSheets.ItemHeight = 16;
+            this.listBoxWorkSheets.Location = new System.Drawing.Point(1005, 10);
+            this.listBoxWorkSheets.Name = "listBoxWorkSheets";
+            this.listBoxWorkSheets.Size = new System.Drawing.Size(120, 84);
+            this.listBoxWorkSheets.TabIndex = 4;
+            this.listBoxWorkSheets.Visible = false;
+            // 
             // FrmBOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1278, 571);
+            this.Controls.Add(this.listBoxWorkSheets);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -1878,6 +1892,7 @@
         private System.Windows.Forms.CheckBox cbColumn4;
         private System.Windows.Forms.CheckBox cbColumn5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBoxWorkSheets;
     }
 }
 

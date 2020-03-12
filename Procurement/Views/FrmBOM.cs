@@ -152,6 +152,14 @@ namespace Procurement
                     {
                         throw new Exception("Error: Could not determine the name of the first worksheet.");
                     }
+
+                    //foreach (DataRow item in dbSchema.Rows)
+                    //{
+                    //    listBoxWorkSheets.Items.Add(item["TABLE_NAME"].ToString());
+                    //}
+                    
+                    //return;
+
                     string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
 
                     //firstSheetName = "BOM$";
@@ -176,37 +184,40 @@ namespace Procurement
                     //}
                     DataTable dtBOM = new DataTable("dtBOM");
                     //dtBOM = dtTemp.Clone();
-                    dtBOM.Columns.Add(_columnNames[0]);
-                    dtBOM.Columns.Add(_columnNames[1]);
-                    dtBOM.Columns.Add(_columnNames[2]);
-                    dtBOM.Columns.Add(_columnNames[3]);
-                    dtBOM.Columns.Add(_columnNames[4]);
-                    dtBOM.Columns.Add(_columnNames[5]);
-                    dtBOM.Columns.Add(_columnNames[6]);
-                    dtBOM.Columns.Add(_columnNames[7]);
-                    dtBOM.Columns.Add(_columnNames[8]);
-                    dtBOM.Columns.Add(_columnNames[9]);
-                    dtBOM.Columns.Add(_columnNames[10]);
-                    dtBOM.Columns.Add(_columnNames[11]);
-                    dtBOM.Columns.Add(_columnNames[12]);
-                    dtBOM.Columns.Add(_columnNames[13]);
-                    dtBOM.Columns.Add(_columnNames[14]);
-                    dtBOM.Columns.Add(_columnNames[15]);
-                    dtBOM.Columns.Add(_columnNames[16]);
-                    dtBOM.Columns.Add(_columnNames[17]);
-                    dtBOM.Columns.Add(_columnNames[18]);
-                    dtBOM.Columns.Add(_columnNames[19]);
-                    dtBOM.Columns.Add(_columnNames[20]);
-                    dtBOM.Columns.Add(_columnNames[21]);
-                    dtBOM.Columns.Add(_columnNames[22]);
-                    dtBOM.Columns.Add(_columnNames[23]);
-                    dtBOM.Columns.Add(_columnNames[24]);
-                    dtBOM.Columns.Add(_columnNames[25]);
+                    dtBOM.Columns.Add(_columnNames[0], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[1], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[2], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[3], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[4], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[5], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[6], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[7], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[8], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[9], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[10], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[11], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[12], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[13], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[14], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[15], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[16], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[17], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[18], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[19], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[20], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[21], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[22], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[23], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[24], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[25], typeof(string));
 
                     dataGridView1.AutoGenerateColumns = false;
 
                     //}
-
+                    //for (int j = 0; j < dtBOM.Columns.Count; j++)
+                    //{
+                    //    MessageBox.Show(dtBOM.Columns[j].ColumnName +"----" + dtBOM.Columns[j].DataType.Name.ToString());
+                    //}
                     foreach (DataRow dr in dtTemp.Rows)
                     {
                         //string colName=gvr.Cells[0].OwningColumn.HeaderText;
@@ -785,6 +796,7 @@ namespace Procurement
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+
             decimal quantity = ReturnAppropriateValue(dataGridView2.Rows[e.RowIndex].Cells["Qty2"].Value);
             decimal rate = ReturnAppropriateValue(dataGridView2.Rows[e.RowIndex].Cells["UnitCost2"].Value);
 
@@ -796,7 +808,22 @@ namespace Procurement
 
             //}
         }
-
+        private void dataGridView2_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dataGridView2.Columns[e.ColumnIndex].Name == "Sr2" ||
+                dataGridView2.Columns[e.ColumnIndex].Name == "Qty2" ||
+                dataGridView2.Columns[e.ColumnIndex].Name == "UnitCost2" ||
+                dataGridView2.Columns[e.ColumnIndex].Name == "UnitPrice2" ||
+                dataGridView2.Columns[e.ColumnIndex].Name == "ExtPrice2")
+            {
+                decimal parsedValue;
+                if (!String.IsNullOrEmpty(e.FormattedValue.ToString()) && decimal.TryParse(e.FormattedValue.ToString(),out parsedValue)==false)
+                {
+                    MessageBox.Show("Only numeric values are allowed");
+                    e.Cancel = true;
+                }
+            }
+        }
         private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             decimal quantity = ReturnAppropriateValue(dataGridView3.Rows[e.RowIndex].Cells["Qty3"].Value);
@@ -805,6 +832,22 @@ namespace Procurement
             decimal price = quantity * rate;
             dataGridView3.Rows[e.RowIndex].Cells["ExtCost3"].Value = price.ToString();
 
+        }
+        private void dataGridView3_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dataGridView3.Columns[e.ColumnIndex].Name == "Sr3" ||
+            dataGridView3.Columns[e.ColumnIndex].Name == "Qty3" ||
+            dataGridView3.Columns[e.ColumnIndex].Name == "UnitCost3" ||
+            dataGridView3.Columns[e.ColumnIndex].Name == "UnitPrice3" ||
+            dataGridView3.Columns[e.ColumnIndex].Name == "ExtPrice3")
+            {
+                decimal parsedValue;
+                if (!String.IsNullOrEmpty(e.FormattedValue.ToString()) && decimal.TryParse(e.FormattedValue.ToString(), out parsedValue) == false)
+                {
+                    MessageBox.Show("Only numeric values are allowed");
+                    e.Cancel = true;
+                }
+            }
         }
         private decimal ReturnAppropriateValue(object ObjValue)
         {
@@ -1039,7 +1082,7 @@ namespace Procurement
         {
             flowLayoutPanel1.Visible = false;
         }
-
+        #region "Show Hide Columns"
         private void cbArea_CheckedChanged(object sender, EventArgs e)
         {
             if (cbArea.Checked == true)
@@ -1482,6 +1525,8 @@ namespace Procurement
             }
         }
 
+        #endregion "Show Hide Columns"
+
         //private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         //{
         //    if (showDeleteConfirmation == true)
@@ -1535,6 +1580,6 @@ namespace Procurement
             //showDeleteConfirmation = true;
         }
 
-        
+       
     }
 }
