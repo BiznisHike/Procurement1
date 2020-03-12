@@ -29,6 +29,9 @@ namespace Procurement
         bool _newMode;
         Project _currentLoadedProject;
         List<string> _columnNames;
+        bool IsGridView1Changed;
+        bool IsGridView2Changed;
+        bool IsGridView3Changed;
         //SingleTon 
         private static FrmBOM instance = null;
         private FrmBOM()
@@ -420,7 +423,7 @@ namespace Procurement
                                 //dataGridView1.DataSource = result.Tables[0];//tableCollection[0];
                             }
                         }
-                        
+
                         foreach (DataRow dr in tempDataSet.Tables[0].Rows)
                         {
                             //string colName=gvr.Cells[0].OwningColumn.HeaderText;
@@ -451,7 +454,7 @@ namespace Procurement
                                 //}
                                 //dtBOM.Rows.Add(newDataRow);
 
-                                
+
 
                                 if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
                                 {
@@ -471,7 +474,7 @@ namespace Procurement
                             }
 
                         }
-                        
+
                     }
                 }
             }
@@ -652,18 +655,29 @@ namespace Procurement
             }
 
             List<BOM> LstObjBom;
-            LstObjBom = FillBOMModel1(ref projModel);
-            _bc = new BOMController(LstObjBom);
-            _bc.SaveList(projModel.ProjectCode, 1);
+            if (IsGridView1Changed == true)
+            {
+                LstObjBom = FillBOMModel1(ref projModel);
+                _bc = new BOMController(LstObjBom);
+                _bc.SaveList(projModel.ProjectCode, 1);
+                IsGridView1Changed = false;
+            }
             //---
-            LstObjBom = FillBOMModel2(ref projModel);
-            _bc = new BOMController(LstObjBom);
-            _bc.SaveList(projModel.ProjectCode, 2);
+            if (IsGridView2Changed == true)
+            {
+                LstObjBom = FillBOMModel2(ref projModel);
+                _bc = new BOMController(LstObjBom);
+                _bc.SaveList(projModel.ProjectCode, 2);
+                IsGridView2Changed = false;
+            }
             //---
-            LstObjBom = FillBOMModel3(ref projModel);
-            _bc = new BOMController(LstObjBom);
-            _bc.SaveList(projModel.ProjectCode, 3);
-
+            if (IsGridView3Changed == true)
+            {
+                LstObjBom = FillBOMModel3(ref projModel);
+                _bc = new BOMController(LstObjBom);
+                _bc.SaveList(projModel.ProjectCode, 3);
+                IsGridView3Changed = false;
+            }
             //Project proj = _LstProjects.Where(x => x.ProjectCode == projModel.ProjectCode).FirstOrDefault();
 
             //if (proj == null)
@@ -1679,6 +1693,32 @@ namespace Procurement
             //showDeleteConfirmation = true;
         }
 
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                IsGridView1Changed = true;
+            }
 
+
+        }
+
+        private void dataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                IsGridView2Changed = true;
+            }
+
+        }
+
+        private void dataGridView3_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                IsGridView3Changed = true;
+            }
+
+        }
     }
 }
