@@ -374,16 +374,19 @@ namespace Procurement
                         {
                             _dtSalesBOM = dtBOM;
                             dataGridView1.DataSource = _dtSalesBOM;
+                            IsGridView1Changed = true;
                         }
                         if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
                         {
                             _dtDesignBOM = dtBOM;
                             dataGridView2.DataSource = _dtDesignBOM;
+                            IsGridView2Changed = true;
                         }
                         if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
                         {
                             _dtActualBOM = dtBOM;
                             dataGridView3.DataSource = _dtActualBOM;
+                            IsGridView3Changed = true;
                         }
                     }
                 }
@@ -459,17 +462,17 @@ namespace Procurement
                                 if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
                                 {
                                     _dtSalesBOM.Rows.Add(dr.ItemArray);
-                                    //dataGridView1.DataSource = _dtSalesBOM;
+                                    IsGridView1Changed = true;
                                 }
                                 if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
                                 {
                                     _dtDesignBOM.Rows.Add(dr.ItemArray);
-                                    //dataGridView2.DataSource = _dtDesignBOM;
+                                    IsGridView2Changed = true;
                                 }
                                 if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
                                 {
                                     _dtActualBOM.Rows.Add(dr.ItemArray);
-                                    //dataGridView3.DataSource = _dtActualBOM;
+                                    IsGridView3Changed = true;
                                 }
                             }
 
@@ -905,10 +908,13 @@ namespace Procurement
             DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No) e.Cancel = true;
         }
-
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            IsGridView1Changed = true;
+        }
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
+            IsGridView2Changed = true;
             decimal quantity = ReturnAppropriateValue(dataGridView2.Rows[e.RowIndex].Cells["Qty2"].Value);
             decimal rate = ReturnAppropriateValue(dataGridView2.Rows[e.RowIndex].Cells["UnitCost2"].Value);
 
@@ -938,6 +944,7 @@ namespace Procurement
         }
         private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            IsGridView3Changed = true;
             decimal quantity = ReturnAppropriateValue(dataGridView3.Rows[e.RowIndex].Cells["Qty3"].Value);
             decimal rate = ReturnAppropriateValue(dataGridView3.Rows[e.RowIndex].Cells["UnitCost3"].Value);
 
@@ -1693,32 +1700,34 @@ namespace Procurement
             //showDeleteConfirmation = true;
         }
 
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > -1)
-            {
-                IsGridView1Changed = true;
-            }
+        
+
+        //private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex > -1)
+        //    {
+        //        IsGridView1Changed = true;
+        //    }
 
 
-        }
+        //}
 
-        private void dataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > -1)
-            {
-                IsGridView2Changed = true;
-            }
+        //private void dataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex > -1)
+        //    {
+        //        IsGridView2Changed = true;
+        //    }
 
-        }
+        //}
 
-        private void dataGridView3_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > -1)
-            {
-                IsGridView3Changed = true;
-            }
+        //private void dataGridView3_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex > -1)
+        //    {
+        //        IsGridView3Changed = true;
+        //    }
 
-        }
+        //}
     }
 }
