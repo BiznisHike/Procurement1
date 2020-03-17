@@ -124,162 +124,10 @@ namespace Procurement
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
-        private void LoadExcelOldMethod()
-        {
-            try
-            {
-                OpenFileDialog dlg_im = new OpenFileDialog();
-                dlg_im.Filter = "Excel File|*.xls;*.xlsx;*.xlsm";
-                //dlg_im.Filter = "Excel File|*.xlsx";
 
-                if (dlg_im.ShowDialog() == DialogResult.OK)
-                {
-                    //dataGridView1.Rows.Clear();
-                    txtBOMFilePath.Text = dlg_im.FileName;
-
-
-                    string constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + txtBOMFilePath.Text + ";Extended Properties='Excel 12.0 XML;HDR=YES;';";
-
-                    OleDbConnection Con = new OleDbConnection(constr);
-
-                    Con.Open();
-
-                    // Get the name of the first worksheet:
-                    DataTable dbSchema = Con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                    if (dbSchema == null || dbSchema.Rows.Count < 1)
-                    {
-                        throw new Exception("Error: Could not determine the name of the first worksheet.");
-                    }
-
-                    //foreach (DataRow item in dbSchema.Rows)
-                    //{
-                    //    listBoxWorkSheets.Items.Add(item["TABLE_NAME"].ToString());
-                    //}
-
-                    //return;
-
-                    string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
-
-                    //firstSheetName = "BOM$";
-
-                    OleDbCommand cmd = new OleDbCommand("SELECT * FROM [" + firstSheetName + "]", Con);
-
-
-
-                    OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
-                    DataTable dtTemp = new DataTable();
-
-                    sda.Fill(dtTemp);
-                    Con.Close();
-
-                    //DataRow newDataRow;
-                    //////////////////////////////////////////////////////////////
-                    //if (!(tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"]))
-                    //if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
-                    //{
-                    //    DataColumn Col = dtTemp.Columns.Add("Select2", System.Type.GetType("System.Boolean"));
-                    //    //Col.SetOrdinal(0);// to put the column in position 0;
-
-                    //}
-                    DataTable dtBOM = new DataTable("dtBOM");
-                    //dtBOM = dtTemp.Clone();
-                    dtBOM.Columns.Add(_columnNames[0], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[1], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[2], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[3], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[4], typeof(decimal));
-                    dtBOM.Columns.Add(_columnNames[5], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[6], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[7], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[8], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[9], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[10], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[11], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[12], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[13], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[14], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[15], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[16], typeof(decimal));
-                    dtBOM.Columns.Add(_columnNames[17], typeof(decimal));
-                    dtBOM.Columns.Add(_columnNames[18], typeof(decimal));
-                    dtBOM.Columns.Add(_columnNames[19], typeof(decimal));
-                    dtBOM.Columns.Add(_columnNames[20], typeof(decimal));
-                    dtBOM.Columns.Add(_columnNames[21], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[22], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[23], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[24], typeof(string));
-                    dtBOM.Columns.Add(_columnNames[25], typeof(string));
-
-                    dataGridView1.AutoGenerateColumns = false;
-
-                    //}
-                    //for (int j = 0; j < dtBOM.Columns.Count; j++)
-                    //{
-                    //    MessageBox.Show(dtBOM.Columns[j].ColumnName +"----" + dtBOM.Columns[j].DataType.Name.ToString());
-                    //}
-                    foreach (DataRow dr in dtTemp.Rows)
-                    {
-                        //string colName=gvr.Cells[0].OwningColumn.HeaderText;
-
-                        bool isAdd = false;
-                        for (int i = 0; i < dtTemp.Columns.Count; i++)
-                        {
-                            //if (dr[i] == null || dr[i] == DBNull.Value || String.IsNullOrWhiteSpace(dr[i].ToString()))
-                            if (dr[i] == DBNull.Value)
-                            {
-                                isAdd = false;
-                            }
-                            else
-                            {
-                                isAdd = true;
-                                break;
-                            }
-                        }
-
-                        if (isAdd == true)
-                        {
-                            //can not add like this dtBOM.Rows.Add(dr); :(  have to add new row and then add to list
-                            //newDataRow = dtBOM.NewRow();
-                            //for (int i = 0; i <  dtTemp.Columns.Count; i++)
-                            //{
-                            //    newDataRow[i] = dr[i];
-
-                            //}
-                            //dtBOM.Rows.Add(newDataRow);
-
-                            dtBOM.Rows.Add(dr.ItemArray);
-                        }
-
-                    }
-                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
-                    {
-                        _dtSalesBOM = dtBOM;
-                        dataGridView1.DataSource = _dtSalesBOM;
-                    }
-                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
-                    {
-                        _dtDesignBOM = dtBOM;
-                        dataGridView2.DataSource = _dtDesignBOM;
-                    }
-                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
-                    {
-                        _dtActualBOM = dtBOM;
-                        dataGridView3.DataSource = _dtActualBOM;
-                    }
-
-
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
         //DataTableCollection tableCollection;
 
         private void LoadExcelNewMethod()
@@ -393,7 +241,17 @@ namespace Procurement
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                switch (ex.HResult)
+                {
+                    case -2147024864:
+                        MessageBox.Show(ex.Message);
+                        break;
+                    default:
+                        MessageBox.Show(ex.Message);
+                        break;
+                }
+
+                
             }
         }
         private void loadBOMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -483,7 +341,7 @@ namespace Procurement
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -1700,7 +1558,7 @@ namespace Procurement
             //showDeleteConfirmation = true;
         }
 
-        
+
 
         //private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         //{
@@ -1729,5 +1587,158 @@ namespace Procurement
         //    }
 
         //}
+        private void LoadExcelOldMethod()
+        {
+            try
+            {
+                OpenFileDialog dlg_im = new OpenFileDialog();
+                dlg_im.Filter = "Excel File|*.xls;*.xlsx;*.xlsm";
+                //dlg_im.Filter = "Excel File|*.xlsx";
+
+                if (dlg_im.ShowDialog() == DialogResult.OK)
+                {
+                    //dataGridView1.Rows.Clear();
+                    txtBOMFilePath.Text = dlg_im.FileName;
+
+
+                    string constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + txtBOMFilePath.Text + ";Extended Properties='Excel 12.0 XML;HDR=YES;';";
+
+                    OleDbConnection Con = new OleDbConnection(constr);
+
+                    Con.Open();
+
+                    // Get the name of the first worksheet:
+                    DataTable dbSchema = Con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                    if (dbSchema == null || dbSchema.Rows.Count < 1)
+                    {
+                        throw new Exception("Error: Could not determine the name of the first worksheet.");
+                    }
+
+                    //foreach (DataRow item in dbSchema.Rows)
+                    //{
+                    //    listBoxWorkSheets.Items.Add(item["TABLE_NAME"].ToString());
+                    //}
+
+                    //return;
+
+                    string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
+
+                    //firstSheetName = "BOM$";
+
+                    OleDbCommand cmd = new OleDbCommand("SELECT * FROM [" + firstSheetName + "]", Con);
+
+
+
+                    OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
+                    DataTable dtTemp = new DataTable();
+
+                    sda.Fill(dtTemp);
+                    Con.Close();
+
+                    //DataRow newDataRow;
+                    //////////////////////////////////////////////////////////////
+                    //if (!(tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"]))
+                    //if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+                    //{
+                    //    DataColumn Col = dtTemp.Columns.Add("Select2", System.Type.GetType("System.Boolean"));
+                    //    //Col.SetOrdinal(0);// to put the column in position 0;
+
+                    //}
+                    DataTable dtBOM = new DataTable("dtBOM");
+                    //dtBOM = dtTemp.Clone();
+                    dtBOM.Columns.Add(_columnNames[0], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[1], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[2], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[3], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[4], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[5], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[6], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[7], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[8], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[9], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[10], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[11], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[12], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[13], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[14], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[15], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[16], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[17], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[18], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[19], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[20], typeof(decimal));
+                    dtBOM.Columns.Add(_columnNames[21], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[22], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[23], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[24], typeof(string));
+                    dtBOM.Columns.Add(_columnNames[25], typeof(string));
+
+                    dataGridView1.AutoGenerateColumns = false;
+
+                    //}
+                    //for (int j = 0; j < dtBOM.Columns.Count; j++)
+                    //{
+                    //    MessageBox.Show(dtBOM.Columns[j].ColumnName +"----" + dtBOM.Columns[j].DataType.Name.ToString());
+                    //}
+                    foreach (DataRow dr in dtTemp.Rows)
+                    {
+                        //string colName=gvr.Cells[0].OwningColumn.HeaderText;
+
+                        bool isAdd = false;
+                        for (int i = 0; i < dtTemp.Columns.Count; i++)
+                        {
+                            //if (dr[i] == null || dr[i] == DBNull.Value || String.IsNullOrWhiteSpace(dr[i].ToString()))
+                            if (dr[i] == DBNull.Value)
+                            {
+                                isAdd = false;
+                            }
+                            else
+                            {
+                                isAdd = true;
+                                break;
+                            }
+                        }
+
+                        if (isAdd == true)
+                        {
+                            //can not add like this dtBOM.Rows.Add(dr); :(  have to add new row and then add to list
+                            //newDataRow = dtBOM.NewRow();
+                            //for (int i = 0; i <  dtTemp.Columns.Count; i++)
+                            //{
+                            //    newDataRow[i] = dr[i];
+
+                            //}
+                            //dtBOM.Rows.Add(newDataRow);
+
+                            dtBOM.Rows.Add(dr.ItemArray);
+                        }
+
+                    }
+                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabSaleBOM"])
+                    {
+                        _dtSalesBOM = dtBOM;
+                        dataGridView1.DataSource = _dtSalesBOM;
+                    }
+                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabDesignBOM"])
+                    {
+                        _dtDesignBOM = dtBOM;
+                        dataGridView2.DataSource = _dtDesignBOM;
+                    }
+                    if (tabControl1.SelectedTab == tabControl1.TabPages["tabActualBOM"])
+                    {
+                        _dtActualBOM = dtBOM;
+                        dataGridView3.DataSource = _dtActualBOM;
+                    }
+
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

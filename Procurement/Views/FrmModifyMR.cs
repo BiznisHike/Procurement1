@@ -90,7 +90,7 @@ namespace Procurement
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
         private void cmbMRList_SelectedIndexChanged(object sender, EventArgs e)
