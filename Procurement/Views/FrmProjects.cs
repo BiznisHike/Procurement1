@@ -47,11 +47,13 @@ namespace Procurement
 
         private void FrmBOM_Load(object sender, EventArgs e)
         {
+            
             dataGridViewProjects.AllowUserToDeleteRows = false;
             try
             {
+
                 
-               
+
                 _pc = new ProjectController();
                 _LstProjects = _pc.GetModels();
 
@@ -131,9 +133,10 @@ namespace Procurement
 
             //Get all the properties
             PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            int adjustSize=0;
             foreach (PropertyInfo prop in Props)
             {
-                if (prop.Name == "BOMs" || prop.Name == "ProjectEmployeeDetails" || prop.Name == "MRVersions") continue;
+                if (prop.Name == "BOMs" || prop.Name == "ProjectEmployeeDetails" || prop.Name == "MRVersions") { adjustSize += 1; continue; }
 
                 //Defining type of data column gives proper data table 
                 var type = (prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType);
@@ -142,7 +145,7 @@ namespace Procurement
             }
             foreach (T item in items)
             {
-                var values = new object[Props.Length-3];
+                var values = new object[Props.Length - adjustSize];
                 for (int i = 0; i < Props.Length; i++)
                 {
                     if (Props[i].Name == "BOMs" || Props[i].Name == "ProjectEmployeeDetails" || Props[i].Name == "MRVersions") continue;

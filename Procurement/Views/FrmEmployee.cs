@@ -139,8 +139,9 @@ namespace Procurement
 
                 //FillCmbManagers();
 
-                _dtProjects.Columns.Remove("BOMs");
-                _dtProjects.Columns.Remove("ProjectEmployeeDetails");
+
+                //_dtProjects.Columns.Remove("BOMs");
+                //_dtProjects.Columns.Remove("ProjectEmployeeDetails");
                 _dtProjects.Columns.Add("Select Projects", typeof(Boolean)).SetOrdinal(0);
 
                 dataGridViewSelectProjects.DataSource = _dtProjects;
@@ -173,11 +174,11 @@ namespace Procurement
                 //}
 
                 _dtEmployees.Columns.Remove("EmployeeTypeCode");
-                _dtEmployees.Columns.Remove("EmployeeType");
+                //_dtEmployees.Columns.Remove("EmployeeType");
                 _dtEmployees.Columns.Remove("ProjectCode");
                 _dtEmployees.Columns.Remove("Manager");
                 _dtEmployees.Columns.Remove("Password");
-                _dtEmployees.Columns.Remove("ProjectEmployeeDetails");
+                //_dtEmployees.Columns.Remove("ProjectEmployeeDetails");
 
                 ////////////////////
                 DataView dv = _dtEmployees.DefaultView;
@@ -391,8 +392,10 @@ namespace Procurement
 
             //Get all the properties
             PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            int adjustSize = 0;
             foreach (PropertyInfo prop in Props)
             {
+                if (prop.Name == "EmployeeType" || prop.Name == "BOMs" || prop.Name == "ProjectEmployeeDetails" || prop.Name == "MRVersions") { adjustSize += 1; continue; }
                 //Defining type of data column gives proper data table 
                 var type = (prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType);
                 //Setting column names as Property names
@@ -400,9 +403,10 @@ namespace Procurement
             }
             foreach (T item in items)
             {
-                var values = new object[Props.Length];
+                var values = new object[Props.Length - adjustSize];
                 for (int i = 0; i < Props.Length; i++)
                 {
+                    if (Props[i].Name == "EmployeeType" || Props[i].Name == "BOMs" || Props[i].Name == "ProjectEmployeeDetails" || Props[i].Name == "MRVersions") continue;
                     //inserting property values to datatable rows
                     values[i] = Props[i].GetValue(item, null);
                 }
@@ -428,7 +432,8 @@ namespace Procurement
                 txtEmployeeName.Text = _currentLoadedEmployee.EmployeeName;
                 txtPassword.Text = _currentLoadedEmployee.Password;
                 cmbEmployeeType.SelectedValue = _currentLoadedEmployee.EmployeeTypeCode;
-
+                btnShowPassword.ImageKey = "show.png";
+                txtPassword.PasswordChar = '●';
 
                 if (_currentLoadedEmployee != null && _currentLoadedEmployee.EmployeeCode == LoginInfo.LoginEmployee.EmployeeCode)
                 { btnShowPassword.Visible = true; }
