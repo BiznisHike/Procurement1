@@ -220,7 +220,7 @@
       <Name>Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\StaticClasses\StaticClasses.csproj">
-      <Project>{2E0D355D-9A0D-425B-8BE3-7016E1022BF9}</Project>
+      <Project>{2e0d355d-9a0d-425b-8be3-7016e1022bf9}</Project>
       <Name>StaticClasses</Name>
     </ProjectReference>
   </ItemGroup>
