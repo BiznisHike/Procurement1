@@ -389,6 +389,7 @@ namespace Procurement
                 //dataGridView2.DataSource =dataGridView1.DataSource;
                 dataGridView2.DataSource = _dtDesignBOM;
                 tabControl1.SelectedTab = tabDesignBOM;
+                IsGridView2Changed = true;
             }
         }
 
@@ -461,6 +462,7 @@ namespace Procurement
                 //dataGridView2.DataSource =dataGridView1.DataSource;
                 dataGridView3.DataSource = _dtActualBOM;
                 tabControl1.SelectedTab = tabActualBOM;
+                IsGridView3Changed = true;
             }
         }
         private Project FillProjectModel()
@@ -975,12 +977,15 @@ namespace Procurement
             {
                 case 1:
                     dataGridView1.DataSource = dtRef;
+                    IsGridView1Changed = true;
                     break;
                 case 2:
                     dataGridView2.DataSource = dtRef;
+                    IsGridView2Changed = true;
                     break;
                 case 3:
                     dataGridView3.DataSource = dtRef;
+                    IsGridView3Changed = true;
                     break;
             }
 
