@@ -272,7 +272,7 @@ namespace Procurement
                 CurrentOpenProject.CurrentProject = _pc.GetModelByID(CurrentOpenProject.CurrentProject.ProjectCode);
                 //////////////
                 this.Enabled = true;
-                this.Close();
+                //this.Close();
             }
         }
 
