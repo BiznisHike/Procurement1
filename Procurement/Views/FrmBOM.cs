@@ -236,6 +236,7 @@ namespace Procurement
                             dataGridView3.DataSource = _dtActualBOM;
                             IsGridView3Changed = true;
                         }
+                        MessageBox.Show("BOM Loaded Successfully");
                     }
                 }
             }
@@ -332,6 +333,7 @@ namespace Procurement
                                     _dtActualBOM.Rows.Add(dr.ItemArray);
                                     IsGridView3Changed = true;
                                 }
+                                MessageBox.Show("Change Order Loaded Successfully");
                             }
 
                         }
@@ -516,7 +518,9 @@ namespace Procurement
                 _pc.UpdateModel(projModel);
 
             }
-
+            progressBar1.Visible = true;
+            progressBar1.Value = 10;
+            Application.DoEvents();
             List<BOM> LstObjBom;
             if (IsGridView1Changed == true)
             {
@@ -525,6 +529,8 @@ namespace Procurement
                 _bc.SaveList(projModel.ProjectCode, 1);
                 IsGridView1Changed = false;
             }
+            progressBar1.Value = 33;
+            Application.DoEvents();
             //---
             if (IsGridView2Changed == true)
             {
@@ -533,6 +539,8 @@ namespace Procurement
                 _bc.SaveList(projModel.ProjectCode, 2);
                 IsGridView2Changed = false;
             }
+            progressBar1.Value = 66;
+            Application.DoEvents();
             //---
             if (IsGridView3Changed == true)
             {
@@ -541,6 +549,9 @@ namespace Procurement
                 _bc.SaveList(projModel.ProjectCode, 3);
                 IsGridView3Changed = false;
             }
+            progressBar1.Value = 100;
+            
+            Application.DoEvents();
             //Project proj = _LstProjects.Where(x => x.ProjectCode == projModel.ProjectCode).FirstOrDefault();
 
             //if (proj == null)
@@ -562,7 +573,7 @@ namespace Procurement
             _pc = new ProjectController();
             CurrentOpenProject.CurrentProject = _pc.GetModelByID(projModel.ProjectCode);
             ////////////
-            MessageBox.Show("Data Saved Successfully");
+            MessageBox.Show("BOM Saved Successfully");
             this.Close();
         }
 
@@ -767,6 +778,7 @@ namespace Procurement
             if (StaticClasses.NewProjectOpened.ClosePreviousProjectFormsWithOutConfirmation == true) return;
             DialogResult dialogResult = MessageBox.Show("Close this window?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No) e.Cancel = true;
+            progressBar1.Visible = false;
         }
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {

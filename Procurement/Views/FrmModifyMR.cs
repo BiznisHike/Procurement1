@@ -129,7 +129,7 @@ namespace Procurement
             //if (dialogResult == DialogResult.No) return;
             SaveFileDialog savefile = new SaveFileDialog();
             // set a default file name
-            string datetime = DateTime.Now.ToString();
+            string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
             datetime = datetime.Replace(":", "");
 
             savefile.FileName = "Material Request " + datetime + ".xlsx";
@@ -517,8 +517,12 @@ namespace Procurement
                         newRow["Qty"] = frmGetQty.gQty;
 
                     }
-
-                    decimal unitCost = decimal.Parse(gvr.Cells["UnitCost2"].Value.ToString());
+                    //if(gvr.Cells["UnitCost2"].Value.ToString().Trim()==string.Empty)
+                    //{
+                    //    gvr.Cells["UnitCost2"].Value = 0;
+                    //}
+                    //decimal unitCost = decimal.Parse(gvr.Cells["UnitCost2"].Value.ToString());
+                    decimal unitCost = decimal.Parse(string.IsNullOrEmpty(gvr.Cells["UnitCost2"].Value.ToString())?"0": gvr.Cells["UnitCost2"].Value.ToString().Trim());
                     //decimal qty = decimal.Parse ( frmGetQty.gQty);
                     decimal qty = Convert.ToDecimal(string.IsNullOrEmpty(frmGetQty.gQty) ? "0" : frmGetQty.gQty);
 

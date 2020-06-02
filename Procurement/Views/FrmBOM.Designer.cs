@@ -163,6 +163,7 @@
             this.cbColumn4 = new System.Windows.Forms.CheckBox();
             this.cbColumn5 = new System.Windows.Forms.CheckBox();
             this.listBoxWorkSheets = new System.Windows.Forms.ListBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabSaleBOM.SuspendLayout();
@@ -1256,7 +1257,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(97, 30);
             this.btnCancel.TabIndex = 10;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Close";
             this.toolTip1.SetToolTip(this.btnCancel, "Close this window");
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -1718,12 +1719,23 @@
             this.listBoxWorkSheets.TabIndex = 4;
             this.listBoxWorkSheets.Visible = false;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(19, 536);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1044, 23);
+            this.progressBar1.TabIndex = 12;
+            this.progressBar1.Visible = false;
+            // 
             // FrmBOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1278, 571);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.listBoxWorkSheets);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnCancel);
@@ -1895,6 +1907,7 @@
         private System.Windows.Forms.CheckBox cbColumn5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBoxWorkSheets;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

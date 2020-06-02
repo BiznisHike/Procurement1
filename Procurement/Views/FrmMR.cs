@@ -93,7 +93,7 @@ namespace Procurement
             //if (dialogResult == DialogResult.No) return;
             SaveFileDialog savefile = new SaveFileDialog();
             // set a default file name
-            string datetime = DateTime.Now.ToString();
+            string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
             datetime = datetime.Replace(":", "");
 
             savefile.FileName = "Material Request " + datetime + ".xlsx";
@@ -234,7 +234,7 @@ namespace Procurement
                 CurrentOpenProject.CurrentProject = _pc.GetModelByID(CurrentOpenProject.CurrentProject.ProjectCode);
                 //////////////
                 this.Enabled = true;
-                this.Close();
+                //this.Close();
             }
         }
 
