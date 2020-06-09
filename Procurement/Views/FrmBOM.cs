@@ -346,35 +346,33 @@ namespace Procurement
                 MessageBox.Show(ex.Message);
             }
         }
-
+      
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //mnuCopyAllToDesignBOM.ShowDropDown();
             //contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
-            if (e.RowIndex >= 0 && e.ColumnIndex == -1)
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex == -1)
             {
-                if (e.Button == System.Windows.Forms.MouseButtons.Right)
-                {
-                    MenuStripDelete.Show(Cursor.Position);
-
-                }
+                //dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+                //dataGridView1.Focus();
+                MenuStripDelete.Show(Cursor.Position);
+                return;
             }
 
-            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && e.RowIndex == -1 && e.ColumnIndex >= 0)
             {
-                if (e.Button == System.Windows.Forms.MouseButtons.Right)
-                {
-                    flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y - 50);
-                    //flowLayoutPanel1.Show();
-                    flowLayoutPanel1.Visible = true;
-
-                }
+                flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y - 50);
+                //flowLayoutPanel1.Show();
+                flowLayoutPanel1.Visible = true;
+                return;
             }
 
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
             {
+                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 MenuStripSaleBOM.Show(Cursor.Position);
             }
 
@@ -397,61 +395,61 @@ namespace Procurement
 
         private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == -1)
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex == -1)
             {
-                if (e.Button == System.Windows.Forms.MouseButtons.Right)
-                {
-                    MenuStripDelete.Show(Cursor.Position);
-
-                }
-            }
-            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
-            {
-                if (e.Button == System.Windows.Forms.MouseButtons.Right)
-                {
-                    flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y - 50);
-                    //flowLayoutPanel1.Show();
-                    flowLayoutPanel1.Visible = true;
-
-                }
+                //dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex];//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
+                dataGridView2.Rows[e.RowIndex].Selected = true;
+                //dataGridView2.Focus();
+                MenuStripDelete.Show(Cursor.Position);
+                return;
             }
 
-            //mnuCopyAllToDesignBOM.ShowDropDown();
-            //contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y - 50);
+                //flowLayoutPanel1.Show();
+                flowLayoutPanel1.Visible = true;
+                return;
+            }
+
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
             {
+                dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 MenuStripDesignBOM.Show(Cursor.Position);
             }
+
+
         }
 
         private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == -1)
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex == -1)
             {
-                if (e.Button == System.Windows.Forms.MouseButtons.Right)
-                {
-                    MenuStripDelete.Show(Cursor.Position);
-
-                }
+                //dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex];//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
+                dataGridView3.Rows[e.RowIndex].Selected = true;
+                //dataGridView3.Focus();
+                MenuStripDelete.Show(Cursor.Position);
+                return;
             }
-            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
-            {
-                if (e.Button == System.Windows.Forms.MouseButtons.Right)
-                {
-                    flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y - 50);
-                    //flowLayoutPanel1.Show();
-                    flowLayoutPanel1.Visible = true;
 
-                }
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                flowLayoutPanel1.Location = new Point(Cursor.Position.X, Cursor.Position.Y - 50);
+                //flowLayoutPanel1.Show();
+                flowLayoutPanel1.Visible = true;
+                return;
             }
 
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
             {
+                dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 MenuStripActualBOM.Show(Cursor.Position);
             }
+
         }
         private void itmCopyAllToActualBOM_Click(object sender, EventArgs e)
         {
@@ -1889,40 +1887,40 @@ namespace Procurement
             }
         }
 
+
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
-            {
-                // Add this
-                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                // Can leave these here - doesn't hurt
-                //dataGridView1.Rows[e.RowIndex].Selected = true;//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
-                dataGridView1.Focus();
-            }
+            //if (e.Button == MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
+            //{
+            //    // Add this
+            //    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            //    // Can leave these here - doesn't hurt
+            //    //dataGridView1.Rows[e.RowIndex].Selected = true;//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
+            //    dataGridView1.Focus();
+            //}
         }
-
         private void dataGridView2_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                // Add this
-                dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                // Can leave these here - doesn't hurt
-                //dataGridView2.Rows[e.RowIndex].Selected = true;//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
-                dataGridView2.Focus();
-            }
+            //if (e.Button == MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
+            //{
+            //    // Add this
+            //    dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            //    // Can leave these here - doesn't hurt
+            //    //dataGridView2.Rows[e.RowIndex].Selected = true;//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
+            //    dataGridView2.Focus();
+            //}
         }
 
         private void dataGridView3_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                // Add this
-                dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                // Can leave these here - doesn't hurt
-                //dataGridView3.Rows[e.RowIndex].Selected = true;//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
-                dataGridView3.Focus();
-            }
+            //if (e.Button == MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
+            //{
+            //    // Add this
+            //    dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            //    // Can leave these here - doesn't hurt
+            //    //dataGridView3.Rows[e.RowIndex].Selected = true;//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
+            //    dataGridView3.Focus();
+            //}
         }
     }
 }
