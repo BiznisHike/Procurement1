@@ -1109,8 +1109,12 @@ namespace Procurement
 
                             for (int i = 0; i <= fields.Count() - 1; i++)
                             {
-                                dataGridView1.Rows[selectedrowIndex1].Cells[selectedColumnIndex1].Value = fields[i]; //price.ToString();
+                                if ((selectedColumnIndex1 >= 0 && selectedColumnIndex1 <= 2) || (selectedColumnIndex1 >= 21 && selectedColumnIndex1 <= 25))
+                                {
+                                    dataGridView1.Rows[selectedrowIndex1].Cells[selectedColumnIndex1].Value = fields[i]; //price.ToString();
+                                }
                                 selectedColumnIndex1 += 1;
+
                             }
                             selectedColumnIndex1 = dataGridView1.SelectedCells[0].ColumnIndex;
                             selectedrowIndex1 += 1;
