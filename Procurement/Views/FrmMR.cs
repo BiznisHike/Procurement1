@@ -220,14 +220,14 @@ namespace Procurement
                 objexcelapp.ActiveWorkbook.SaveCopyAs(savefile.FileName);
                 objexcelapp.ActiveWorkbook.Saved = true;
                 System.Windows.Forms.Application.DoEvents();
-                foreach (Process proc in System.Diagnostics.Process.GetProcessesByName("EXCEL"))
-                {
-                    proc.Kill();
-                }
+                //foreach (Process proc in System.Diagnostics.Process.GetProcessesByName("EXCEL"))
+                //{
+                //    proc.Kill();
+                //}
 
-                /////
+                ///////
                 
-                System.Diagnostics.Process.Start(savefile.FileName);
+                //System.Diagnostics.Process.Start(savefile.FileName);
 
                 //////////////update shared object///////////////////
                 _pc = new ProjectController();

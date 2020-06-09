@@ -36,6 +36,17 @@ namespace Procurement.Views
         {
             OnFormLoad();
             FrmProjects_Show();
+            //contextMenuStrip1.Show();
+         
+        }
+        private void FrmMDI_Activated(object sender, EventArgs e)
+        {
+            //contextMenuStrip1.Show(this, 600, 600);
+            //contextMenuStrip1.AutoClose = false;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
         private void OnFormLoad()
         {
@@ -273,6 +284,24 @@ namespace Procurement.Views
             FrmEmployees_Show();
             
         }
-        
+
+        private void FrmMDI_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void FrmMDI_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            //{
+            //    MenuStripDelete.Show(Cursor.Position);
+
+            //}
+        }
     }
 }

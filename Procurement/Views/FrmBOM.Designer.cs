@@ -120,9 +120,11 @@
             this.MenuStripSaleBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.itmCopyAllToDesignBOM = new System.Windows.Forms.ToolStripMenuItem();
             this.copyFromExcelToSaleBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStripDesignBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.itmCopyAllToActualBOM = new System.Windows.Forms.ToolStripMenuItem();
             this.copyFromExcelToDesignBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.MenuStripDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.itemDeleteProject = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,6 +137,7 @@
             this.loadChageOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStripActualBOM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyFromExcelToActualBOM = new System.Windows.Forms.ToolStripMenuItem();
+            this.PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.cbCategory1 = new System.Windows.Forms.CheckBox();
             this.cbCategory2 = new System.Windows.Forms.CheckBox();
@@ -246,6 +249,7 @@
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
+            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
             // Category1_1
             // 
@@ -554,6 +558,7 @@
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
             this.dataGridView2.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseClick);
+            this.dataGridView2.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDown);
             this.dataGridView2.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView2_CellValidating);
             // 
             // Category1_2
@@ -818,6 +823,7 @@
             this.dataGridView3.TabIndex = 3;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             this.dataGridView3.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseClick);
+            this.dataGridView3.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseDown);
             this.dataGridView3.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView3_CellValidating);
             // 
             // Category1_3
@@ -1033,9 +1039,10 @@
             this.MenuStripSaleBOM.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuStripSaleBOM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itmCopyAllToDesignBOM,
-            this.copyFromExcelToSaleBOMToolStripMenuItem});
+            this.copyFromExcelToSaleBOMToolStripMenuItem,
+            this.PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem});
             this.MenuStripSaleBOM.Name = "contextMenuStrip1";
-            this.MenuStripSaleBOM.Size = new System.Drawing.Size(283, 52);
+            this.MenuStripSaleBOM.Size = new System.Drawing.Size(283, 76);
             // 
             // itmCopyAllToDesignBOM
             // 
@@ -1048,17 +1055,26 @@
             // 
             this.copyFromExcelToSaleBOMToolStripMenuItem.Name = "copyFromExcelToSaleBOMToolStripMenuItem";
             this.copyFromExcelToSaleBOMToolStripMenuItem.Size = new System.Drawing.Size(282, 24);
-            this.copyFromExcelToSaleBOMToolStripMenuItem.Text = "Paste Excel Data";
+            this.copyFromExcelToSaleBOMToolStripMenuItem.Text = "Paste All Copied Column(s)";
+            this.copyFromExcelToSaleBOMToolStripMenuItem.Visible = false;
             this.copyFromExcelToSaleBOMToolStripMenuItem.Click += new System.EventHandler(this.copyFromExcelToSaleBOMToolStripMenuItem_Click);
+            // 
+            // PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem
+            // 
+            this.PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem.Name = "PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem";
+            this.PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem.Size = new System.Drawing.Size(282, 24);
+            this.PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem.Text = "Paste";
+            this.PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem.Click += new System.EventHandler(this.PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem_Click);
             // 
             // MenuStripDesignBOM
             // 
             this.MenuStripDesignBOM.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuStripDesignBOM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itmCopyAllToActualBOM,
-            this.copyFromExcelToDesignBOMToolStripMenuItem});
+            this.copyFromExcelToDesignBOMToolStripMenuItem,
+            this.PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem});
             this.MenuStripDesignBOM.Name = "contextMenuStrip1";
-            this.MenuStripDesignBOM.Size = new System.Drawing.Size(272, 52);
+            this.MenuStripDesignBOM.Size = new System.Drawing.Size(272, 76);
             // 
             // itmCopyAllToActualBOM
             // 
@@ -1071,8 +1087,16 @@
             // 
             this.copyFromExcelToDesignBOMToolStripMenuItem.Name = "copyFromExcelToDesignBOMToolStripMenuItem";
             this.copyFromExcelToDesignBOMToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
-            this.copyFromExcelToDesignBOMToolStripMenuItem.Text = "Paste Excel Data";
+            this.copyFromExcelToDesignBOMToolStripMenuItem.Text = "Paste All Copied Column(s)";
+            this.copyFromExcelToDesignBOMToolStripMenuItem.Visible = false;
             this.copyFromExcelToDesignBOMToolStripMenuItem.Click += new System.EventHandler(this.copyFromExcelToDesignBOMToolStripMenuItem_Click);
+            // 
+            // PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem
+            // 
+            this.PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem.Name = "PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem";
+            this.PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
+            this.PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem.Text = "Paste";
+            this.PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem.Click += new System.EventHandler(this.PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem_Click);
             // 
             // imageList1
             // 
@@ -1322,16 +1346,25 @@
             // 
             this.MenuStripActualBOM.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuStripActualBOM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyFromExcelToActualBOM});
+            this.copyFromExcelToActualBOM,
+            this.PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem});
             this.MenuStripActualBOM.Name = "contextMenuStrip1";
-            this.MenuStripActualBOM.Size = new System.Drawing.Size(187, 28);
+            this.MenuStripActualBOM.Size = new System.Drawing.Size(258, 80);
             // 
             // copyFromExcelToActualBOM
             // 
             this.copyFromExcelToActualBOM.Name = "copyFromExcelToActualBOM";
-            this.copyFromExcelToActualBOM.Size = new System.Drawing.Size(186, 24);
-            this.copyFromExcelToActualBOM.Text = "Paste Excel Data";
+            this.copyFromExcelToActualBOM.Size = new System.Drawing.Size(257, 24);
+            this.copyFromExcelToActualBOM.Text = "Paste All Copied Column(s)";
+            this.copyFromExcelToActualBOM.Visible = false;
             this.copyFromExcelToActualBOM.Click += new System.EventHandler(this.copyFromExcelToActualBOM_Click);
+            // 
+            // PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem
+            // 
+            this.PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem.Name = "PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem";
+            this.PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem.Size = new System.Drawing.Size(257, 24);
+            this.PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem.Text = "Paste";
+            this.PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem.Click += new System.EventHandler(this.PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -1908,6 +1941,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBoxWorkSheets;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolStripMenuItem PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem;
     }
 }
 

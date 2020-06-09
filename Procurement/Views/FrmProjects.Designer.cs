@@ -271,7 +271,7 @@
             this.btnOpenProject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenProject.Name = "btnOpenProject";
             this.btnOpenProject.Size = new System.Drawing.Size(97, 32);
-            this.btnOpenProject.TabIndex = 9;
+            this.btnOpenProject.TabIndex = 0;
             this.btnOpenProject.Text = "Open";
             this.toolTip1.SetToolTip(this.btnOpenProject, "Open selected project");
             this.btnOpenProject.UseVisualStyleBackColor = false;

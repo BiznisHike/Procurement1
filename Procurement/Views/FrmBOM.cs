@@ -252,7 +252,7 @@ namespace Procurement
                         break;
                 }
 
-                
+
             }
         }
         private void loadBOMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -550,7 +550,7 @@ namespace Procurement
                 IsGridView3Changed = false;
             }
             progressBar1.Value = 100;
-            
+
             Application.DoEvents();
             //Project proj = _LstProjects.Where(x => x.ProjectCode == projModel.ProjectCode).FirstOrDefault();
 
@@ -929,7 +929,7 @@ namespace Procurement
 
 
             int rowCounter = 0;
-            bool IsCopyData = true;
+            bool IsPasteData = true;
             foreach (string row in Rows.ToList<string>())
             {
                 rowCounter += 1;
@@ -944,12 +944,12 @@ namespace Procurement
 
                 if (fields.Count() < 18)
                 {
-                    MessageBox.Show("Data not copied. Please remove 'enter' after '" + fields.Last() + "' in column " + _columnNames[fields.Count() - 1] + " from Row number " + rowCounter);
-                    IsCopyData = false;
+                    MessageBox.Show("Data not copied. There is a 'Enter' in Cell. Please remove 'Enter' after '" + fields.Last() + "' in column " + _columnNames[fields.Count() - 1] + " from Row number " + rowCounter);
+                    IsPasteData = false;
                     break;
                 }
             }
-            if (IsCopyData == false) return;
+            if (IsPasteData == false) return;
             foreach (string row in Rows)
             {
                 fields = row.Split('\t');
@@ -1020,14 +1020,6 @@ namespace Procurement
             //dtMR.Rows.Add(newRow);
 
 
-
-
-
-
-
-
-
-
             //dtRef.Rows.Add(myRows.Count - 1);
             //string[] fields;
             //int row = 0;
@@ -1046,12 +1038,151 @@ namespace Procurement
             //    col = 0;
             //}
         }
+        private void PasteColumnsAtPlaceFromExcelToSaleBOMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasteColumnsAtPlaceFromExcel(ref _dtSalesBOM, 1);
+        }
+        private void PasteColumnsAtPlaceFromExcelToDesignBOMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasteColumnsAtPlaceFromExcel(ref _dtDesignBOM, 2);
+        }
+        private void PasteColumnsAtPlaceFromExcelToActualBOMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasteColumnsAtPlaceFromExcel(ref _dtActualBOM, 3);
+        }
+        private void PasteColumnsAtPlaceFromExcel(ref DataTable dtRef, int gridviewNumber)
+        {
+            try
+            {
+
+
+                string excelData = Clipboard.GetText();
+                List<string> Rows = excelData.Split(new[] { "\r\n" }, StringSplitOptions.None).ToList<string>();
+
+                //mytab.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                //string[] lines = excelData.Replace("\n", "").Split('\r');
+                //string[] lines = Regex.Split(s.TrimEnd("\r\n".ToCharArray()), "\r\n");
+                string[] fields;
+
+
+                int rowCounter = 0;
+                bool IsPasteData = true;
+                foreach (string row in Rows.ToList<string>())
+                {
+                    rowCounter += 1;
+                    fields = row.Split('\t');
+
+                    if (fields.Count() == 1 && fields[0] == string.Empty)
+                    {
+                        Rows.Remove(row);
+                        continue;
+
+                    }
+                    //If there is enter in row. then coloumn count in certain row will be less than 18
+                    //if (fields.Count() < 3)
+                    //{
+                    //    MessageBox.Show("Data not copied. There is a 'Enter' in Cell. Please remove 'Enter' after '" + fields.Last() + "' in column " + _columnNames[fields.Count() - 1] + " from Row number " + rowCounter);
+                    //    IsPasteData = false;
+                    //    break;
+                    //}
+                }
+                if (IsPasteData == false) return;
+
+                switch (gridviewNumber)
+                {
+
+
+                    case 1:
+
+                        int selectedrowIndex1 = dataGridView1.SelectedCells[0].RowIndex;
+                        int selectedColumnIndex1 = dataGridView1.SelectedCells[0].ColumnIndex;
+                        //DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                        ////string a = Convert.ToString(selectedRow.Cells["enter column name"].Value);
+                        //DataRowView currentDataRowView = (DataRowView)dataGridView1.CurrentRow.DataBoundItem;
+                        //DataRow row = currentDataRowView.Row;
+                        ////selectedRow.row
+                        ///
+
+                        //dataGridView1.Rows[selectedrowindex].Cells[0].Value = price.ToString();
+
+                        foreach (string row in Rows)
+                        {
+                            fields = row.Split('\t');
+
+                            for (int i = 0; i <= fields.Count() - 1; i++)
+                            {
+                                dataGridView1.Rows[selectedrowIndex1].Cells[selectedColumnIndex1].Value = fields[i]; //price.ToString();
+                                selectedColumnIndex1 += 1;
+                            }
+                            selectedColumnIndex1 = dataGridView1.SelectedCells[0].ColumnIndex;
+                            selectedrowIndex1 += 1;
+
+                        }
+
+                        /////////////////////////////
+
+                        dataGridView1.DataSource = dtRef;
+                        IsGridView1Changed = true;
+                        break;
+                    case 2:
+
+                        int selectedrowIndex2 = dataGridView2.SelectedCells[0].RowIndex;
+                        int selectedColumnIndex2 = dataGridView2.SelectedCells[0].ColumnIndex;
+                        foreach (string row in Rows)
+                        {
+                            fields = row.Split('\t');
+
+                            for (int i = 0; i <= fields.Count() - 1; i++)
+                            {
+                                dataGridView2.Rows[selectedrowIndex2].Cells[selectedColumnIndex2].Value = fields[i]; //price.ToString();
+                                selectedColumnIndex2 += 1;
+                            }
+                            selectedColumnIndex2 = dataGridView2.SelectedCells[0].ColumnIndex;
+                            selectedrowIndex2 += 1;
+
+                        }
+
+                        /////////////////////////////
+                        dataGridView2.DataSource = dtRef;
+                        IsGridView2Changed = true;
+                        break;
+                    case 3:
+
+                        int selectedrowIndex3 = dataGridView3.SelectedCells[0].RowIndex;
+                        int selectedColumnIndex3 = dataGridView3.SelectedCells[0].ColumnIndex;
+                        foreach (string row in Rows)
+                        {
+                            fields = row.Split('\t');
+
+                            for (int i = 0; i <= fields.Count() - 1; i++)
+                            {
+                                dataGridView3.Rows[selectedrowIndex3].Cells[selectedColumnIndex3].Value = fields[i]; //price.ToString();
+                                selectedColumnIndex3 += 1;
+                            }
+                            selectedColumnIndex3 = dataGridView3.SelectedCells[0].ColumnIndex;
+                            selectedrowIndex3 += 1;
+
+                        }
+
+                        /////////////////////////////
+                        dataGridView3.DataSource = dtRef;
+                        IsGridView3Changed = true;
+                        break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         private void pasteMe_Click(object sender, EventArgs e)
         {
             string s = Clipboard.GetText();
 
-            string[] lines = s.Replace("\n", "").Split('\r');
+            string[] lines = s.Replace("ss\n", "").Split('\r');
 
             dataGridView2.Rows.Add(lines.Length - 1);
             string[] fields;
@@ -1755,6 +1886,42 @@ namespace Procurement
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                // Add this
+                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                // Can leave these here - doesn't hurt
+                //dataGridView1.Rows[e.RowIndex].Selected = true;//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
+                dataGridView1.Focus();
+            }
+        }
+
+        private void dataGridView2_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                // Add this
+                dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                // Can leave these here - doesn't hurt
+                //dataGridView2.Rows[e.RowIndex].Selected = true;//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
+                dataGridView2.Focus();
+            }
+        }
+
+        private void dataGridView3_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                // Add this
+                dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                // Can leave these here - doesn't hurt
+                //dataGridView3.Rows[e.RowIndex].Selected = true;//if we uncomment this. then it will select full row and can not get cell column index. which is necessory for paste at place
+                dataGridView3.Focus();
             }
         }
     }
