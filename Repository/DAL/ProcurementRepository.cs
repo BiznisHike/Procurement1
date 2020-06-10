@@ -20,7 +20,7 @@ namespace Repository.DAL
 
             dbEntity = _context.Set<T>();
         }
-        public void DeleteModel(decimal modelID)
+        public void DeleteModel(Object modelID)
         {
             T model = dbEntity.Find(modelID);
             dbEntity.Remove(model);
@@ -35,7 +35,7 @@ namespace Repository.DAL
         //{
         //    return dbEntity.AsQueryable().Where(x=>x.).ToList();
         //}
-        public T GetModelByID(decimal modelId)
+        public T GetModelByID(Object modelId)
         {
             return dbEntity.Find(modelId);
         }

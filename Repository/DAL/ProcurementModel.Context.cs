@@ -29,9 +29,9 @@ namespace Repository.DAL
         public virtual DbSet<BOMType> BOMTypes { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<EmployeeType> EmployeeTypes { get; set; }
-        public virtual DbSet<Project> Projects { get; set; }
-        public virtual DbSet<ProjectEmployeeDetail> ProjectEmployeeDetails { get; set; }
         public virtual DbSet<MR> MRs { get; set; }
         public virtual DbSet<MRVersion> MRVersions { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<ProjectEmployeeDetail> ProjectEmployeeDetails { get; set; }
     }
 }

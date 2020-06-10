@@ -16,7 +16,7 @@ namespace Repository.DAL
     {
         public decimal Id { get; set; }
         public Nullable<decimal> EmployeeCode { get; set; }
-        public Nullable<decimal> ProjectCode { get; set; }
+        public string ProjectCode { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Project Project { get; set; }

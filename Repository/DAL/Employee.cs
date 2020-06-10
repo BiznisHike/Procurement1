@@ -22,10 +22,10 @@ namespace Repository.DAL
     
         public decimal EmployeeCode { get; set; }
         public string EmployeeName { get; set; }
-        public Nullable<short> EmployeeTypeCode { get; set; }
-        public Nullable<decimal> ProjectCode { get; set; }
-        public Nullable<decimal> Manager { get; set; }
         public string Password { get; set; }
+        public Nullable<short> EmployeeTypeCode { get; set; }
+        public Nullable<decimal> Manager { get; set; }
+        public Nullable<decimal> ProjectCode { get; set; }
         public Nullable<decimal> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<decimal> UpdatedBy { get; set; }

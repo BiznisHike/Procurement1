@@ -1,5 +1,6 @@
 ﻿using Repository.DAL;
 using StaticClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,7 +30,7 @@ namespace Procurement.Controllers
             interfaceObj.InsertModel(_gProjModel);
             interfaceObj.Save();
         }
-        public Project GetModelByID(decimal modelId)
+        public Project GetModelByID(string modelId)
         {
             return interfaceObj.GetModelByID(modelId);
         }
@@ -56,16 +57,17 @@ namespace Procurement.Controllers
         //    //}
 
         //}
-        public decimal GetMaxProjectCode()
+        public string GetMaxProjectCode()
         {
-            List<Project> Projects = GetModels();
-            return Projects.DefaultIfEmpty().Max(p => p == null ? 1 : p.ProjectCode+1);
+            //List<Project> Projects = GetModels();
+            //return Projects.DefaultIfEmpty().Max(p => p == null ? 1 : p.ProjectCode+1);
+            return DateTime.Now.ToString("yyyyMMddHHmmss");
         }
         public void ReseedPk()
         {
             interfaceObj.ReseedPK("Project");
         }
-        public void DeleteModel(decimal modelID)
+        public void DeleteModel(string modelID)
         {
             interfaceObj.DeleteModel(modelID);
             interfaceObj.Save();

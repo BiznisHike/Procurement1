@@ -34,7 +34,7 @@ namespace Procurement.Controllers
             interfaceObj.InsertModel(_gBomModel);
             interfaceObj.Save();
         }
-        public void SaveList(decimal ProjectCode,byte bomTypeCode)
+        public void SaveList(string ProjectCode,byte bomTypeCode)
         {
             //if (ModelState.IsValid)
             //{ 

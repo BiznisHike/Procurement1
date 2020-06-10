@@ -34,7 +34,7 @@ namespace Procurement.Controllers
             interfaceObj.InsertModel(_gMRModel);
             interfaceObj.Save();
         }
-        public void SaveList(decimal ProjectCode,decimal MRVersion)
+        public void SaveList(string ProjectCode,decimal MRVersion)
         {
             //List<BOM> LstBoms = GetModels().AsQueryable().Where(x=>x.ProjectCode==ProjectCode && x.BOMTypeCode==bomTypeCode).ToList<BOM>(); //.Products.where(x => x.StoreId == store.StoreId)
 

@@ -9,9 +9,9 @@ namespace Repository.DAL
     public interface _IProcurementRepository<T> where T : class
     {
         IEnumerable<T> GetModels();
-        T GetModelByID(decimal modelId);
+        T GetModelByID(Object modelId);
         void InsertModel(T model);
-        void DeleteModel(decimal modelID);
+        void DeleteModel(Object modelID);
         void UpdateModel(T model);
         void Save();
         void ReseedPK(String TableName);

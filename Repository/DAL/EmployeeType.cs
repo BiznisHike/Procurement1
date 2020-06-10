@@ -20,8 +20,8 @@ namespace Repository.DAL
             this.Employees = new HashSet<Employee>();
         }
     
-        public string EmployeeType1 { get; set; }
         public short EmployeeTypeCode { get; set; }
+        public string EmployeeType1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }

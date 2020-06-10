@@ -108,7 +108,6 @@
             this.txtProjectCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectCode.Multiline = true;
             this.txtProjectCode.Name = "txtProjectCode";
-            this.txtProjectCode.ReadOnly = true;
             this.txtProjectCode.Size = new System.Drawing.Size(169, 25);
             this.txtProjectCode.TabIndex = 4;
             // 

@@ -378,7 +378,7 @@ namespace Procurement
                 {
                     ped = new ProjectEmployeeDetail();
                     ped.EmployeeCode = _EmployeeCode;
-                    ped.ProjectCode = (decimal)row1["ProjectCode"];
+                    ped.ProjectCode = (string)row1["ProjectCode"];
                     LstPed.Add(ped);
                 }
 
@@ -462,7 +462,7 @@ namespace Procurement
                 foreach (DataRow dr in _dtProjects.Rows) // search whole table
                 {
 
-                    if (_currentLoadedEmployee.ProjectEmployeeDetails.Where(x => x.ProjectCode == (decimal)dr["ProjectCode"]).FirstOrDefault() != null)
+                    if (_currentLoadedEmployee.ProjectEmployeeDetails.Where(x => x.ProjectCode == (string)dr["ProjectCode"]).FirstOrDefault() != null)
                     {
                         dr["Select Projects"] = true;
                     }

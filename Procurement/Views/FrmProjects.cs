@@ -18,7 +18,7 @@ namespace Procurement
         List<Project> _LstProjects;
         DataTable _dtProjects;
         
-        decimal _projectCode;
+        string _projectCode;
         bool _newMode;
         Project _currentLoadedProject;
 
@@ -122,7 +122,7 @@ namespace Procurement
             {
                 int selectedrowindex = dataGridViewProjects.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataGridViewProjects.Rows[selectedrowindex];
-                _projectCode = Convert.ToDecimal(selectedRow.Cells["ProjectCode"].Value);
+                _projectCode = Convert.ToString(selectedRow.Cells["ProjectCode"].Value);
                 
             }
 
@@ -205,7 +205,7 @@ namespace Procurement
                 {
 
                     //Project project = (Project)item.DataBoundItem;
-                    decimal pc = Convert.ToDecimal(sr.Cells[0].Value);
+                    string pc = Convert.ToString(sr.Cells[0].Value);
                     Project proj = _LstProjects.Where(x => x.ProjectCode == pc).FirstOrDefault();
                     if (proj != null) _LstProjects.Remove(proj);
                     _dtProjects.Rows.RemoveAt(sr.Index);

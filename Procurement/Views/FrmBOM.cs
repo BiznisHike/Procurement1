@@ -213,8 +213,9 @@ namespace Procurement
 
                                 //}
                                 //dtBOM.Rows.Add(newDataRow);
-
+                                
                                 dtBOM.Rows.Add(dr.ItemArray);
+                                //if (dtBOM.Rows.Count > 337) MessageBox.Show("338");
                             }
 
                         }
@@ -333,10 +334,11 @@ namespace Procurement
                                     _dtActualBOM.Rows.Add(dr.ItemArray);
                                     IsGridView3Changed = true;
                                 }
-                                MessageBox.Show("Change Order Loaded Successfully");
+                               
                             }
 
                         }
+                        MessageBox.Show("Change Order Loaded Successfully");
 
                     }
                 }
@@ -845,7 +847,7 @@ namespace Procurement
 
             //decimal decimalValue = Convert.ToDecimal(string.IsNullOrEmpty(ObjValue.ToString()) ? "0" : ObjValue);
 
-            if (ObjValue == null || ObjValue == DBNull.Value)
+            if (ObjValue == null || ObjValue == DBNull.Value || string.IsNullOrEmpty(ObjValue.ToString().Trim()))
             {
                 return 0;
             }

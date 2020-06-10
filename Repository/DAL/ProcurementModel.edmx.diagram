@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="eff50d4a09134c23b64efbfaea6c8688" Name="Diagram1" ZoomLevel="80">
-        <EntityTypeShape EntityType="ProcurementModel.BOM" Width="1.5" PointX="3.125" PointY="3.125" />
-        <EntityTypeShape EntityType="ProcurementModel.BOMType" Width="1.5" PointX="5.375" PointY="3.125" />
-        <EntityTypeShape EntityType="ProcurementModel.Employee" Width="1.5" PointX="7.875" PointY="0.625" />
-        <EntityTypeShape EntityType="ProcurementModel.EmployeeType" Width="1.5" PointX="10.375" PointY="0.625" />
-        <EntityTypeShape EntityType="ProcurementModel.Project" Width="1.5" PointX="0.75" PointY="0.5" />
+      <Diagram DiagramId="eff50d4a09134c23b64efbfaea6c8688" Name="Diagram1" ZoomLevel="65">
+        <EntityTypeShape EntityType="ProcurementModel.BOM" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="ProcurementModel.BOMType" Width="1.5" PointX="0.75" PointY="3.5" />
+        <EntityTypeShape EntityType="ProcurementModel.Employee" Width="1.5" PointX="3.75" PointY="12.625" />
+        <EntityTypeShape EntityType="ProcurementModel.EmployeeType" Width="1.5" PointX="1.5" PointY="13.5" />
+        <EntityTypeShape EntityType="ProcurementModel.MR" Width="1.5" PointX="5.25" PointY="17.25" />
+        <EntityTypeShape EntityType="ProcurementModel.MRVersion" Width="1.5" PointX="3" PointY="17.625" />
+        <EntityTypeShape EntityType="ProcurementModel.Project" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ProcurementModel.ProjectEmployeeDetail" Width="1.5" PointX="6" PointY="7.25" />
         <AssociationConnector Association="ProcurementModel.FK_BOM_BOMType" />
         <AssociationConnector Association="ProcurementModel.FK_BOM_Project" />
         <AssociationConnector Association="ProcurementModel.FK_Employee_EmployeeType" />
-        <EntityTypeShape EntityType="ProcurementModel.ProjectEmployeeDetail" Width="1.5" PointX="3.875" PointY="0.5" />
         <AssociationConnector Association="ProcurementModel.FK_ProjectEmployeeDetail_Employee" />
-        <AssociationConnector Association="ProcurementModel.FK_ProjectEmployeeDetail_Project" />
-        <EntityTypeShape EntityType="ProcurementModel.MR" Width="1.5" PointX="5.375" PointY="4.875" />
-        <EntityTypeShape EntityType="ProcurementModel.MRVersion" Width="1.5" PointX="7.875" PointY="5.125" />
         <AssociationConnector Association="ProcurementModel.FK_MR_MRVersion" />
         <AssociationConnector Association="ProcurementModel.FK_MRVersion_Project" />
+        <AssociationConnector Association="ProcurementModel.FK_ProjectEmployeeDetail_Project" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
