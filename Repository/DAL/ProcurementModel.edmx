@@ -73,7 +73,7 @@
             <PropertyRef Name="RowAuto" />
           </Key>
           <Property Name="RowAuto" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Version" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="MRVersionId" Type="decimal" Precision="10" Scale="0" />
           <Property Name="Sr" Type="nvarchar" MaxLength="500" />
           <Property Name="PartNo" Type="nvarchar" MaxLength="500" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
@@ -85,12 +85,15 @@
         </EntityType>
         <EntityType Name="MRVersion">
           <Key>
-            <PropertyRef Name="Version" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Version" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VersionNo" Type="decimal" Precision="10" Scale="0" />
-          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Revision" Type="nvarchar" MaxLength="10" />
+          <Property Name="VersionNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="100" />
           <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="IsModified" Type="bit" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -162,10 +165,10 @@
           <End Role="MR" Type="Self.MR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MRVersion">
-              <PropertyRef Name="Version" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="MR">
-              <PropertyRef Name="Version" />
+              <PropertyRef Name="MRVersionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -365,7 +368,7 @@
             <PropertyRef Name="RowAuto" />
           </Key>
           <Property Name="RowAuto" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Version" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="MRVersionId" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="Sr" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="PartNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -378,14 +381,17 @@
         </EntityType>
         <EntityType Name="MRVersion">
           <Key>
-            <PropertyRef Name="Version" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Version" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VersionNo" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Revision" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="VersionNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MRs" Relationship="ProcurementModel.FK_MR_MRVersion" FromRole="MRVersion" ToRole="MR" />
           <NavigationProperty Name="Project" Relationship="ProcurementModel.FK_MRVersion_Project" FromRole="MRVersion" ToRole="Project" />
+          <Property Name="IsModified" Type="Boolean" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -476,10 +482,10 @@
           <End Type="ProcurementModel.MR" Role="MR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MRVersion">
-              <PropertyRef Name="Version" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="MR">
-              <PropertyRef Name="Version" />
+              <PropertyRef Name="MRVersionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -595,7 +601,7 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="PartNo" ColumnName="PartNo" />
                 <ScalarProperty Name="Sr" ColumnName="Sr" />
-                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="MRVersionId" ColumnName="MRVersionId" />
                 <ScalarProperty Name="RowAuto" ColumnName="RowAuto" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -603,10 +609,13 @@
           <EntitySetMapping Name="MRVersions">
             <EntityTypeMapping TypeName="ProcurementModel.MRVersion">
               <MappingFragment StoreEntitySet="MRVersion">
+                <ScalarProperty Name="IsModified" ColumnName="IsModified" />
+                <ScalarProperty Name="Revision" ColumnName="Revision" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="VersionNo" ColumnName="VersionNo" />
-                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

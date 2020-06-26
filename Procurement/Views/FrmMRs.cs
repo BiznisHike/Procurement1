@@ -57,16 +57,20 @@ namespace Procurement
                 _dtMRVs = ToDataTable<MRVersion>(_LstMRVs);
                 _dtMRVs.Columns.Remove("Project");
                 _dtMRVs.Columns.Remove("MRs");
+                
+                _dtMRVs.Columns.Remove("IsModified");
+
                 //_dtProjects.Columns.Remove("ProjectEmployeeDetails");
                 //_dtProjects.Columns.Remove("CreatedBy");
                 //_dtProjects.Columns.Remove("UpdatedBy");
 
                 DataView dv = _dtMRVs.DefaultView;
-                dv.Sort = "Version desc";
+                dv.Sort = "DateCreated desc";
                 _dtMRVs = dv.ToTable();
 
                 dataGridViewProjects.DataSource = _dtMRVs;
-
+                dataGridViewProjects.Columns["Id"].Visible = false;
+                dataGridViewProjects.Columns["VersionNo"].HeaderText = "MIR Number";
                 if (_LstMRVs.Count == 0)
                 {
 
@@ -87,7 +91,7 @@ namespace Procurement
             {
                 int selectedrowindex = dataGridViewProjects.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataGridViewProjects.Rows[selectedrowindex];
-                _MRVersion = Convert.ToDecimal(selectedRow.Cells["Version"].Value);
+                _MRVersion = Convert.ToDecimal(selectedRow.Cells["Id"].Value);
 
             }
 
@@ -166,11 +170,11 @@ namespace Procurement
 
                     //Project project = (Project)item.DataBoundItem;
                     decimal version = Convert.ToDecimal(sr.Cells[0].Value);
-                    MRVersion mrv = _LstMRVs.Where(x => x.Version == version).FirstOrDefault();
+                    MRVersion mrv = _LstMRVs.Where(x => x.Id == version).FirstOrDefault();
                     if (mrv != null) _LstMRVs.Remove(mrv);
                     _dtMRVs.Rows.RemoveAt(sr.Index);
                     //_LstProjects.RemoveAt()
-                    _mrvc.DeleteModel(mrv.Version);
+                    _mrvc.DeleteModel(mrv.Id);
 
                     DataView dv = _dtMRVs.DefaultView;
                     dv.Sort = "ProjectCode desc";

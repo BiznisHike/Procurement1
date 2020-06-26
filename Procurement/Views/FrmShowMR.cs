@@ -63,7 +63,7 @@ namespace Procurement
                 _currentLoadedProject = CurrentOpenProject.CurrentProject;
 
                 //List<BOM> list2 = _currentLoadedProject.BOMs.Where(y => y.BOMTypeCode == 2).ToList();
-                List<MR> list2 = _currentLoadedProject.MRVersions.FirstOrDefault(x => x.Version == _currentMRVersion).MRs.ToList<MR>();
+                List<MR> list2 = _currentLoadedProject.MRVersions.FirstOrDefault(x => x.Id == _currentMRVersion).MRs.ToList<MR>();
                 _dtDesignBOM = ToDataTable<MR>(list2);
                 //_dtDesignBOM.Columns.Remove("ProjectCode");
                 //_dtDesignBOM.Columns.Remove("RowAuto");

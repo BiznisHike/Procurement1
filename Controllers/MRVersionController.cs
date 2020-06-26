@@ -51,7 +51,7 @@ namespace Procurement.Controllers
             if (MRVersions.Count == 0) ReseedPk();
 
 
-            return MRVersions.DefaultIfEmpty().Max(p => p == null ? 1 : p.Version + 1);
+            return MRVersions.DefaultIfEmpty().Max(p => p == null ? 1 : p.Id + 1);
         }
 
         public decimal GetMaxMRVersionNo()

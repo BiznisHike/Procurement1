@@ -15,7 +15,7 @@ namespace Repository.DAL
     public partial class MR
     {
         public decimal RowAuto { get; set; }
-        public Nullable<decimal> Version { get; set; }
+        public Nullable<decimal> MRVersionId { get; set; }
         public string Sr { get; set; }
         public string PartNo { get; set; }
         public string Description { get; set; }

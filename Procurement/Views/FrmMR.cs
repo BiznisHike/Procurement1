@@ -145,11 +145,22 @@ namespace Procurement
                 _maxMRVersionAutoRowId = _mrvc.GetMaxMRVersionAutoRowId();
                 
                 MRVersion mrvModel = new MRVersion();
+                mrvModel.DateCreated = DateTime.Now;
+                mrvModel.Reason = textBox1.Text ;
                 mrvModel.ProjectCode = _currentLoadedProject.ProjectCode;
                 //mrvModel.Version = _maxMRVersion;
-                mrvModel.VersionNo = _mrvc.GetMaxMRVersionNo();
-                mrvModel.Description = _currentLoadedProject.ProjectCode.ToString();//mrvModel.VersionNo.ToString();//mrvModel.Version.ToString();
+                //mrvModel.Id = _mrvc.GetMaxMRVersionNo();
+                mrvModel.Revision= _mrvc.GetMaxMRVersionNo().ToString("000");
+                //if (mrvModel.Revision == "000")
+                //{
+                //    mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString();
+                //}
+                //else
+                //{
+                    mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString() + "-MR-" + mrvModel.Revision;
+                //}
 
+                mrvModel.IsModified = false;
                 _mrvc = new MRVersionController(mrvModel);
                 _mrvc.Save();
                 //
@@ -208,6 +219,7 @@ namespace Procurement
                 }
                 objexcelapp.Columns.AutoFit(); // Auto fix the columns size
                 System.Windows.Forms.Application.DoEvents();
+                MessageBox.Show("Save and exported successfully");
                 //if (Directory.Exists("C:\\CTR_Data\\")) // Folder dic
                 //{
                 //    objexcelapp.ActiveWorkbook.SaveCopyAs("C:\\CTR_Data\\" + "excelFilename" + ".xlsx");
@@ -271,7 +283,7 @@ namespace Procurement
                 MR lObjBom = new MR();
                 //lObjBom.BOMCode = (string)pGvr.Cells[0].Value;
 
-                lObjBom.Version = _maxMRVersionAutoRowId;
+                lObjBom.MRVersionId = _maxMRVersionAutoRowId;
                 //lObjBom.ProjectCode = _currentLoadedProject.ProjectCode;
 
                 var cellObj = pGvr.Cells["Sr" + pBOMTypeCode];
@@ -480,8 +492,13 @@ namespace Procurement
                         newRow["Qty"] = frmGetQty.gQty;
 
                     }
+                    else
+                    {
+                        dataGridView4.DataSource = dtMR;
+                        continue;
+                    }
 
-                    decimal unitCost = decimal.Parse(gvr.Cells["UnitCost2"].Value.ToString());
+                    decimal unitCost = decimal.Parse(string.IsNullOrEmpty(gvr.Cells["UnitCost2"].Value.ToString()) ? "0" : gvr.Cells["UnitCost2"].Value.ToString());
                     //decimal qty = decimal.Parse ( frmGetQty.gQty);
                     decimal qty = Convert.ToDecimal(string.IsNullOrEmpty(frmGetQty.gQty) ? "0" : frmGetQty.gQty);
 
@@ -490,12 +507,11 @@ namespace Procurement
                     newRow["UnitPrice"] = gvr.Cells["UnitPrice2"].Value;
                     newRow["ExtPrice"] = gvr.Cells["ExtPrice2"].Value;
                     dtMR.Rows.Add(newRow);
-
+                   
                 }
-
-
+                dataGridView4.DataSource = dtMR;
             }
-            dataGridView4.DataSource = dtMR;
+            
             _dtExportMRtoExcel = dtMR.Copy();
         }
 

@@ -39,7 +39,7 @@
             this.textBox1.Location = new System.Drawing.Point(15, 47);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(284, 22);
-            this.textBox1.TabIndex = 0;
+            this.textBox1.TabIndex = 1;
             // 
             // label1
             // 
@@ -56,7 +56,7 @@
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 2;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -83,6 +83,7 @@
             this.Name = "FrmGetQty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quantity";
+            this.Activated += new System.EventHandler(this.FrmGetQty_Activated);
             this.Load += new System.EventHandler(this.FrmGetQty_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

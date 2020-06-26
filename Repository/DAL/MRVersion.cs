@@ -20,10 +20,13 @@ namespace Repository.DAL
             this.MRs = new HashSet<MR>();
         }
     
-        public decimal Version { get; set; }
-        public Nullable<decimal> VersionNo { get; set; }
-        public string Description { get; set; }
+        public decimal Id { get; set; }
+        public string Revision { get; set; }
+        public string VersionNo { get; set; }
+        public string Reason { get; set; }
         public string ProjectCode { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<bool> IsModified { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MR> MRs { get; set; }

@@ -95,7 +95,8 @@ namespace Procurement
                 _dtProjects.Columns.Remove("CreatedBy");
                 _dtProjects.Columns.Remove("UpdatedBy");
                 DataView dv = _dtProjects.DefaultView;
-                dv.Sort = "ProjectCode desc";
+                //dv.Sort = "ProjectCode desc";
+                dv.Sort = "CreatedDate desc";
                 _dtProjects = dv.ToTable();
 
                 dataGridViewProjects.DataSource = _dtProjects;

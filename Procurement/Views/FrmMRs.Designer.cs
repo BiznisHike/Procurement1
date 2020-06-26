@@ -302,10 +302,10 @@
             this.linkAddNewMR.AutoSize = true;
             this.linkAddNewMR.Location = new System.Drawing.Point(28, 23);
             this.linkAddNewMR.Name = "linkAddNewMR";
-            this.linkAddNewMR.Size = new System.Drawing.Size(89, 17);
+            this.linkAddNewMR.Size = new System.Drawing.Size(129, 17);
             this.linkAddNewMR.TabIndex = 10;
             this.linkAddNewMR.TabStop = true;
-            this.linkAddNewMR.Text = "Add New MR";
+            this.linkAddNewMR.Text = "Add New MIR Work";
             this.linkAddNewMR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddNewProject_LinkClicked);
             // 
             // FrmMRs

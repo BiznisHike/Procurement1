@@ -24,7 +24,7 @@ namespace Procurement
         DataTable _dtDesignBOM;
         DataTable _dtMR;
         DataTable _dtExportMRtoExcel;
-        decimal _currentMRVerion;
+        //decimal _currentMRVerion;
         string _currentMRVerionDesc;
         bool _newMode;
         Project _currentLoadedProject;
@@ -75,10 +75,10 @@ namespace Procurement
 
                 var bindingSource3 = new BindingSource();
                 //_LstMRVersion= _LstMRVersion.OrderByDescending(c => c.Version).ToList();
-                bindingSource3.DataSource = _LstMRVersion.OrderByDescending(c => c.Description).ToList();
+                bindingSource3.DataSource = _LstMRVersion.OrderByDescending(c => c.VersionNo).ToList();
 
-                cmbMRList.DisplayMember = "Description";
-                cmbMRList.ValueMember = "Version";
+                cmbMRList.DisplayMember = "VersionNo";
+                cmbMRList.ValueMember = "Id";
                 cmbMRList.SelectedIndex = -1;
                 cmbMRList.DataSource = bindingSource3.DataSource;
                 if (cmbMRList.Items.Count == 0)
@@ -101,17 +101,17 @@ namespace Procurement
             //int selectedIndex = cmb.SelectedIndex;
             //decimal selectedValue = (decimal)cmb.SelectedValue;
 
-            _currentMRVerion = (decimal)(cmbMRList.SelectedValue);
+            //_currentMRVerion = (decimal)(cmbMRList.SelectedValue);
             _currentMRVerionDesc = cmbMRList.Text;//cmbMRList.GetItemText(cmbMRList.SelectedItem);
 
             //List<MR> list2 = _currentLoadedProject.MRVersions.Where(y => y.Version == (decimal)cmbMRList.SelectedValue).ToList();
-            List<MR> list2 = _currentLoadedProject.MRVersions.FirstOrDefault(x => x.Version == (decimal)cmbMRList.SelectedValue).MRs.ToList<MR>();
+            List<MR> list2 = _currentLoadedProject.MRVersions.FirstOrDefault(x => x.Id == (decimal)cmbMRList.SelectedValue).MRs.ToList<MR>();
             
             _dtDesignBOM = ToDataTable<MR>(list2);
             //_dtDesignBOM.Columns.Remove("ProjectCode");
             _dtDesignBOM.Columns.Remove("RowAuto");
             //_dtDesignBOM.Columns.Remove("Project");
-            _dtDesignBOM.Columns.Remove("Version");
+            //_dtDesignBOM.Columns.Remove("Id");
             _dtDesignBOM.Columns.Remove("MRVersion");
 
 
@@ -183,9 +183,18 @@ namespace Procurement
                 MRVersion mrvModel = new MRVersion();
                 mrvModel.ProjectCode = _currentLoadedProject.ProjectCode;
                 //mrvModel.Version = _maxMRVersion;
-                mrvModel.VersionNo = _mrvc.GetMaxMRVersionNo();
-                mrvModel.Description = _currentMRVerionDesc + "-" + (mrvModel.VersionNo-1);
-
+                mrvModel.Revision = _mrvc.GetMaxMRVersionNo().ToString("000");
+                
+                //if (mrvModel.Revision == "000")
+                //{
+                //    mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString();
+                //}
+                //else
+                //{
+                    mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString() + "-MR-" + mrvModel.Revision;
+                //}
+                mrvModel.IsModified = true ;
+                mrvModel.DateCreated = DateTime.Now;
                 _mrvc = new MRVersionController(mrvModel);
                 _mrvc.Save();
                 //
@@ -246,6 +255,7 @@ namespace Procurement
                 }
                 objexcelapp.Columns.AutoFit(); // Auto fix the columns size
                 System.Windows.Forms.Application.DoEvents();
+                MessageBox.Show("Save and exported successfully");
                 //if (Directory.Exists("C:\\CTR_Data\\")) // Folder dic
                 //{
                 //    objexcelapp.ActiveWorkbook.SaveCopyAs("C:\\CTR_Data\\" + "excelFilename" + ".xlsx");
@@ -309,7 +319,7 @@ namespace Procurement
                 MR lObjBom = new MR();
                 //lObjBom.BOMCode = (string)pGvr.Cells[0].Value;
                 
-                lObjBom.Version = _maxMRVersionAutoRowId;
+                lObjBom.MRVersionId = _maxMRVersionAutoRowId;
                 //lObjBom.ProjectCode = _currentLoadedProject.ProjectCode;
 
                 var cellObj= pGvr.Cells["Sr" + pBOMTypeCode];

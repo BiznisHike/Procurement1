@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="eff50d4a09134c23b64efbfaea6c8688" Name="Diagram1" ZoomLevel="65">
-        <EntityTypeShape EntityType="ProcurementModel.BOM" Width="1.5" PointX="3" PointY="4.75" />
-        <EntityTypeShape EntityType="ProcurementModel.BOMType" Width="1.5" PointX="0.75" PointY="3.5" />
-        <EntityTypeShape EntityType="ProcurementModel.Employee" Width="1.5" PointX="3.75" PointY="12.625" />
-        <EntityTypeShape EntityType="ProcurementModel.EmployeeType" Width="1.5" PointX="1.5" PointY="13.5" />
-        <EntityTypeShape EntityType="ProcurementModel.MR" Width="1.5" PointX="5.25" PointY="17.25" />
-        <EntityTypeShape EntityType="ProcurementModel.MRVersion" Width="1.5" PointX="3" PointY="17.625" />
-        <EntityTypeShape EntityType="ProcurementModel.Project" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="ProcurementModel.ProjectEmployeeDetail" Width="1.5" PointX="6" PointY="7.25" />
+        <EntityTypeShape EntityType="ProcurementModel.BOM" Width="1.5" PointX="6" PointY="6" />
+        <EntityTypeShape EntityType="ProcurementModel.BOMType" Width="1.5" PointX="3.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ProcurementModel.Employee" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="ProcurementModel.EmployeeType" Width="1.5" PointX="1.5" PointY="0.75" />
+        <EntityTypeShape EntityType="ProcurementModel.MR" Width="1.5" PointX="5.25" PointY="18.5" />
+        <EntityTypeShape EntityType="ProcurementModel.MRVersion" Width="1.5" PointX="3" PointY="18.75" />
+        <EntityTypeShape EntityType="ProcurementModel.Project" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="ProcurementModel.ProjectEmployeeDetail" Width="1.5" PointX="3" PointY="8.5" />
         <AssociationConnector Association="ProcurementModel.FK_BOM_BOMType" />
         <AssociationConnector Association="ProcurementModel.FK_BOM_Project" />
         <AssociationConnector Association="ProcurementModel.FK_Employee_EmployeeType" />

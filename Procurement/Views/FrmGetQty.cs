@@ -35,10 +35,13 @@ namespace Procurement.Views
         {
             textBox1.Text = string.Empty;
             gQty = string.Empty;
-            this.DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        
+        private void FrmGetQty_Activated(object sender, EventArgs e)
+        {
+            textBox1.Focus();
+        }
     }
 }
