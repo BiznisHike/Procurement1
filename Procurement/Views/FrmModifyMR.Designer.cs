@@ -576,7 +576,7 @@
             this.cmbMRList.Location = new System.Drawing.Point(105, 11);
             this.cmbMRList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbMRList.Name = "cmbMRList";
-            this.cmbMRList.Size = new System.Drawing.Size(199, 24);
+            this.cmbMRList.Size = new System.Drawing.Size(487, 24);
             this.cmbMRList.TabIndex = 23;
             this.cmbMRList.SelectedIndexChanged += new System.EventHandler(this.cmbMRList_SelectedIndexChanged);
             // 

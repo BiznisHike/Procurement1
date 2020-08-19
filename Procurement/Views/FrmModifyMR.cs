@@ -25,7 +25,7 @@ namespace Procurement
         DataTable _dtMR;
         DataTable _dtExportMRtoExcel;
         //decimal _currentMRVerion;
-        string _currentMRVerionDesc;
+        string _currentMRVersionDesc;
         bool _newMode;
         Project _currentLoadedProject;
         List<MR> _LstObjBoms;
@@ -58,7 +58,7 @@ namespace Procurement
         {
             try
             {
-                
+
 
                 if (LoginInfo.LoginEmployee.EmployeeTypeCode == Constants.EMPLOYEE)
                 {
@@ -85,7 +85,7 @@ namespace Procurement
                 {
                     MessageBox.Show("Please first create Material Request"); btnSave.Enabled = false;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -102,11 +102,11 @@ namespace Procurement
             //decimal selectedValue = (decimal)cmb.SelectedValue;
 
             //_currentMRVerion = (decimal)(cmbMRList.SelectedValue);
-            _currentMRVerionDesc = cmbMRList.Text;//cmbMRList.GetItemText(cmbMRList.SelectedItem);
+            _currentMRVersionDesc = cmbMRList.Text;//cmbMRList.GetItemText(cmbMRList.SelectedItem);
 
             //List<MR> list2 = _currentLoadedProject.MRVersions.Where(y => y.Version == (decimal)cmbMRList.SelectedValue).ToList();
             List<MR> list2 = _currentLoadedProject.MRVersions.FirstOrDefault(x => x.Id == (decimal)cmbMRList.SelectedValue).MRs.ToList<MR>();
-            
+
             _dtDesignBOM = ToDataTable<MR>(list2);
             //_dtDesignBOM.Columns.Remove("ProjectCode");
             _dtDesignBOM.Columns.Remove("RowAuto");
@@ -119,7 +119,7 @@ namespace Procurement
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.DataSource = _dtDesignBOM;
             //_dtMR = new DataTable();
-            if (_dtMR !=null) _dtMR.Rows.Clear();
+            if (_dtMR != null) _dtMR.Rows.Clear();
             //dataGridView4.Rows.Clear();
 
         }
@@ -182,18 +182,47 @@ namespace Procurement
 
                 MRVersion mrvModel = new MRVersion();
                 mrvModel.ProjectCode = _currentLoadedProject.ProjectCode;
-                //mrvModel.Version = _maxMRVersion;
-                mrvModel.Revision = _mrvc.GetMaxMRVersionNo().ToString("000");
-                
-                //if (mrvModel.Revision == "000")
+                //mrvModel.Version = _maxMRVersion
+                mrvModel.IsVersion = false;
+                mrvModel.Reason = textBox1.Text;
+                string strVerNo = string.Empty;
+                if (_currentMRVersionDesc.Substring(_currentMRVersionDesc.IndexOf("-MR-")).Contains("-REV"))
+                {
+                    strVerNo = _currentMRVersionDesc.Substring(0, _currentMRVersionDesc.IndexOf("-REV"));
+
+                    mrvModel.Revision = _mrvc.GetMaxMRVersionNo(mrvModel.IsVersion.Value, strVerNo).ToString("00");
+                    mrvModel.VersionNo = strVerNo + "-REV" + mrvModel.Revision;
+                }
+                else
+                {
+                    //decimal returnedValue = _mrvc.GetMaxMRVersionNo(mrvModel.IsVersion.Value, _currentMRVersionDesc)-1;
+                    //returnedValue -= 1;
+                    mrvModel.Revision = _mrvc.GetMaxMRVersionNo(mrvModel.IsVersion.Value, _currentMRVersionDesc).ToString("00");
+                    mrvModel.VersionNo = _currentMRVersionDesc + "-REV" + mrvModel.Revision;
+                }
+
+                //mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString() + "-MR-" + mrvModel.Revision;
+                //mrvModel.VersionNo = _currentMRVerionDesc + "-REV01" +
+
+
+
+                //string strVer =string.Empty;
+                //int intVer = 0;
+                //if (_currentMRVersionDesc.Substring(_currentMRVersionDesc.IndexOf("-MR-")).Contains("-REV"))
                 //{
-                //    mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString();
+                //    strVer = _currentMRVersionDesc.Substring(_currentMRVersionDesc.IndexOf("-MR-"));
+                //    intVer = int.Parse( strVer.Substring(strVer.IndexOf("-REV") + 4));
+                //    intVer += 1;
+                //    //"20200626120629-MR-05-REV1"
+                //    mrvModel.VersionNo = _currentMRVersionDesc.Replace("-REV1", "-REV" + intVer);//      //+ "-REV" + intLastVer;
                 //}
                 //else
                 //{
-                    mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString() + "-MR-" + mrvModel.Revision;
+                //    mrvModel.VersionNo = _currentMRVersionDesc + "-REV1";
                 //}
-                mrvModel.IsModified = true ;
+
+
+                mrvModel.IsModified = true;
                 mrvModel.DateCreated = DateTime.Now;
                 _mrvc = new MRVersionController(mrvModel);
                 _mrvc.Save();
@@ -206,7 +235,7 @@ namespace Procurement
                 _mrc.SaveList(projModel.ProjectCode, _maxMRVersionAutoRowId);
 
 
-              
+
 
                 ///////////////export to excel/////////////////
                 // Here is main process
@@ -274,7 +303,7 @@ namespace Procurement
                 //}
 
                 ///////
-                
+
                 //System.Diagnostics.Process.Start(savefile.FileName);
 
                 //////////////update shared object///////////////////
@@ -288,12 +317,12 @@ namespace Procurement
 
         private void FillBOMModel2()
         {
-            
+
             foreach (DataGridViewRow gvr in dataGridView4.Rows)
             {
                 FillBOMModelSub(gvr, 4);
             }
-            
+
 
         }
         private void FillBOMModelSub(DataGridViewRow pGvr, short pBOMTypeCode)
@@ -318,11 +347,11 @@ namespace Procurement
             {
                 MR lObjBom = new MR();
                 //lObjBom.BOMCode = (string)pGvr.Cells[0].Value;
-                
+
                 lObjBom.MRVersionId = _maxMRVersionAutoRowId;
                 //lObjBom.ProjectCode = _currentLoadedProject.ProjectCode;
 
-                var cellObj= pGvr.Cells["Sr" + pBOMTypeCode];
+                var cellObj = pGvr.Cells["Sr" + pBOMTypeCode];
                 lObjBom.Sr = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
 
                 cellObj = pGvr.Cells["PartNo" + pBOMTypeCode];
@@ -391,21 +420,21 @@ namespace Procurement
             return dataTable;
         }
 
-       
+
         private void ClearAll()
         {
-            
+
             if (_dtDesignBOM != null) _dtDesignBOM.Rows.Clear();
-            
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            
+
             this.Close();
         }
 
-        
+
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             decimal quantity = ReturnAppropriateValue(dataGridView2.Rows[e.RowIndex].Cells["Qty2"].Value);
@@ -462,7 +491,7 @@ namespace Procurement
         private void btnCopySame_Click(object sender, EventArgs e)
         {
 
-             _dtMR = new DataTable();
+            _dtMR = new DataTable();
             _dtMR.Columns.Add("Sr");
             _dtMR.Columns.Add("PartNo");
             _dtMR.Columns.Add("Description");
@@ -532,7 +561,7 @@ namespace Procurement
                     //    gvr.Cells["UnitCost2"].Value = 0;
                     //}
                     //decimal unitCost = decimal.Parse(gvr.Cells["UnitCost2"].Value.ToString());
-                    decimal unitCost = decimal.Parse(string.IsNullOrEmpty(gvr.Cells["UnitCost2"].Value.ToString())?"0": gvr.Cells["UnitCost2"].Value.ToString().Trim());
+                    decimal unitCost = decimal.Parse(string.IsNullOrEmpty(gvr.Cells["UnitCost2"].Value.ToString()) ? "0" : gvr.Cells["UnitCost2"].Value.ToString().Trim());
                     //decimal qty = decimal.Parse ( frmGetQty.gQty);
                     decimal qty = Convert.ToDecimal(string.IsNullOrEmpty(frmGetQty.gQty) ? "0" : frmGetQty.gQty);
 

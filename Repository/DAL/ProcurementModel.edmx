@@ -92,6 +92,7 @@
           <Property Name="VersionNo" Type="nvarchar" MaxLength="100" />
           <Property Name="Reason" Type="nvarchar" MaxLength="100" />
           <Property Name="ProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsVersion" Type="bit" />
           <Property Name="DateCreated" Type="datetime" />
           <Property Name="IsModified" Type="bit" />
         </EntityType>
@@ -392,6 +393,7 @@
           <NavigationProperty Name="MRs" Relationship="ProcurementModel.FK_MR_MRVersion" FromRole="MRVersion" ToRole="MR" />
           <NavigationProperty Name="Project" Relationship="ProcurementModel.FK_MRVersion_Project" FromRole="MRVersion" ToRole="Project" />
           <Property Name="IsModified" Type="Boolean" />
+          <Property Name="IsVersion" Type="Boolean" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -609,6 +611,7 @@
           <EntitySetMapping Name="MRVersions">
             <EntityTypeMapping TypeName="ProcurementModel.MRVersion">
               <MappingFragment StoreEntitySet="MRVersion">
+                <ScalarProperty Name="IsVersion" ColumnName="IsVersion" />
                 <ScalarProperty Name="IsModified" ColumnName="IsModified" />
                 <ScalarProperty Name="Revision" ColumnName="Revision" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />

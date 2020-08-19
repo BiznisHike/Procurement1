@@ -27,6 +27,7 @@ namespace Repository.DAL
         public string ProjectCode { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
         public Nullable<bool> IsModified { get; set; }
+        public Nullable<bool> IsVersion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MR> MRs { get; set; }

@@ -54,9 +54,10 @@ namespace Procurement.Controllers
             return MRVersions.DefaultIfEmpty().Max(p => p == null ? 1 : p.Id + 1);
         }
 
-        public decimal GetMaxMRVersionNo()
+        public decimal GetMaxMRVersionNo(bool IsVersion,string VersionNo)
         {
-            List<MRVersion> MRVersions = GetModels().Where(x => x.ProjectCode == CurrentOpenProject.CurrentProject.ProjectCode).ToList<MRVersion>();
+            //List<MRVersion> MRVersions = GetModels().Where(x => x.ProjectCode == CurrentOpenProject.CurrentProject.ProjectCode && x.VersionNo.StartsWith(VersionNo) && !x.VersionNo.Contains("-REV")).ToList<MRVersion>();
+            List<MRVersion> MRVersions = GetModels().Where(x => x.ProjectCode == CurrentOpenProject.CurrentProject.ProjectCode && x.VersionNo.StartsWith(VersionNo) && x.IsVersion == IsVersion).ToList<MRVersion>();
             if (MRVersions.Count == 0)
             {
                 return 1;

@@ -68,7 +68,7 @@ namespace Procurement
                 _currentLoadedProject = CurrentOpenProject.CurrentProject;
 
                 List<BOM> list3 = _currentLoadedProject.BOMs.Where(y => y.BOMTypeCode == 3).ToList();
-                if (list3.Count == 0) { MessageBox.Show("Please first create BOM"); btnSave.Enabled=false; return; }
+                if (list3.Count == 0) { MessageBox.Show("Please first create BOM"); btnSave.Enabled = false; return; }
                 _dtDesignBOM = ToDataTable<BOM>(list3);
                 _dtDesignBOM.Columns.Remove("ProjectCode");
                 _dtDesignBOM.Columns.Remove("RowAuto");
@@ -143,22 +143,19 @@ namespace Procurement
                 //fill MR Verion first
                 _mrvc = new MRVersionController();
                 _maxMRVersionAutoRowId = _mrvc.GetMaxMRVersionAutoRowId();
-                
+
                 MRVersion mrvModel = new MRVersion();
                 mrvModel.DateCreated = DateTime.Now;
-                mrvModel.Reason = textBox1.Text ;
+                mrvModel.Reason = textBox1.Text;
                 mrvModel.ProjectCode = _currentLoadedProject.ProjectCode;
+                mrvModel.IsVersion = true;
                 //mrvModel.Version = _maxMRVersion;
                 //mrvModel.Id = _mrvc.GetMaxMRVersionNo();
-                mrvModel.Revision= _mrvc.GetMaxMRVersionNo().ToString("000");
-                //if (mrvModel.Revision == "000")
-                //{
-                //    mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString();
-                //}
-                //else
-                //{
-                    mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString() + "-MR-" + mrvModel.Revision;
-                //}
+                mrvModel.Revision = "00";
+                string strVersion = _mrvc.GetMaxMRVersionNo(mrvModel.IsVersion.Value, mrvModel.ProjectCode).ToString("00");
+
+                mrvModel.VersionNo = _currentLoadedProject.ProjectCode.ToString() + "-MR-" + strVersion;
+
 
                 mrvModel.IsModified = false;
                 _mrvc = new MRVersionController(mrvModel);
@@ -238,7 +235,7 @@ namespace Procurement
                 //}
 
                 ///////
-                
+
                 //System.Diagnostics.Process.Start(savefile.FileName);
 
                 //////////////update shared object///////////////////
@@ -252,12 +249,12 @@ namespace Procurement
 
         private void FillBOMModel2()
         {
-            
+
             foreach (DataGridViewRow gvr in dataGridView4.Rows)
             {
                 FillBOMModelSub(gvr, 4);
             }
-            
+
 
         }
         private void FillBOMModelSub(DataGridViewRow pGvr, short pBOMTypeCode)
@@ -311,13 +308,13 @@ namespace Procurement
                 lObjBom.ExtPrice = (cellObj.Value == null) ? string.Empty : cellObj.Value.ToString();
 
                 _LstObjBoms.Add(lObjBom);
-                
+
 
             }
 
             //return null;
         }
-        
+
         private Project FillProjectModel()
         {
             Project lObjProj = new Project();
@@ -366,7 +363,7 @@ namespace Procurement
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-           
+
             this.Close();
         }
 
@@ -507,11 +504,11 @@ namespace Procurement
                     newRow["UnitPrice"] = gvr.Cells["UnitPrice2"].Value;
                     newRow["ExtPrice"] = gvr.Cells["ExtPrice2"].Value;
                     dtMR.Rows.Add(newRow);
-                   
+
                 }
                 dataGridView4.DataSource = dtMR;
             }
-            
+
             _dtExportMRtoExcel = dtMR.Copy();
         }
 
